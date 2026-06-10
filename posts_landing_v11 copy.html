@@ -27,7 +27,7 @@
   .nav-links { display: flex; align-items: center; gap: 28px; }
   .nav-links a { color: var(--light-grey); font-size: 14px; font-weight: 500; text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--white); }
-  .nav-cta { background: var(--yellow) !important; color: #000 !important; font-size: 14px !important; font-weight: 600 !important; padding: 10px 22px !important; border-radius: 100px !important; transition: opacity 0.2s; }
+  .nav-cta { background: var(--yellow) !important; color: #000 !important; font-size: 14px !important; font-weight: 600 !important; padding: 10px 22px !important; border-radius: 15px !important; transition: opacity 0.2s; }
   .nav-cta:hover { opacity: 0.88; }
 
   /* HERO */
@@ -36,10 +36,10 @@
   .hero-glow { position: absolute; top: 40%; left: 30%; transform: translate(-50%,-50%); width: 800px; height: 400px; background: radial-gradient(ellipse, rgba(251,189,0,0.04) 0%, transparent 70%); }
   .hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 260px; gap: 56px; align-items: center; }
   .hero-left { }
-  .pill { display: inline-flex; align-items: center; background: #1a1a1a; border: 1px solid #333; border-radius: 100px; padding: 7px 20px; font-family: 'Anton', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 32px; }
+  .pill { display: inline-flex; align-items: center; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.25); border-radius: 15px; padding: 7px 20px; font-family: 'Roboto', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 32px; }
   .hero-h1 { font-family: 'Anton', sans-serif; font-size: 56px; line-height: 1.0; letter-spacing: 0.02em; text-transform: uppercase; color: var(--yellow); margin-bottom: 28px; }
   .hero-sub { font-size: 17px; color: var(--white); line-height: 1.65; margin-bottom: 40px; }
-  .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; padding: 14px 36px; border-radius: 100px; transition: opacity 0.2s; }
+  .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; padding: 14px 36px; border-radius: 15px; transition: opacity 0.2s; }
   .btn-primary:hover { opacity: 0.88; }
 
   /* HERO MOCK */
@@ -54,7 +54,7 @@
   .mock-name-col { flex: 1; }
   .mock-name-line { height: 7px; background: #2a2a2a; border-radius: 2px; width: 90px; margin-bottom: 5px; }
   .mock-name-line2 { height: 5px; background: #1e1e1e; border-radius: 2px; width: 60px; }
-  .mock-badge { background: rgba(251,189,0,0.14); border: 1px solid rgba(251,189,0,0.28); border-radius: 100px; padding: 3px 9px; font-size: 8px; color: var(--yellow); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+  .mock-badge { background: rgba(251,189,0,0.14); border: 1px solid rgba(251,189,0,0.28); border-radius: 15px; padding: 3px 9px; font-size: 8px; color: var(--yellow); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
   .mock-media { width: 100%; height: 52px; background: linear-gradient(135deg, #1a1a1a, #222); border-radius: 7px; margin-bottom: 6px; display: flex; align-items: center; justify-content: center; }
   .mock-play-btn { width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--yellow); display: flex; align-items: center; justify-content: center; }
   .mock-line { height: 6px; background: #1e1e1e; border-radius: 2px; margin-bottom: 5px; }
@@ -63,7 +63,7 @@
   .mock-poll-row.on { background: rgba(251,189,0,0.1); border: 1px solid rgba(251,189,0,0.2); color: var(--yellow); }
   .mock-poll-row.off { background: #1a1a1a; border: 1px solid #252525; color: var(--light-grey); }
   .mock-reacts { display: flex; gap: 6px; margin-top: 10px; }
-  .mock-react { background: #1a1a1a; border: 1px solid #252525; border-radius: 100px; padding: 4px 9px; font-size: 10px; color: var(--light-grey); }
+  .mock-react { background: #1a1a1a; border: 1px solid #252525; border-radius: 15px; padding: 4px 9px; font-size: 10px; color: var(--light-grey); }
   .mock-react.on { background: rgba(251,189,0,0.09); border-color: rgba(251,189,0,0.22); color: var(--yellow); }
   .mock-stats { background: #0f0f0f; border: 1px solid var(--border); border-radius: 10px; padding: 8px; }
   .mock-stats-lbl { font-size: 8px; font-weight: 700; color: var(--grey); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px; }
@@ -81,7 +81,7 @@
   .inner { max-width: 1200px; margin: 0 auto; }
 
   /* SECTION LABELS */
-  .section-tag { display: inline-flex; align-items: center; background: #1a1a1a; border: 1px solid #2e2e2e; border-radius: 100px; padding: 6px 18px; margin-bottom: 28px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light-grey); }
+  .section-tag { display: inline-flex; align-items: center; background: transparent; border: 1px solid rgba(251,189,0,0.4); border-radius: 15px; padding: 6px 18px; margin-bottom: 28px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light-grey); }
 
   /* TYPE */
   .h-lg { font-family: 'Anton', sans-serif; font-size: 44px; line-height: 1.05; letter-spacing: 0.02em; text-transform: uppercase; color: var(--yellow); }
@@ -213,7 +213,7 @@
 
   /* WHAT'S POSSIBLE */
   .possible-chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: 900px; margin: 0 auto; }
-  .possible-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--card2); border: 1px solid rgba(251,189,0,0.4); border-radius: 100px; padding: 10px 20px; font-family: 'Roboto', sans-serif; font-size: 14px; color: var(--white); transition: border-color 0.2s, background 0.2s; white-space: nowrap; }
+  .possible-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--card2); border: 1px solid rgba(251,189,0,0.4); border-radius: 15px; padding: 10px 20px; font-family: 'Roboto', sans-serif; font-size: 14px; color: var(--white); transition: border-color 0.2s, background 0.2s; white-space: nowrap; }
   .possible-chip:hover { border-color: rgba(251,189,0,0.4); background: #222; }
   .possible-chip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--yellow); flex-shrink: 0; }
   .possible-callout { margin-top: 40px; background: rgba(251,189,0,0.03); border: 1px solid rgba(251,189,0,0.1); border-radius: 12px; padding: 20px 24px; font-size: 14px; color: var(--light-grey); line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto; }
@@ -388,7 +388,6 @@
 <div class="wrap">
   <div class="inner">
     <div>
-      <div class="flex-center mb-24"><div class="section-tag">THE PROBLEM</div></div>
       <h2 class="h-lg centered mb-16">Email is the same tool it was twenty years ago.</h2>
       <div class="problem-icons">
         <div class="problem-icon-item">
@@ -413,7 +412,7 @@
           <p class="problem-icon-desc">New fans never find it. You can't grow past your list.</p>
         </div>
       </div>
-      <div class="flex-center mt-32"><div style="display:inline-flex;align-items:center;background:var(--card2);border:1px solid rgba(251,189,0,0.4);border-radius:100px;padding:12px 28px;font-family:'Roboto',sans-serif;font-size:15px;font-weight:500;color:var(--white);white-space:nowrap;">Artists need a direct channel built for participation among fans, not broadcasts to followers.</div></div>
+      <div class="flex-center mt-32"><div style="display:inline-flex;align-items:center;background:transparent;border:1px solid rgba(251,189,0,0.4);border-radius:100px;padding:12px 28px;font-family:'Roboto',sans-serif;font-size:15px;font-weight:500;color:var(--white);white-space:nowrap;">Artists need a direct channel built for participation among fans, not broadcasts to followers.</div></div>
     </div>
   </div>
 </div>
@@ -421,7 +420,6 @@
 <!-- WHAT IT IS -->
 <div class="wrap" style="padding-bottom: 48px;">
   <div class="inner">
-    <div class="flex-center mb-24"><div class="section-tag">SOLUTION</div></div>
     <h2 class="h-lg centered mb-16">Posts is a publishing platform purpose-built for music, connected to your fan data.</h2>
     <p class="body-md centered mb-40" style="max-width:600px;margin-left:auto;margin-right:auto;">Publish once. Reach the fans you have AND the new fans eager to find you.</p>
     <div class="channel-combined">
@@ -437,7 +435,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
         </div>
         <div class="channel-stack-lbl">Web</div>
-        <p class="channel-stack-desc">Your message now lives on the web. Discoverable, shareable. Reach fans who haven't found you yet.</p>
+        <p class="channel-stack-desc">Every message you send now lives on the web. Discoverable, shareable. Reach fans who haven't found you yet.</p>
       </div>
       <div class="channel-combined-card">
         <div class="channel-stack-icon mb-16">
@@ -454,7 +452,6 @@
 <!-- WHAT'S POSSIBLE -->
 <div class="wrap">
   <div class="inner">
-    <div class="flex-center mb-24"><div class="section-tag">WHAT'S POSSIBLE</div></div>
     <h2 class="h-lg centered mb-16">Go beyond the inbox.</h2>
     <p class="body-lg centered mb-48" style="white-space:nowrap;">Turn every announce, drop, and release into a two-way experience fans can participate in.</p>
 
@@ -772,14 +769,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <a class="footer-logo" href="#">
-    <svg width="22" height="28" viewBox="0 0 26 32" fill="none">
-      <ellipse cx="13" cy="8" rx="7" ry="7" stroke="#FBBD00" stroke-width="2" fill="none"/>
-      <ellipse cx="13" cy="24" rx="7" ry="7" stroke="#FBBD00" stroke-width="2" fill="none"/>
-      <line x1="13" y1="15" x2="13" y2="17" stroke="#FBBD00" stroke-width="2"/>
-    </svg>
-    OPENSTAGE
-  </a>
+  <a class="footer-logo" href="#">OPENSTAGE</a>
   <div class="footer-tagline">Posts. Purpose-built for music.</div>
 </footer>
 
