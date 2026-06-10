@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Posts - Openstage</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;700;900&family=Oxygen:wght@300;400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #FBBD00;
+    --black: #000000;
+    --dark: #0A0A0A;
+    --card: #161616;
+    --card2: #1C1C1C;
+    --border: #282828;
+    --white: #FFFFFF;
+    --grey: #555555;
+    --light-grey: #888888;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'Oxygen', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.92); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: 'Roboto', sans-serif; font-weight: 900; font-size: 19px; letter-spacing: 0.06em; color: var(--yellow); }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a { color: var(--light-grey); font-size: 14px; font-weight: 500; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta { background: var(--yellow) !important; color: #000 !important; font-size: 14px !important; font-weight: 600 !important; padding: 10px 22px !important; border-radius: 15px !important; transition: opacity 0.2s; }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 60px 80px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .hero-grid { display: none; }
+  .hero-glow { position: absolute; top: 40%; left: 30%; transform: translate(-50%,-50%); width: 800px; height: 400px; background: radial-gradient(ellipse, rgba(251,189,0,0.04) 0%, transparent 70%); }
+  .hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 260px; gap: 56px; align-items: center; }
+  .hero-left { }
+  .pill { display: inline-flex; align-items: center; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.25); border-radius: 15px; padding: 7px 20px; font-family: 'Roboto', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 32px; }
+  .hero-h1 { font-family: 'Anton', sans-serif; font-size: 56px; line-height: 1.0; letter-spacing: 0.02em; text-transform: uppercase; color: var(--yellow); margin-bottom: 28px; }
+  .hero-sub { font-size: 17px; color: var(--white); line-height: 1.65; margin-bottom: 40px; }
+  .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; padding: 14px 36px; border-radius: 15px; transition: opacity 0.2s; }
+  .btn-primary:hover { opacity: 0.88; }
+
+  /* HERO MOCK */
+  .hero-mock { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; width: 100%; min-width: 0; }
+  .mock-bar { height: 34px; background: #0d0d0d; border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 12px; gap: 6px; }
+  .mock-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .mock-url { flex: 1; height: 18px; background: #1a1a1a; border-radius: 4px; margin: 0 10px; display: flex; align-items: center; padding: 0 8px; }
+  .mock-body { padding: 7px; display: flex; flex-direction: column; gap: 6px; }
+  .mock-post { background: #0f0f0f; border: 1px solid var(--border); border-radius: 10px; padding: 8px; }
+  .mock-post-hdr { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .mock-avatar { width: 28px; height: 28px; border-radius: 50%; background: #2a2a2a; flex-shrink: 0; }
+  .mock-name-col { flex: 1; }
+  .mock-name-line { height: 7px; background: #2a2a2a; border-radius: 2px; width: 90px; margin-bottom: 5px; }
+  .mock-name-line2 { height: 5px; background: #1e1e1e; border-radius: 2px; width: 60px; }
+  .mock-badge { background: rgba(251,189,0,0.14); border: 1px solid rgba(251,189,0,0.28); border-radius: 15px; padding: 3px 9px; font-size: 8px; color: var(--yellow); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+  .mock-media { width: 100%; height: 52px; background: linear-gradient(135deg, #1a1a1a, #222); border-radius: 7px; margin-bottom: 6px; display: flex; align-items: center; justify-content: center; }
+  .mock-play-btn { width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--yellow); display: flex; align-items: center; justify-content: center; }
+  .mock-line { height: 6px; background: #1e1e1e; border-radius: 2px; margin-bottom: 5px; }
+  .mock-divider { height: 1px; background: var(--border); margin: 10px 0; }
+  .mock-poll-row { border-radius: 5px; padding: 6px 10px; font-size: 10px; display: flex; justify-content: space-between; margin-bottom: 4px; }
+  .mock-poll-row.on { background: rgba(251,189,0,0.1); border: 1px solid rgba(251,189,0,0.2); color: var(--yellow); }
+  .mock-poll-row.off { background: #1a1a1a; border: 1px solid #252525; color: var(--light-grey); }
+  .mock-reacts { display: flex; gap: 6px; margin-top: 10px; }
+  .mock-react { background: #1a1a1a; border: 1px solid #252525; border-radius: 15px; padding: 4px 9px; font-size: 10px; color: var(--light-grey); }
+  .mock-react.on { background: rgba(251,189,0,0.09); border-color: rgba(251,189,0,0.22); color: var(--yellow); }
+  .mock-stats { background: #0f0f0f; border: 1px solid var(--border); border-radius: 10px; padding: 8px; }
+  .mock-stats-lbl { font-size: 8px; font-weight: 700; color: var(--grey); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px; }
+  .mock-stat { padding: 4px 0; border-bottom: 1px solid #1a1a1a; }
+  .mock-stat:last-of-type { border-bottom: none; }
+  .mock-stat-name { font-size: 8px; color: var(--grey); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3px; }
+  .mock-stat-num { font-family: 'Roboto', sans-serif; font-size: 16px; color: var(--yellow); line-height: 1; }
+  .mock-stat-sub { font-size: 9px; color: var(--grey); margin-top: 3px; }
+  .mock-bar-track { height: 3px; background: #222; border-radius: 2px; margin-top: 6px; overflow: hidden; }
+  .mock-bar-fill { height: 100%; background: var(--yellow); border-radius: 2px; }
+
+  /* LAYOUT */
+  .wrap { padding: 96px 60px; }
+  .wrap-alt { background: var(--dark); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 96px 60px; }
+  .inner { max-width: 1200px; margin: 0 auto; }
+
+  /* SECTION LABELS */
+  .section-tag { display: inline-flex; align-items: center; background: transparent; border: 1px solid rgba(251,189,0,0.4); border-radius: 15px; padding: 6px 18px; margin-bottom: 28px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light-grey); }
+
+  /* TYPE */
+  .h-lg { font-family: 'Anton', sans-serif; font-size: 44px; line-height: 1.05; letter-spacing: 0.02em; text-transform: uppercase; color: var(--yellow); }
+  .h-md { font-family: 'Anton', sans-serif; font-size: 32px; line-height: 1.1; letter-spacing: 0.02em; text-transform: uppercase; color: var(--yellow); }
+  .h-sm { font-family: 'Anton', sans-serif; font-size: 22px; line-height: 1.15; letter-spacing: 0.02em; text-transform: uppercase; color: var(--yellow); }
+
+  .body-lg { font-size: 17px; color: var(--white); line-height: 1.7; text-align: justify; }
+  .body-md { font-size: 15px; color: var(--white); line-height: 1.7; text-align: justify; }
+  .centered { text-align: center !important; }
+  .body-sm { font-size: 13px; color: var(--grey); line-height: 1.65; }
+  .mt-8 { margin-top: 8px; }
+  .mt-16 { margin-top: 16px; }
+  .mt-24 { margin-top: 24px; }
+  .mt-32 { margin-top: 32px; }
+  .mt-48 { margin-top: 48px; }
+  .mb-16 { margin-bottom: 16px; }
+  .mb-24 { margin-bottom: 24px; }
+  .mb-32 { margin-bottom: 32px; }
+  .mb-40 { margin-bottom: 40px; }
+  .mb-48 { margin-bottom: 48px; }
+  .mb-56 { margin-bottom: 56px; }
+  .flex-center { display: flex; justify-content: center; }
+
+  /* ICON CIRCLES */
+  .icon-circle { width: 48px; height: 48px; border-radius: 50%; background: rgba(251,189,0,0.08); border: 1px solid rgba(251,189,0,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-bottom: 12px; }
+  .icon-circle svg { color: var(--yellow); }
+
+  /* UPGRADE CARDS */
+  .upgrade-icons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+  .upgrade-icon-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px 18px;
+    flex: 1 1 260px;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .upgrade-icon-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #111;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--yellow);
+    margin-bottom: 10px;
+    flex-shrink: 0;
+  }
+  .upgrade-icon-label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .upgrade-icon-desc {
+    font-family: 'Oxygen', sans-serif;
+    font-size: 12px;
+    color: #888;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* SOLUTION */
+  .two-col-center { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+
+  /* WHAT IT IS */
+  .channel-combined { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 48px; }
+  .channel-combined-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px; }
+  .channel-stack-icon { width: 36px; height: 36px; border-radius: 8px; background: #111; border: 1px solid #333; display: flex; align-items: center; justify-content: center; color: var(--yellow); flex-shrink: 0; }
+  .channel-stack-lbl { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 13px; color: var(--yellow); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .channel-stack-desc { font-family: 'Roboto', sans-serif; font-size: 13px; color: #888; line-height: 1.6; margin: 0; }
+
+  /* VALUE PILLARS */
+  .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .pillar-card { background: var(--card2); border-radius: 18px; padding: 16px 22px; transition: background 0.2s; }
+  .pillar-card:hover { background: #222; }
+  .pillar-tag { display: inline-block; background: rgba(251,189,0,0.08); border: 1px solid rgba(251,189,0,0.18); border-radius: 5px; padding: 3px 9px; font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--yellow); margin-bottom: 18px; }
+  .pillar-title { font-family: 'Roboto', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 10px; line-height: 1.25; white-space: nowrap; }
+  .pillar-body { font-family: 'Roboto', sans-serif; font-size: 13px; color: var(--grey); line-height: 1.65; }
+
+  /* WHAT'S POSSIBLE */
+  .possible-chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: 900px; margin: 0 auto; }
+  .possible-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--card2); border: 1px solid rgba(251,189,0,0.4); border-radius: 100px; padding: 10px 20px; font-family: 'Roboto', sans-serif; font-size: 14px; color: var(--white); transition: border-color 0.2s, background 0.2s; white-space: nowrap; }
+  .possible-chip:hover { border-color: rgba(251,189,0,0.4); background: #222; }
+  .possible-chip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--yellow); flex-shrink: 0; }
+
+  /* FEATURES */
+  .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+  .feature-card { background: var(--card2); border-radius: 16px; padding: 18px 20px; transition: background 0.2s; }
+  .feature-card:hover { background: #222; }
+  .feature-title { font-family: 'Roboto', sans-serif; font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 8px; line-height: 1.2; }
+  .feature-body { font-family: 'Roboto', sans-serif; font-size: 12px; color: var(--grey); line-height: 1.6; }
+
+  /* COMPARISON */
+  .comp-wrap { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .comp-table { width: 100%; border-collapse: collapse; font-family: 'Inter', sans-serif; }
+  .comp-table th { text-align: left; padding: 16px 24px; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--card2); border-bottom: 1px solid var(--border); }
+  .comp-table th:first-child { color: var(--grey); width: 130px; }
+  .comp-table th:nth-child(2) { color: #444; }
+  .comp-table th:nth-child(3) { color: var(--yellow); }
+  .comp-table td { padding: 18px 24px; font-size: 13px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.55; }
+  .comp-table tr:last-child td { border-bottom: none; }
+  .comp-table td:first-child { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); }
+  .comp-table td:nth-child(2) { color: #444; }
+  .comp-table td:nth-child(3) { color: var(--light-grey); }
+
+  /* CASE STUDIES */
+  .cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; }
+  .case-card { background: var(--card2); border-radius: 18px; overflow: hidden; }
+  .case-img { height: 180px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); }
+  .case-img-name { font-family: 'Roboto', sans-serif; font-size: 44px; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(255,255,255,0.04); }
+  .case-body { padding: 28px; }
+  .case-artist { font-family: 'Roboto', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--white); margin-bottom: 4px; }
+  .case-type { font-size: 10px; font-weight: 700; color: var(--yellow); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  .case-desc { font-size: 13px; color: var(--grey); line-height: 1.6; }
+
+  /* FAQ */
+  .faq-container { background: #181818; border-radius: 18px; overflow: hidden; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q { padding: 20px 26px; cursor: pointer; display: flex; align-items: center; gap: 16px; transition: opacity 0.2s; }
+  .faq-q:hover { opacity: 0.7; }
+  .faq-icon { color: rgba(251,189,0,0.55); font-size: 18px; font-weight: 300; flex-shrink: 0; width: 18px; text-align: center; transition: transform 0.2s; }
+  .faq-q-text { font-size: 14px; font-weight: 500; color: var(--white); line-height: 1.4; }
+  .faq-a { padding: 0 26px 20px 60px; font-size: 13px; color: var(--grey); line-height: 1.7; display: none; }
+  .faq-item.open .faq-a { display: block; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--yellow); }
+
+  /* FINAL CTA */
+  .final { padding: 130px 60px; text-align: center; border-top: 1px solid var(--border); position: relative; overflow: hidden; }
+  .final-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(251,189,0,0.04) 0%, transparent 65%); }
+  .final-inner { position: relative; z-index: 1; }
+  .final-h { font-family: 'Anton', sans-serif; font-size: 44px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.05; margin-bottom: 20px; color: var(--yellow); }
+  .final-sub { font-size: 17px; color: var(--white); margin-bottom: 36px; }
+
+  /* FOOTER */
+  footer { padding: 40px 60px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { display: flex; align-items: center; gap: 10px; font-family: 'Roboto', sans-serif; font-weight: 900; font-size: 17px; letter-spacing: 0.06em; color: var(--yellow); text-decoration: none; }
+  .footer-tagline { font-size: 12px; color: var(--grey); }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    nav { padding: 0 24px; }
+    .hero { padding: 110px 24px 60px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-h1 { font-size: 42px; }
+    .wrap, .wrap-alt { padding: 72px 24px; }
+    .two-col-center, .pillars-grid, .cases-grid { grid-template-columns: 1fr; gap: 40px; }
+    .features-grid { grid-template-columns: 1fr 1fr; }
+    .comp-table td, .comp-table th { padding: 12px 14px; }
+    .final { padding: 90px 24px; }
+    footer { padding: 30px 24px; flex-direction: column; gap: 12px; text-align: center; }
+    .h-lg { font-size: 34px; }
+  }
+  @media (max-width: 560px) {
+    .features-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">OPENSTAGE</a>
+  <div class="nav-links">
+    <a href="#">Resources</a>
+    <a href="#">Company</a>
+    <a href="#">Product</a>
+    <a href="#">Pricing</a>
+    <a href="#">Log in</a>
+    <a href="#" class="nav-cta">Sign up</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="pill">POSTS</div>
+      <h1 class="hero-h1">THE NEW WAY ARTISTS COMMUNICATE DIRECTLY WITH FANS.</h1>
+      <p class="hero-sub">The reliability of email + The interactivity of the web + Your fan data powering every send.<br>All purpose-built for how you work as an artist.</p>
+      <a href="#" class="btn-primary">Get Early Access</a>
+    </div>
+    <div class="hero-mock">
+      <div class="mock-bar">
+        <div class="mock-dot" style="background:#ff5f57"></div>
+        <div class="mock-dot" style="background:#febc2e"></div>
+        <div class="mock-dot" style="background:#28c840"></div>
+        <div class="mock-url"><span style="font-size:10px;color:#444;">artist.openstage.live/posts</span></div>
+      </div>
+      <div class="mock-body">
+        <div class="mock-post">
+          <div class="mock-post-hdr">
+            <div class="mock-avatar"></div>
+            <div class="mock-name-col">
+              <div class="mock-name-line"></div>
+              <div class="mock-name-line2"></div>
+            </div>
+            <div class="mock-badge">FIRST LISTEN</div>
+          </div>
+          <div class="mock-media">
+            <div class="mock-play-btn">
+              <svg width="11" height="13" viewBox="0 0 11 13" fill="#FBBD00"><path d="M0 0L11 6.5L0 13V0Z"/></svg>
+            </div>
+          </div>
+          <div class="mock-line"></div>
+          <div class="mock-line" style="width:60%"></div>
+          <div class="mock-divider"></div>
+          <div class="mock-poll-row on" style="margin-bottom:4px;"><span>🔥 Fire</span><span>62%</span></div>
+          <div class="mock-poll-row off" style="margin-bottom:4px;"><span>👏 Love it</span><span>28%</span></div>
+          <div class="mock-reacts">
+            <div class="mock-react on">💬 847</div>
+            <div class="mock-react">↗ Share</div>
+            <div class="mock-react">🔔 Subscribe</div>
+          </div>
+        </div>
+        <div class="mock-stats">
+          <div class="mock-stats-lbl">FIRST LISTEN - LIVE</div>
+          <div style="height:1px;background:var(--border);margin-bottom:10px;"></div>
+          <div class="mock-stat">
+            <div class="mock-stat-name">FANS REACHED</div>
+            <div class="mock-stat-num">24,891</div>
+            <div class="mock-stat-sub">18,432 email · 6,459 web</div>
+            <div class="mock-bar-track"><div class="mock-bar-fill" style="width:74%"></div></div>
+          </div>
+          <div class="mock-stat">
+            <div class="mock-stat-name">NEW FANS CAPTURED</div>
+            <div class="mock-stat-num">1,247</div>
+            <div class="mock-stat-sub">Converted from shares</div>
+            <div class="mock-bar-track"><div class="mock-bar-fill" style="width:32%"></div></div>
+          </div>
+          <div class="mock-stat">
+            <div class="mock-stat-name">PARTICIPATION RATE</div>
+            <div class="mock-stat-num">38<span style="font-size:13px;color:#555">%</span></div>
+            <div class="mock-stat-sub">Voted, commented, or shared</div>
+            <div class="mock-bar-track"><div class="mock-bar-fill" style="width:38%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT IT IS -->
+<div class="wrap" style="padding-bottom: 48px;">
+  <div class="inner">
+    <h2 class="h-lg centered mb-16">Email, upgraded.</h2>
+    <p class="body-md centered mb-40" style="max-width:600px;margin-left:auto;margin-right:auto;">Publish once. Reach the fans you have AND the new fans eager to find you.</p>
+    <div class="channel-combined">
+      <div class="channel-combined-card">
+        <div class="channel-stack-icon mb-16">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="channel-stack-lbl">Email</div>
+        <p class="channel-stack-desc">Reach your existing list with fan intelligence behind every send. Smart targeting that knows your fans, not just your list.</p>
+      </div>
+      <div class="channel-combined-card">
+        <div class="channel-stack-icon mb-16">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div class="channel-stack-lbl">Web</div>
+        <p class="channel-stack-desc">Every message you send now lives on the web. Discoverable, shareable. Reach fans who haven't found you yet.</p>
+      </div>
+      <div class="channel-combined-card">
+        <div class="channel-stack-icon mb-16">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="channel-stack-lbl">Fan Data</div>
+        <p class="channel-stack-desc">Every view, click, comment, and vote feeds your fan graph. The data builds itself, so you can deliver better experiences for every fan.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UPGRADE / WHAT'S NEW -->
+<div class="wrap">
+  <div class="inner">
+    <h2 class="h-lg centered mb-16">Every Message Now Does More.</h2>
+    <p class="body-md centered mb-8" style="max-width:580px;margin-left:auto;margin-right:auto;">Email gets your message delivered.<br>Posts makes it an experience fans can participate in, discover, and share.</p>
+    <div class="upgrade-icons">
+      <div class="upgrade-icon-item">
+        <div class="upgrade-icon-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="upgrade-icon-label">Interactive</div>
+        <p class="upgrade-icon-desc">Fans react, comment, vote, and share directly on your platform. Every send becomes a two-way experience.</p>
+      </div>
+      <div class="upgrade-icon-item">
+        <div class="upgrade-icon-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><polyline points="16 3 18 5 22 1"/></svg>
+        </div>
+        <div class="upgrade-icon-label">Fan-aware</div>
+        <p class="upgrade-icon-desc">Posts knows your fans: who they are, what they've purchased, and how they engage. Not just email addresses.</p>
+      </div>
+      <div class="upgrade-icon-item">
+        <div class="upgrade-icon-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div class="upgrade-icon-label">Beyond your list</div>
+        <p class="upgrade-icon-desc">Every message lives on the web. New fans find it through shares and search. Your list is the floor, not the ceiling.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT'S POSSIBLE -->
+<div class="wrap">
+  <div class="inner">
+    <h2 class="h-lg centered mb-16">Go beyond the inbox.</h2>
+    <p class="body-lg centered mb-48" style="white-space:nowrap;">Turn every announce, drop, and release into a two-way experience fans can participate in.</p>
+    <div class="possible-chips">
+      <div class="possible-chip">Run a first listen</div>
+      <div class="possible-chip">Get fans to vote</div>
+      <div class="possible-chip">Gate a merch drop</div>
+      <div class="possible-chip">Announce a tour and capture presale demand</div>
+      <div class="possible-chip">Turn a social share into a fan signup</div>
+      <div class="possible-chip">Drop exclusive content for your most engaged fans</div>
+      <div class="possible-chip">Create a pre-save unlock that rewards fans for saving</div>
+      <div class="possible-chip">Give fans early access before the public announcement</div>
+      <div class="possible-chip">Build a community thread around a release moment</div>
+      <div class="possible-chip">Reward your most loyal fans first</div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUE PILLARS -->
+<div class="wrap-alt">
+  <div class="inner">
+    <h2 class="h-lg centered mb-16">The direct channel made to support<br>the artist-fan relationship.</h2>
+    <p class="body-md centered mb-48" style="max-width:620px;margin-left:auto;margin-right:auto;">Built for two-way participation among fans, not just one-way broadcasts to followers.<br>Posts creates interactive fan experiences that bring existing fans deeper into your world.</p>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="icon-circle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="pillar-tag">OWNERSHIP</div>
+        <div class="pillar-title">You own the relationship.</div>
+        <p class="pillar-body">Instagram and Spotify keep your fan data. Posts gives it to you. Every interaction builds a fan graph you own and can act on. Not an audience you're renting.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="icon-circle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div class="pillar-tag">COMPOUNDING GROWTH</div>
+        <div class="pillar-title">Every message grows your audience.</div>
+        <p class="pillar-body">Existing fans get it directly. New fans discover it on the web and convert in context. Each post doesn't just reach your list. It expands it.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="icon-circle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="pillar-tag">INTELLIGENCE</div>
+        <div class="pillar-title">Smarter every send.</div>
+        <p class="pillar-body">Every view, vote, and click feeds back into your fan graph. Posts gets better the more you use it. Substack knows subscribers. Openstage knows fans.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="wrap-alt">
+  <div class="inner">
+    <h2 class="h-lg centered mb-16">Built for music.</h2>
+    <p class="body-md centered mb-48" style="max-width:620px;margin-left:auto;margin-right:auto;">The full toolkit designed around how you actually work.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon-circle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="feature-title">Fan intelligence and segmentation</div>
+        <p class="feature-body">Every interaction feeds your fan graph. Every post makes the next campaign smarter.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-circle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <div class="feature-title">Block-based editor</div>
+        <p class="feature-body">Clean, visual, intuitive. Brand kit applied automatically.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-circle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        </div>
+        <div class="feature-title">Audience and block gating</div>
+        <p class="feature-body">Gate an entire post or individual blocks behind a signup, a specific audience, or paid subscribers.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-circle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="feature-title">Comments, reactions, and sharing</div>
+        <p class="feature-body">Every post invites participation directly on your platform. The signal that this is not just email.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-circle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </div>
+        <div class="feature-title">Bandsintown integration</div>
+        <p class="feature-body">Pull tour dates directly. No manual entry.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-circle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        </div>
+        <div class="feature-title">DSP embeds and presave</div>
+        <p class="feature-body">Spotify, Apple Music, and Deezer as playable blocks.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-circle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="feature-title">Interactive polls</div>
+        <p class="feature-body">Single-question polls and quizzes. Every vote feeds the fan graph.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-circle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <div class="feature-title">Secret draft links</div>
+        <p class="feature-body">Share previews before publishing. Easier team collaboration.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-circle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        </div>
+        <div class="feature-title">Embedded audio and video</div>
+        <p class="feature-body">Rich media across email and web.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-circle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <div class="feature-title">Brand kit consistency</div>
+        <p class="feature-body">Set your fonts, colors, and styles once. Applied automatically across every post.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-circle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div class="feature-title">Customizable signup prompts</div>
+        <p class="feature-body">Write the copy fans see when they hit a gated post.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-circle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="feature-title">Full analytics</div>
+        <p class="feature-body">Views, opens, clicks, new fans, earnings.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON -->
+<div class="wrap">
+  <div class="inner">
+    <h2 class="h-lg centered mb-16">Posts vs. Email.</h2>
+    <p class="body-md centered mb-48" style="max-width:480px;margin-left:auto;margin-right:auto;">Email delivers your message. Posts turns it into an experience.</p>
+    <div class="comp-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Email</th>
+            <th>Posts</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Engagement</td>
+            <td>One-way delivery. No participation.</td>
+            <td>Two-way conversation where fans react, comment, vote, and share.</td>
+          </tr>
+          <tr>
+            <td>Reach</td>
+            <td>Limited to your existing list.</td>
+            <td>Existing fans get it directly. New fans discover it on the web. Same message. Two audiences.</td>
+          </tr>
+          <tr>
+            <td>Interactivity</td>
+            <td>Static once delivered.</td>
+            <td>Fans participate directly. Every post is an experience.</td>
+          </tr>
+          <tr>
+            <td>Fan Graph</td>
+            <td>No connection to fan identity.</td>
+            <td>Connected to your fan graph. Substack knows subscribers. Openstage knows fans.</td>
+          </tr>
+          <tr>
+            <td>Segmentation</td>
+            <td>Limited filters.</td>
+            <td>Advanced logic powered by fan identity and behavioral data.</td>
+          </tr>
+          <tr>
+            <td>Experience</td>
+            <td>Text and images in an inbox.</td>
+            <td>Rich, interactive experience with audio, video, polls, reactions, comments, and UGC.</td>
+          </tr>
+          <tr>
+            <td>Shelf Life</td>
+            <td>Inbox only. No web presence.</td>
+            <td>Lives on the web. Always-on. No expiration.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- CASE STUDIES -->
+<div class="wrap-alt">
+  <div class="inner">
+    <h2 class="h-lg centered mb-48">The future of artist-fan communication, today.</h2>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-img" style="background:#111;">
+          <div class="case-img-name">PAUL McCARTNEY</div>
+        </div>
+        <div class="case-body">
+          <div class="case-artist">Paul McCartney</div>
+          <div class="case-type">Tour Announce + First Listen</div>
+          <p class="case-desc">Using Posts to launch tour announcements and exclusive first listens with fan participation built in. Existing fans get it directly. New fans discover it through web and shares and convert into known, contactable fans in the moment.</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-img" style="background:#111;">
+          <div class="case-img-name">UGLY OZO</div>
+        </div>
+        <div class="case-body">
+          <div class="case-artist">Ugly Ozo</div>
+          <div class="case-type">Fan Acquisition + Engagement</div>
+          <p class="case-desc">Building a direct fan relationship from the ground up. Converting social followers into known, contactable fans through gated content and shared moments that turn every post into a growth engine.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="wrap">
+  <div style="max-width:720px;margin:0 auto;">
+    <h2 class="h-lg centered mb-48">Frequently asked questions.</h2>
+  </div>
+  <div class="faq-container" style="max-width:720px;margin:0 auto;">
+      <div class="faq-item open">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-icon">+</span><span class="faq-q-text">What is Posts?</span>
+        </div>
+        <div class="faq-a">Posts is the new way to communicate directly with your fans. It starts with the direct reach of email and adds everything email was never built to give you: interactivity, fan intelligence, web reach, and the tools you actually need. Every post lives on the web. You choose whether fans also get it in email, the feed, or both. Every interaction feeds into your fan graph. Substack knows subscribers. Openstage knows fans.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-icon">+</span><span class="faq-q-text">Do Posts get sent to email automatically?</span>
+        </div>
+        <div class="faq-a">No. Every post publishes as a live web page automatically. From there, you choose: send to your email list, push to the feed, both, or neither. Each post is its own decision.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-icon">+</span><span class="faq-q-text">What can you build?</span>
+        </div>
+        <div class="faq-a">Tour announcements, first-listen drops, album campaigns, merch exclusives, gated content, polls, pre-save unlocks, early access, community threads, fan acquisition campaigns.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-icon">+</span><span class="faq-q-text">How is this different from Mailchimp or Beehiiv?</span>
+        </div>
+        <div class="faq-a">Posts is connected to your fan graph. Substack knows subscribers. Openstage knows fans. Plus Bandsintown, DSP embeds, presave blocks, and gating logic built for how you release.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-icon">+</span><span class="faq-q-text">How is this different from Broadcasts?</span>
+        </div>
+        <div class="faq-a">Broadcasts are email-only. Posts always publish to the web, and you choose whether to also send as email. New fans find it on the web. Every interaction feeds back into your fan graph.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-icon">+</span><span class="faq-q-text">Are Posts replacing Broadcasts?</span>
+        </div>
+        <div class="faq-a">For email and web, yes. Broadcasts remain for SMS and lifecycle flows for now.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-icon">+</span><span class="faq-q-text">Do fans need an account?</span>
+        </div>
+        <div class="faq-a">Depends on settings. Public, gated behind signup, gated to a specific audience, or paid subscribers. Per post and per block.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-icon">+</span><span class="faq-q-text">What presave platforms are supported?</span>
+        </div>
+        <div class="faq-a">Spotify and Apple Music. YouTube and Amazon Music require linking out.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-icon">+</span><span class="faq-q-text">How does data collection work?</span>
+        </div>
+        <div class="faq-a">Every view, click, poll response, comment, and signup flows into the fan graph automatically. No exports. No integrations.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-icon">+</span><span class="faq-q-text">Can I gate individual blocks?</span>
+        </div>
+        <div class="faq-a">Yes. Lock a specific block behind signup while keeping the rest public. Signup happens in context.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-icon">+</span><span class="faq-q-text">When can I start?</span>
+        </div>
+        <div class="faq-a">Posts is available now in open beta. New Openstage artists default to Posts from day one.</div>
+      </div>
+    </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final">
+  <div class="final-glow"></div>
+  <div class="final-inner">
+    <h2 class="final-h">EVERY MESSAGE DESERVES A LIFE BEYOND THE INBOX.</h2>
+    <p class="final-sub">Deliver better fan experiences with Posts.</p>
+    <a href="#" class="btn-primary">Get Early Access</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-logo" href="#">OPENSTAGE</a>
+  <div class="footer-tagline">Posts. Built for music.</div>
+</footer>
+
+<script>
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+</body>
+</html>
