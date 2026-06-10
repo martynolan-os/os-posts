@@ -31,13 +31,13 @@
   .nav-cta:hover { opacity: 0.88; }
 
   /* HERO */
-  .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 60px 80px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 60px 80px; position: relative; overflow: hidden; }
   .hero-grid { display: none; }
   .hero-glow { position: absolute; top: 40%; left: 30%; transform: translate(-50%,-50%); width: 800px; height: 400px; background: radial-gradient(ellipse, rgba(251,189,0,0.04) 0%, transparent 70%); }
   .hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 260px; gap: 56px; align-items: center; }
   .hero-left { }
   .pill { display: inline-flex; align-items: center; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.25); border-radius: 15px; padding: 7px 20px; font-family: 'Roboto', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 32px; }
-  .hero-h1 { font-family: 'Anton', sans-serif; font-size: 56px; line-height: 1.0; letter-spacing: 0.02em; text-transform: uppercase; color: var(--yellow); margin-bottom: 28px; }
+  .hero-h1 { font-family: 'Anton', sans-serif; font-size: 56px; line-height: 1.0; letter-spacing: 0.05em; text-transform: uppercase; color: var(--white); margin-bottom: 28px; }
   .hero-sub { font-size: 17px; color: var(--white); line-height: 1.65; margin-bottom: 40px; }
   .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; padding: 14px 36px; border-radius: 15px; transition: opacity 0.2s; }
   .btn-primary:hover { opacity: 0.88; }
@@ -77,16 +77,16 @@
 
   /* LAYOUT */
   .wrap { padding: 96px 60px; }
-  .wrap-alt { background: var(--dark); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 96px 60px; }
+  .wrap-alt { background: var(--black); padding: 96px 60px; }
   .inner { max-width: 1200px; margin: 0 auto; }
 
   /* SECTION LABELS */
   .section-tag { display: inline-flex; align-items: center; background: transparent; border: 1px solid rgba(251,189,0,0.4); border-radius: 15px; padding: 6px 18px; margin-bottom: 28px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light-grey); }
 
   /* TYPE */
-  .h-lg { font-family: 'Anton', sans-serif; font-size: 44px; line-height: 1.05; letter-spacing: 0.02em; text-transform: uppercase; color: var(--yellow); }
-  .h-md { font-family: 'Anton', sans-serif; font-size: 32px; line-height: 1.1; letter-spacing: 0.02em; text-transform: uppercase; color: var(--yellow); }
-  .h-sm { font-family: 'Anton', sans-serif; font-size: 22px; line-height: 1.15; letter-spacing: 0.02em; text-transform: uppercase; color: var(--yellow); }
+  .h-lg { font-family: 'Anton', sans-serif; font-size: 44px; line-height: 1.05; letter-spacing: 0.05em; text-transform: uppercase; color: var(--yellow); }
+  .h-md { font-family: 'Anton', sans-serif; font-size: 32px; line-height: 1.1; letter-spacing: 0.05em; text-transform: uppercase; color: var(--yellow); }
+  .h-sm { font-family: 'Anton', sans-serif; font-size: 22px; line-height: 1.15; letter-spacing: 0.05em; text-transform: uppercase; color: var(--yellow); }
 
   .body-lg { font-size: 17px; color: var(--white); line-height: 1.7; text-align: justify; }
   .body-md { font-size: 15px; color: var(--white); line-height: 1.7; text-align: justify; }
@@ -225,14 +225,14 @@
   .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--yellow); }
 
   /* FINAL CTA */
-  .final { padding: 130px 60px; text-align: center; border-top: 1px solid var(--border); position: relative; overflow: hidden; }
+  .final { padding: 130px 60px; text-align: center; position: relative; overflow: hidden; }
   .final-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(251,189,0,0.04) 0%, transparent 65%); }
   .final-inner { position: relative; z-index: 1; }
-  .final-h { font-family: 'Anton', sans-serif; font-size: 44px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.05; margin-bottom: 20px; color: var(--yellow); }
+  .final-h { font-family: 'Anton', sans-serif; font-size: 44px; letter-spacing: 0.05em; text-transform: uppercase; line-height: 1.05; margin-bottom: 20px; color: var(--yellow); }
   .final-sub { font-size: 17px; color: var(--white); margin-bottom: 36px; }
 
   /* FOOTER */
-  footer { padding: 40px 60px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  footer { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; }
   .footer-logo { display: flex; align-items: center; gap: 10px; font-family: 'Roboto', sans-serif; font-weight: 900; font-size: 17px; letter-spacing: 0.06em; color: var(--yellow); text-decoration: none; }
   .footer-tagline { font-size: 12px; color: var(--grey); }
 
@@ -277,8 +277,8 @@
   <div class="hero-inner">
     <div class="hero-left">
       <div class="pill">POSTS</div>
-      <h1 class="hero-h1">THE NEW WAY ARTISTS COMMUNICATE DIRECTLY WITH FANS.</h1>
-      <p class="hero-sub">The reliability of email + The interactivity of the web + Your fan data powering every send.<br>All purpose-built for how you work as an artist.</p>
+      <h1 class="hero-h1">THE BETTER WAY FOR ARTISTS TO COMMUNICATE DIRECTLY WITH FANS</h1>
+      <p class="hero-sub">The reliability of email + The interactivity of the web + Your fan data powering every send. Purpose-built for how you work.</p>
       <a href="#" class="btn-primary">Get Early Access</a>
     </div>
     <div class="hero-mock">
@@ -344,8 +344,8 @@
 <!-- WHAT IT IS -->
 <div class="wrap" style="padding-bottom: 48px;">
   <div class="inner">
-    <h2 class="h-lg centered mb-16">Email, upgraded.</h2>
-    <p class="body-md centered mb-40" style="max-width:600px;margin-left:auto;margin-right:auto;">Publish once. Reach the fans you have AND the new fans eager to find you.</p>
+    <h2 class="h-lg centered mb-16">Email, upgraded</h2>
+    <p class="body-md centered mb-40" style="white-space:nowrap;">Reach the fans you have with smarter email AND the new fans eager to find you via the web.</p>
     <div class="channel-combined">
       <div class="channel-combined-card">
         <div class="channel-stack-icon mb-16">
@@ -375,7 +375,7 @@
 <!-- UPGRADE / WHAT'S NEW -->
 <div class="wrap">
   <div class="inner">
-    <h2 class="h-lg centered mb-16">Every Message Now Does More.</h2>
+    <h2 class="h-lg centered mb-16">Every Message Now Does More</h2>
     <p class="body-md centered mb-8" style="max-width:580px;margin-left:auto;margin-right:auto;">Email gets your message delivered.<br>Posts makes it an experience fans can participate in, discover, and share.</p>
     <div class="upgrade-icons">
       <div class="upgrade-icon-item">
@@ -406,8 +406,8 @@
 <!-- WHAT'S POSSIBLE -->
 <div class="wrap">
   <div class="inner">
-    <h2 class="h-lg centered mb-16">Go beyond the inbox.</h2>
-    <p class="body-lg centered mb-48" style="white-space:nowrap;">Turn every announce, drop, and release into a two-way experience fans can participate in.</p>
+    <h2 class="h-lg centered mb-16">Go beyond the inbox</h2>
+    <p class="body-md centered mb-48" style="white-space:nowrap;">Turn every announce, drop, and release into a two-way experience fans can participate in.</p>
     <div class="possible-chips">
       <div class="possible-chip">Run a first listen</div>
       <div class="possible-chip">Get fans to vote</div>
@@ -426,7 +426,7 @@
 <!-- VALUE PILLARS -->
 <div class="wrap-alt">
   <div class="inner">
-    <h2 class="h-lg centered mb-16">The direct channel made to support<br>the artist-fan relationship.</h2>
+    <h2 class="h-lg centered mb-16">The direct channel made to support<br>the artist-fan relationship</h2>
     <p class="body-md centered mb-48" style="max-width:620px;margin-left:auto;margin-right:auto;">Built for two-way participation among fans, not just one-way broadcasts to followers.<br>Posts creates interactive fan experiences that bring existing fans deeper into your world.</p>
     <div class="pillars-grid">
       <div class="pillar-card">
@@ -554,7 +554,7 @@
 <!-- COMPARISON -->
 <div class="wrap">
   <div class="inner">
-    <h2 class="h-lg centered mb-16">Posts vs. Email.</h2>
+    <h2 class="h-lg centered mb-16">Posts vs. Email</h2>
     <p class="body-md centered mb-48" style="max-width:480px;margin-left:auto;margin-right:auto;">Email delivers your message. Posts turns it into an experience.</p>
     <div class="comp-wrap">
       <table class="comp-table">
@@ -610,7 +610,7 @@
 <!-- CASE STUDIES -->
 <div class="wrap-alt">
   <div class="inner">
-    <h2 class="h-lg centered mb-48">The future of artist-fan communication, today.</h2>
+    <h2 class="h-lg centered mb-48">The future of artist-fan communication, today</h2>
     <div class="cases-grid">
       <div class="case-card">
         <div class="case-img" style="background:#111;">
@@ -715,7 +715,7 @@
 <div class="final">
   <div class="final-glow"></div>
   <div class="final-inner">
-    <h2 class="final-h">EVERY MESSAGE DESERVES A LIFE BEYOND THE INBOX.</h2>
+    <h2 class="final-h">EVERY MESSAGE DESERVES A LIFE BEYOND THE INBOX</h2>
     <p class="final-sub">Deliver better fan experiences with Posts.</p>
     <a href="#" class="btn-primary">Get Early Access</a>
   </div>
