@@ -164,8 +164,9 @@
   /* WHAT IT IS */
   .channel-combined { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 48px; }
   .channel-combined-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px; }
+  .channel-stack-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
   .channel-stack-icon { width: 36px; height: 36px; border-radius: 8px; background: #111; border: 1px solid #333; display: flex; align-items: center; justify-content: center; color: var(--yellow); flex-shrink: 0; }
-  .channel-stack-lbl { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 13px; color: var(--yellow); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .channel-stack-lbl { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 13px; color: var(--yellow); text-transform: uppercase; letter-spacing: 0.08em; margin: 0; }
   .channel-stack-desc { font-family: 'Roboto', sans-serif; font-size: 14px; color: #888; line-height: 1.6; margin: 0; }
 
   /* VALUE PILLARS */
@@ -178,7 +179,7 @@
 
   /* WHAT'S POSSIBLE */
   .possible-chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: 900px; margin: 0 auto; }
-  .possible-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--card2); border: 1px solid rgba(251,189,0,0.4); border-radius: 100px; padding: 10px 20px; font-family: 'Roboto', sans-serif; font-size: 14px; color: var(--white); transition: border-color 0.2s, background 0.2s; white-space: nowrap; }
+  .possible-chip { display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 1px solid rgba(251,189,0,0.4); border-radius: 100px; padding: 10px 20px; font-family: 'Roboto', sans-serif; font-size: 14px; color: var(--white); transition: border-color 0.2s, background 0.2s; white-space: nowrap; }
   .possible-chip:hover { border-color: rgba(251,189,0,0.4); background: #222; }
   .possible-chip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--yellow); flex-shrink: 0; }
 
@@ -345,28 +346,34 @@
 <div class="wrap" style="padding-bottom: 48px;">
   <div class="inner">
     <h2 class="h-lg centered mb-16">Email, upgraded</h2>
-    <p class="body-md centered mb-40">Reach both the fans you have with email AND the new fans eager to discover you online.<br>All messages automatically publish as Posts. Each send makes the next one smarter<br>to deliver better fan experiences.</p>
+    <p class="body-md centered mb-40">Reach both the fans you have with email AND the new fans eager to discover you online.<br>All messages automatically publish as Posts. Each send makes the next one smarter<br>to help you deliver better experiences for every fan.</p>
     <div class="channel-combined">
       <div class="channel-combined-card">
-        <div class="channel-stack-icon mb-16">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <div class="channel-stack-header">
+          <div class="channel-stack-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="channel-stack-lbl">Email</div>
         </div>
-        <div class="channel-stack-lbl">Email</div>
-        <p class="channel-stack-desc">Reach your existing list with fan intelligence behind every send. Smart targeting that knows your fans, not just your list.</p>
+        <p class="channel-stack-desc">Reach your existing list with smart targeting.</p>
       </div>
       <div class="channel-combined-card">
-        <div class="channel-stack-icon mb-16">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        <div class="channel-stack-header">
+          <div class="channel-stack-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <div class="channel-stack-lbl">Web</div>
         </div>
-        <div class="channel-stack-lbl">Web</div>
-        <p class="channel-stack-desc">Every message you send now lives on the web. Discoverable, shareable. Reach fans who haven't found you yet.</p>
+        <p class="channel-stack-desc">Every message you send now lives on the web.</p>
       </div>
       <div class="channel-combined-card">
-        <div class="channel-stack-icon mb-16">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <div class="channel-stack-header">
+          <div class="channel-stack-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="channel-stack-lbl">Fan Data</div>
         </div>
-        <div class="channel-stack-lbl">Fan Data</div>
-        <p class="channel-stack-desc">Every view, click, comment, and vote feeds your fan graph. The data builds itself, so you can deliver better experiences for every fan.</p>
+        <p class="channel-stack-desc">Every point of engagement feeds your fan graph.</p>
       </div>
     </div>
   </div>
@@ -380,6 +387,13 @@
     <div class="upgrade-icons">
       <div class="upgrade-icon-item">
         <div class="upgrade-icon-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div class="upgrade-icon-label">Beyond your list</div>
+        <p class="upgrade-icon-desc">New fans find Posts through shares and search. Your list is now the floor, not the ceiling.</p>
+      </div>
+      <div class="upgrade-icon-item">
+        <div class="upgrade-icon-circle">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
         </div>
         <div class="upgrade-icon-label">Interactive</div>
@@ -391,13 +405,6 @@
         </div>
         <div class="upgrade-icon-label">Fan-aware</div>
         <p class="upgrade-icon-desc">Posts knows your fans: who they are, what they've purchased, and how they engage. Not just email addresses.</p>
-      </div>
-      <div class="upgrade-icon-item">
-        <div class="upgrade-icon-circle">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-        </div>
-        <div class="upgrade-icon-label">Beyond your list</div>
-        <p class="upgrade-icon-desc">Every message lives on the web. New fans find it through shares and search. Your list is the floor, not the ceiling.</p>
       </div>
     </div>
   </div>
@@ -639,7 +646,7 @@
 <!-- FAQ -->
 <div class="wrap">
   <div style="max-width:720px;margin:0 auto;">
-    <h2 class="h-lg centered mb-48">Frequently asked questions.</h2>
+    <h2 class="h-lg centered mb-48">Frequently asked questions</h2>
   </div>
   <div class="faq-container" style="max-width:720px;margin:0 auto;">
       <div class="faq-item open">
