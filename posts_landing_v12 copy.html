@@ -162,12 +162,15 @@
   .two-col-center { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
 
   /* WHAT IT IS */
-  .channel-combined { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 48px; }
-  .channel-combined-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px; }
-  .channel-stack-header { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 16px; }
-  .channel-stack-icon { width: 36px; height: 36px; border-radius: 8px; background: #111; border: 1px solid #333; display: flex; align-items: center; justify-content: center; color: var(--yellow); flex-shrink: 0; }
-  .channel-stack-lbl { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 13px; color: var(--yellow); text-transform: uppercase; letter-spacing: 0.08em; margin: 0; }
-  .channel-stack-desc { font-family: 'Roboto', sans-serif; font-size: 14px; color: #888; line-height: 1.6; margin: 0; text-align: center; }
+  .channel-combined { display: flex; align-items: stretch; gap: 0; margin-bottom: 48px; }
+  .channel-combined-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px; flex: 1; display: flex; flex-direction: column; align-items: center; }
+  .channel-plus { display: flex; align-items: center; justify-content: center; padding: 0 12px; color: var(--yellow); font-size: 22px; font-weight: 300; flex-shrink: 0; }
+  .channel-stack-header { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px; }
+  .channel-stack-icon { width: 32px; height: 32px; border-radius: 8px; background: #111; border: 1px solid #333; display: flex; align-items: center; justify-content: center; color: var(--yellow); flex-shrink: 0; }
+  .channel-stack-lbl { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 15px; color: var(--white); text-transform: uppercase; letter-spacing: 0.06em; margin: 0; }
+  .channel-card-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 14px; }
+  .channel-card-tag { font-family: 'Roboto', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--yellow); border: 1px solid rgba(251,189,0,0.3); border-radius: 100px; padding: 3px 10px; }
+  .channel-stack-desc { font-family: 'Roboto', sans-serif; font-size: 13px; color: #777; line-height: 1.6; margin: 0; text-align: center; }
 
   /* VALUE PILLARS */
   .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -195,7 +198,7 @@
   .comp-table { width: 100%; border-collapse: collapse; font-family: 'Inter', sans-serif; }
   .comp-table th { text-align: left; padding: 16px 24px; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--card2); border-bottom: 1px solid var(--border); }
   .comp-table th:first-child { color: var(--grey); width: 130px; }
-  .comp-table th:nth-child(2) { color: #444; }
+  .comp-table th:nth-child(2) { color: var(--white); }
   .comp-table th:nth-child(3) { color: var(--yellow); }
   .comp-table td { padding: 18px 24px; font-size: 13px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.55; }
   .comp-table tr:last-child td { border-bottom: none; }
@@ -273,7 +276,7 @@
     <div class="hero-left">
       <div class="pill">POSTS</div>
       <h1 class="hero-h1">THE BETTER WAY FOR ARTISTS TO COMMUNICATE DIRECTLY WITH FANS</h1>
-      <p class="hero-sub">The reliability of email + The interactivity of the web + Your fan data powering every message. Purpose-built for how you work.</p>
+      <p class="hero-sub">Built for two-way participation among fans, not just one-way broadcasts to followers.<br>Posts creates interactive fan experiences that bring existing fans deeper into your world.</p>
       <a href="#" class="btn-primary">Get Early Access</a>
     </div>
     <div class="hero-mock">
@@ -340,7 +343,7 @@
 <div class="wrap" style="padding-bottom: 48px;">
   <div class="inner">
     <h2 class="h-lg centered mb-16">Email is now just the start<br>of your message's reach.</h2>
-    <p class="body-md centered mb-40">All messages automatically publish as Posts.</p>
+    <p class="body-md centered mb-40">Reach beyond your list. All messages automatically publish as Posts.</p>
     <div class="channel-combined">
       <div class="channel-combined-card">
         <div class="channel-stack-header">
@@ -349,8 +352,10 @@
           </div>
           <div class="channel-stack-lbl">Email</div>
         </div>
+        <div class="channel-card-tags"><span class="channel-card-tag">Reliability</span></div>
         <p class="channel-stack-desc">Your existing fans can get it directly via email.</p>
       </div>
+      <div class="channel-plus">+</div>
       <div class="channel-combined-card">
         <div class="channel-stack-header">
           <div class="channel-stack-icon">
@@ -358,8 +363,10 @@
           </div>
           <div class="channel-stack-lbl">Web</div>
         </div>
+        <div class="channel-card-tags"><span class="channel-card-tag">Interactivity + Shareability</span></div>
         <p class="channel-stack-desc">New fans discover it on the web as a standalone page.</p>
       </div>
+      <div class="channel-plus">+</div>
       <div class="channel-combined-card">
         <div class="channel-stack-header">
           <div class="channel-stack-icon">
@@ -367,6 +374,7 @@
           </div>
           <div class="channel-stack-lbl">Fan Data</div>
         </div>
+        <div class="channel-card-tags"><span class="channel-card-tag">Advanced Segmentation</span></div>
         <p class="channel-stack-desc">Each send makes the next one smarter.</p>
       </div>
     </div>
@@ -376,7 +384,7 @@
 <!-- UPGRADE / WHAT'S NEW -->
 <div class="wrap">
   <div class="inner">
-    <h2 class="h-lg centered mb-16">Every message is a moment</h2>
+    <h2 class="h-lg centered mb-16">Every message is a shared moment</h2>
     <p class="body-md centered mb-8" style="white-space:nowrap;">Email gets your message delivered.<br>Posts turns every announce, drop, and release into a two-way experience.</p>
     <div class="upgrade-icons">
       <div class="upgrade-icon-item">
@@ -384,7 +392,7 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
         <div class="upgrade-icon-label">Discover</div>
-        <p class="upgrade-icon-desc">Posts live on the web. New fans find them long after the send.</p>
+        <p class="upgrade-icon-desc">Posts live on the web.<br>New fans find them long after the send.</p>
       </div>
       <div class="upgrade-icon-item">
         <div class="upgrade-icon-circle">
@@ -420,40 +428,6 @@
       <div class="possible-chip">Give fans early access before the public announcement</div>
       <div class="possible-chip">Build a community thread around a release moment</div>
       <div class="possible-chip">Reward your most loyal fans first</div>
-    </div>
-  </div>
-</div>
-
-<!-- VALUE PILLARS -->
-<div class="wrap-alt">
-  <div class="inner">
-    <h2 class="h-lg centered mb-16">The direct channel made to support<br>the artist-fan relationship</h2>
-    <p class="body-md centered mb-48" style="max-width:900px;margin-left:auto;margin-right:auto;white-space:nowrap;">Built for two-way participation among fans, not just one-way broadcasts to followers.<br>Posts creates interactive fan experiences that bring existing fans deeper into your world.</p>
-    <div class="pillars-grid">
-      <div class="pillar-card">
-        <div class="icon-circle">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div class="pillar-tag">OWNERSHIP</div>
-        <div class="pillar-title">You own the relationship.</div>
-        <p class="pillar-body">Every interaction builds a fan graph that belongs to you. Not a list on someone else's platform. A career asset you grow, segment, and act on. Forever.</p>
-      </div>
-      <div class="pillar-card">
-        <div class="icon-circle">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-        </div>
-        <div class="pillar-tag">FAN-AWARE</div>
-        <div class="pillar-title">Powered by your fan graph.</div>
-        <p class="pillar-body">Posts knows who your fans are, what they've purchased, and how they engage. Gate content and reward your most loyal fans while pulling new ones in.</p>
-      </div>
-      <div class="pillar-card">
-        <div class="icon-circle">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <div class="pillar-tag">INTELLIGENCE</div>
-        <div class="pillar-title">Smarter every send.</div>
-        <p class="pillar-body">Every view, vote, and click feeds back into your fan graph. Posts gets better the more you use it. Substack knows subscribers. Openstage knows fans.</p>
-      </div>
     </div>
   </div>
 </div>
@@ -547,6 +521,40 @@
         </div>
         <div class="feature-title">Full analytics</div>
         <p class="feature-body">Views, opens, clicks, new fans, earnings.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUE PILLARS -->
+<div class="wrap-alt">
+  <div class="inner">
+    <h2 class="h-lg centered mb-16">The direct channel made to support<br>the artist-fan relationship</h2>
+    <p class="body-md centered mb-48" style="max-width:900px;margin-left:auto;margin-right:auto;">This is what becomes possible when you give fans the place to act on messages,<br>hosting conversations within your world.</p>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="icon-circle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="pillar-tag">OWNERSHIP</div>
+        <div class="pillar-title">You own the relationship.</div>
+        <p class="pillar-body">Every interaction builds a fan graph that belongs to you. Not a list on someone else's platform. A career asset you grow, segment, and act on. Forever.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="icon-circle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div class="pillar-tag">FAN-AWARE</div>
+        <div class="pillar-title">Powered by your fan graph.</div>
+        <p class="pillar-body">Posts knows who your fans are, what they've purchased, and how they engage. Gate content and reward your most loyal fans while pulling new ones in.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="icon-circle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="pillar-tag">INTELLIGENCE</div>
+        <div class="pillar-title">Smarter every send.</div>
+        <p class="pillar-body">Every view, vote, and click feeds back into your fan graph. Posts gets better the more you use it. Substack knows subscribers. Openstage knows fans.</p>
       </div>
     </div>
   </div>
@@ -717,7 +725,7 @@
   <div class="final-glow"></div>
   <div class="final-inner">
     <h2 class="final-h">EVERY MESSAGE DESERVES A LIFE BEYOND THE INBOX</h2>
-    <p class="final-sub">Deliver better fan experiences with Posts.</p>
+    <p class="final-sub">Deliver better experiences for every fan with Posts.</p>
     <a href="#" class="btn-primary">Get Early Access</a>
   </div>
 </div>
