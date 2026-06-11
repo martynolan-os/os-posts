@@ -232,11 +232,6 @@
   .final-h { font-family: 'Anton', sans-serif; font-size: 44px; letter-spacing: 0.05em; text-transform: uppercase; line-height: 1.05; margin-bottom: 20px; color: var(--yellow); }
   .final-sub { font-size: 20px; line-height: 1.45; color: var(--white); margin-bottom: 36px; }
 
-  /* FOOTER */
-  footer { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; }
-  .footer-logo { display: flex; align-items: center; gap: 10px; font-family: 'Roboto', sans-serif; font-weight: 900; font-size: 17px; letter-spacing: 0.06em; color: var(--yellow); text-decoration: none; }
-  .footer-tagline { font-size: 12px; color: var(--grey); }
-
   /* RESPONSIVE */
   @media (max-width: 960px) {
     nav { padding: 0 24px; }
@@ -248,7 +243,6 @@
     .features-grid { grid-template-columns: 1fr 1fr; }
     .comp-table td, .comp-table th { padding: 12px 14px; }
     .final { padding: 90px 24px; }
-    footer { padding: 30px 24px; flex-direction: column; gap: 12px; text-align: center; }
     .h-lg { font-size: 34px; }
   }
   @media (max-width: 560px) {
@@ -346,7 +340,7 @@
 <div class="wrap" style="padding-bottom: 48px;">
   <div class="inner">
     <h2 class="h-lg centered mb-16">Every message is a moment</h2>
-    <p class="body-md centered mb-40">Reach both the fans you have with email AND the new fans eager to discover you online.<br>All messages automatically publish as Posts. Each send makes the next one smarter<br>to help you deliver better experiences for every fan.</p>
+    <p class="body-md centered mb-40">Email is now just the start of your message's reach. All messages automatically publish as Posts.<br>Your existing fans can get it directly via email. New fans discover it on the web as a standalone page.<br>Each send makes the next one smarter to help you deliver better fan experiences.</p>
     <div class="channel-combined">
       <div class="channel-combined-card">
         <div class="channel-stack-header">
@@ -728,11 +722,6 @@
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <a class="footer-logo" href="#">OPENSTAGE</a>
-  <div class="footer-tagline">Posts. Built for music.</div>
-</footer>
 
 <script>
   function toggleFaq(el) {
