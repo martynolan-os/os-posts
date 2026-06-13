@@ -49,6 +49,7 @@
   /* HERO */
   .hero { min-height: 92vh; display: flex; align-items: center; padding: 130px 60px 80px; }
   .hero-inner { max-width: 1180px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1.25fr 1fr; gap: 64px; align-items: center; }
+  .hero-pill { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); background: transparent; border: 1.5px solid var(--lavender); border-radius: 100px; padding: 7px 18px; margin-bottom: 22px; }
   .hero-h1 { font-size: 64px; margin-bottom: 26px; }
   .hero-sub { font-size: 20px; color: var(--ink-60); line-height: 1.5; margin-bottom: 36px; max-width: 560px; }
   .hero-sub b { color: var(--ink); }
@@ -129,6 +130,7 @@
   .unlock-p { font-size: 16px; color: var(--w-60); line-height: 1.65; }
   .unlock-claim { margin-top: 18px; font-size: 16px; font-weight: 700; color: var(--lime); }
   .unlock-demo { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; }
+  .unlock-pill { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; background: var(--lavender); border-radius: 100px; padding: 6px 16px; margin-bottom: 14px; }
   .unlock-row { display: grid; grid-template-columns: 175px 28px 1fr; align-items: center; gap: 10px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 14px; color: var(--w-60); }
   .unlock-row:last-child { border-bottom: none; }
   .unlock-row.payoff { border-top: 1.5px solid rgba(212,255,0,0.35); margin-top: 4px; padding-top: 16px; }
@@ -232,6 +234,7 @@
 <div class="hero">
   <div class="hero-inner">
     <div>
+      <div class="hero-pill">Posts</div>
       <h1 class="display hero-h1">The most powerful direct-to-fan channel</h1>
       <p class="hero-sub">Every message becomes a front door to your world. Send it to email, the web, or both. Fans can now go deeper and pull others in. Powered by your fan data and purpose-built for music.</p>
       <div class="hero-ctas">
