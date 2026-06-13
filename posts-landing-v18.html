@@ -129,13 +129,13 @@
   .unlock-p { font-size: 16px; color: var(--w-60); line-height: 1.65; }
   .unlock-claim { margin-top: 18px; font-size: 16px; font-weight: 700; color: var(--lime); }
   .unlock-demo { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; }
-  .unlock-row { display: flex; align-items: center; gap: 14px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 14px; color: var(--w-60); }
+  .unlock-row { display: grid; grid-template-columns: 175px 28px 1fr; align-items: center; gap: 10px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 14px; color: var(--w-60); }
   .unlock-row:last-child { border-bottom: none; }
   .unlock-row.payoff { border-top: 1.5px solid rgba(212,255,0,0.35); margin-top: 4px; padding-top: 16px; }
   .unlock-row.payoff .unlock-act { color: var(--w-60); font-weight: 500; }
-  .unlock-act { color: #fff; font-weight: 600; flex: 1; }
-  .unlock-arrow { color: var(--lavender); }
-  .unlock-result { color: var(--lime); font-weight: 600; flex: 1; text-align: right; }
+  .unlock-act { color: #fff; font-weight: 600; }
+  .unlock-arrow { color: var(--lavender); text-align: center; }
+  .unlock-result { color: var(--lime); font-weight: 600; text-align: right; white-space: nowrap; }
   .gate-kicker { text-align: center; margin-top: 52px; font-size: 18px; font-weight: 600; color: #fff; }
   .gate-kicker span { color: var(--lime); }
 
@@ -198,6 +198,8 @@
   .foot-c { color: var(--w-60); font-size: 12px; }
 
   @media (max-width: 980px) {
+    .unlock-row { grid-template-columns: 1fr 24px auto; }
+    .unlock-result { white-space: normal; }
     nav { padding: 0 22px; }
     .nav-links a:not(.nav-cta) { display: none; }
     .hero { padding: 110px 22px 60px; }
