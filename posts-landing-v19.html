@@ -1,275 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Posts - Openstage</title>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg:#0A0A0B; --panel:#141416; --panel2:#1A1A1D; --gold:#F5C518; --gold2:#FFD43B;
-    --ink:#FFFFFF; --w70:rgba(255,255,255,0.7); --w50:rgba(255,255,255,0.5); --w12:rgba(255,255,255,0.12); --w08:rgba(255,255,255,0.08);
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body { background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
-  .display { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; line-height:1.0; letter-spacing:0.005em; color:var(--gold); }
-  .gold { color:var(--gold); }
-
-  nav { position:fixed; top:0; left:0; right:0; z-index:100; height:64px; padding:0 40px; display:flex; align-items:center; justify-content:space-between; background:rgba(10,10,11,0.9); backdrop-filter:blur(18px); border-bottom:1px solid var(--w08); }
-  .nav-links { display:flex; align-items:center; gap:26px; }
-  .nav-links a { color:var(--w70); font-size:14px; font-weight:500; text-decoration:none; }
-  .nav-links a:hover { color:#fff; }
-  .nav-cta { background:var(--gold)!important; color:#000!important; font-weight:700!important; padding:9px 20px!important; border-radius:8px!important; }
-  .nav-cta:hover { background:var(--gold2)!important; }
-
-  .wrap { padding:96px 40px; }
-  .inner { max-width:1140px; margin:0 auto; }
-  .centered { text-align:center; }
-  .pill { display:inline-block; font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(245,197,24,0.4); border-radius:100px; padding:7px 18px; }
-  .h-xl { font-size:66px; }
-  .h-lg { font-size:50px; }
-  .sub { font-size:18px; color:var(--w70); line-height:1.6; }
-  .mx { margin-left:auto; margin-right:auto; }
-
-  .btn { display:inline-block; font-size:15px; font-weight:700; text-decoration:none; padding:14px 30px; border-radius:8px; }
-  .btn-gold { background:var(--gold); color:#000; }
-  .btn-gold:hover { background:var(--gold2); }
-  .btn-ghost { color:#fff; text-decoration:underline; text-underline-offset:4px; font-weight:600; font-size:14px; }
-
-  /* HERO */
-  .hero { padding:140px 40px 90px; }
-  .hero-inner { max-width:1140px; margin:0 auto; display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center; }
-  .hero h1 { font-size:72px; margin:22px 0 24px; color:#fff; }
-  .hero-sub { font-size:19px; color:var(--w70); line-height:1.55; margin-bottom:32px; max-width:560px; }
-  .hero-ctas { display:flex; gap:16px; align-items:center; }
-
-  .mock { background:var(--panel); border:1px solid var(--w12); border-radius:16px; padding:22px; }
-  .mock-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
-  .mock-title { font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--w50); }
-  .mock-badge { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(245,197,24,0.4); border-radius:100px; padding:4px 11px; }
-  .mock-media { height:130px; border-radius:10px; background:linear-gradient(135deg,#2a2a2e,rgba(245,197,24,0.12)); display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
-  .mock-play { width:44px; height:44px; border-radius:50%; border:1.5px solid var(--gold); display:flex; align-items:center; justify-content:center; }
-  .mock-line { height:8px; border-radius:3px; background:var(--w12); margin-bottom:8px; }
-  .mock-line.s { width:55%; }
-  .mock-poll { display:flex; justify-content:space-between; font-size:12px; border-radius:7px; padding:9px 13px; margin-top:10px; }
-  .mock-poll.lead { background:rgba(245,197,24,0.1); border:1px solid rgba(245,197,24,0.3); color:var(--gold); }
-  .mock-poll.trail { background:var(--w08); border:1px solid var(--w12); color:var(--w50); margin-top:6px; }
-  .mock-reacts { display:flex; gap:8px; margin-top:12px; }
-  .mock-react { font-size:11px; color:var(--w50); border:1px solid var(--w12); border-radius:100px; padding:5px 11px; }
-  .mock-react.hot { color:var(--gold); border-color:rgba(245,197,24,0.3); }
-  .mock-pub { background:var(--panel2); border:1px solid var(--w12); border-radius:12px; padding:14px 16px; margin-top:16px; }
-  .mock-pub-l { font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--w50); margin-bottom:10px; }
-  .mock-ch { display:flex; gap:8px; }
-  .mock-c { flex:1; text-align:center; font-size:12px; font-weight:700; border-radius:8px; padding:9px 0; }
-  .mock-c.on { background:var(--gold); color:#000; }
-  .mock-c.off { background:var(--w08); color:var(--w50); border:1px solid var(--w12); }
-  .mock-pub-btn { margin-top:12px; text-align:center; background:#fff; color:#000; font-size:13px; font-weight:700; border-radius:8px; padding:10px 0; }
-
-  /* CARDS (pillars) */
-  .cards3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:48px; text-align:left; }
-  .card { background:var(--panel); border:1px solid var(--w12); border-radius:14px; padding:30px 26px; }
-  .card-ico { width:46px; height:46px; border-radius:50%; background:rgba(245,197,24,0.12); border:1px solid rgba(245,197,24,0.35); color:var(--gold); display:flex; align-items:center; justify-content:center; margin-bottom:18px; }
-  .card-h { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:19px; color:var(--gold); margin-bottom:12px; }
-  .card-p { font-size:15px; color:var(--w70); }
-
-  /* CHIPS */
-  .chips { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; max-width:900px; margin:42px auto 0; }
-  .chip { font-size:14px; font-weight:500; color:#fff; background:var(--panel); border:1px solid rgba(245,197,24,0.35); border-radius:100px; padding:12px 22px; }
-  .chip:hover { border-color:var(--gold); background:var(--panel2); }
-
-  /* REACH */
-  .row { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
-  .row-h { font-size:46px; margin-bottom:20px; }
-  .row-p { font-size:17px; color:var(--w70); }
-  .rv { background:var(--panel); border:1px solid var(--w12); border-radius:16px; padding:30px; }
-  .rv-top { text-align:center; font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#000; background:var(--gold); border-radius:100px; padding:10px 0; margin-bottom:16px; }
-  .rv-fork { max-width:260px; margin:4px auto 14px; }
-  .rv-cols { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-  .rv-col { background:var(--panel2); border:1px solid var(--w12); border-radius:12px; padding:18px; }
-  .rv-pill { display:inline-block; font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#fff; border:1.5px solid #fff; border-radius:100px; padding:5px 14px; margin-bottom:10px; }
-  .rv-pill.gold { color:var(--gold); border-color:var(--gold); }
-  .rv-p { font-size:13px; color:var(--w70); }
-  .rv-foot { margin-top:14px; text-align:center; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#000; background:var(--gold); border-radius:100px; padding:9px 16px; }
-
-  /* GATING */
-  .gate { background:#060607; }
-  .gate-sub { font-size:18px; color:var(--w70); max-width:100%; }
-  .gpanels { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:28px; }
-  .gpanel { background:var(--panel); border:1px solid var(--w12); border-radius:16px; padding:26px; }
-  .gpanel-l { font-size:11px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; color:var(--gold); margin-bottom:18px; }
-  .gopt { display:flex; align-items:center; gap:12px; border:1px solid var(--w12); border-radius:10px; padding:11px 14px; margin-bottom:8px; font-size:13px; color:var(--w50); }
-  .gopt.on { border-color:rgba(245,197,24,0.5); background:rgba(245,197,24,0.08); color:#fff; }
-  .gdot { width:14px; height:14px; border-radius:50%; border:1.5px solid var(--w50); flex-shrink:0; }
-  .gopt.on .gdot { border-color:var(--gold); background:var(--gold); }
-  .gchips { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
-  .gchip { font-size:11px; color:#fff; background:rgba(245,197,24,0.16); border:1px solid rgba(245,197,24,0.4); border-radius:100px; padding:5px 12px; }
-  .fg { text-align:center; padding:30px 24px; }
-  .fg-lock { width:52px; height:52px; border-radius:50%; background:rgba(245,197,24,0.1); border:1px solid rgba(245,197,24,0.35); color:var(--gold); display:flex; align-items:center; justify-content:center; margin:0 auto 18px; }
-  .fg-h { font-size:17px; font-weight:700; margin-bottom:8px; }
-  .fg-p { font-size:13px; color:var(--w50); margin-bottom:18px; }
-  .fg-btn { display:inline-block; background:var(--gold); color:#000; font-size:13px; font-weight:700; border-radius:8px; padding:10px 28px; }
-  .unlock { margin-top:56px; padding-top:0; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
-  .unlock-h { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:30px; margin-bottom:20px; letter-spacing:0.005em; }
-  .unlock-p { font-size:16px; color:var(--w70); }
-  .unlock-claim { margin-top:18px; font-size:16px; font-weight:700; color:var(--gold); }
-  .demo { background:var(--panel); border:1px solid var(--w12); border-radius:16px; padding:24px; }
-  .drow { display:grid; grid-template-columns:170px 28px 1fr; align-items:center; gap:10px; padding:13px 0; border-bottom:1px solid var(--w08); font-size:14px; }
-  .drow:last-child { border-bottom:none; }
-  .drow.pay { border-top:1.5px solid rgba(245,197,24,0.4); margin-top:4px; padding-top:16px; }
-  .dact { color:#fff; font-weight:600; }
-  .drow.pay .dact { color:var(--w50); font-weight:500; }
-  .darr { color:var(--gold); text-align:center; }
-  .dres { color:var(--gold); font-weight:600; text-align:right; white-space:nowrap; }
-
-  /* FEATURES */
-  .fgrid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:48px; text-align:left; }
-  .feat { background:var(--panel); border:1px solid var(--w12); border-radius:14px; padding:24px; }
-  .feat:hover { border-color:rgba(245,197,24,0.5); }
-  .feat-ico { width:38px; height:38px; border-radius:50%; background:rgba(245,197,24,0.12); border:1px solid rgba(245,197,24,0.3); color:var(--gold); display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
-  .feat-h { font-size:15px; font-weight:700; margin-bottom:8px; color:var(--gold); }
-  .feat-p { font-size:13px; color:var(--w70); }
-
-  /* COMPARISON */
-  .comp { border:1px solid var(--w12); border-radius:16px; overflow:hidden; margin-top:48px; text-align:left; }
-  .comp table { width:100%; border-collapse:collapse; }
-  .comp th { text-align:left; padding:18px 24px; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; border-bottom:1px solid var(--w12); }
-  .comp th:first-child { width:130px; color:var(--w50); }
-  .comp th.posts-col { background:var(--gold); color:#000; }
-  .comp td { padding:18px 24px; font-size:14px; border-bottom:1px solid var(--w08); vertical-align:top; }
-  .comp tr:last-child td { border-bottom:none; }
-  .comp td:first-child { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }
-  .comp td:nth-child(2) { color:var(--w50); }
-  .comp td.posts-col { background:rgba(245,197,24,0.08); color:#fff; font-weight:500; }
-
-  /* CASES */
-  .cases { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:48px; text-align:left; }
-  .case { background:var(--panel); border:1px solid var(--w12); border-radius:16px; overflow:hidden; }
-  .case-img { height:170px; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--w12); background:#0e0e10; }
-  .case-name { font-family:'Anton',sans-serif; font-weight:400; font-size:38px; text-transform:uppercase; color:rgba(245,197,24,0.12); }
-  .case-body { padding:28px; }
-  .case-artist { font-family:'Anton',sans-serif; font-weight:400; font-size:20px; text-transform:uppercase; margin-bottom:5px; }
-  .case-type { font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:13px; }
-  .case-p { font-size:14px; color:var(--w70); }
-
-  /* FAQ */
-  .faqw { max-width:760px; margin:0 auto; }
-  .faq { background:var(--panel); border:1px solid var(--w12); border-radius:16px; overflow:hidden; margin-top:44px; }
-  .faq-item { border-bottom:1px solid var(--w12); }
-  .faq-item:last-child { border-bottom:none; }
-  .faq-q { padding:20px 26px; cursor:pointer; display:flex; align-items:center; gap:16px; }
-  .faq-q:hover { background:var(--panel2); }
-  .faq-icon { color:var(--gold); font-size:20px; width:18px; text-align:center; flex-shrink:0; transition:transform 0.2s; }
-  .faq-q-text { font-size:15px; font-weight:600; }
-  .faq-a { padding:0 26px 22px 60px; font-size:14px; color:var(--w70); display:none; }
-  .faq-item.open .faq-a { display:block; }
-  .faq-item.open .faq-icon { transform:rotate(45deg); }
-
-  /* CLOSER */
-  .closer { text-align:center; padding:110px 40px; }
-  .closer h2 { font-size:60px; max-width:900px; margin:0 auto 22px; }
-  .closer-sub { font-size:18px; color:var(--w70); margin-bottom:36px; }
-
-  /* FOOTER */
-  .stamp { text-align:center; padding:40px 0 30px; }
-  .stamp-l { font-size:13px; font-weight:600; color:var(--gold); letter-spacing:0.04em; margin-bottom:16px; }
-  footer { background:var(--panel); margin:0 24px 24px; border-radius:18px; padding:48px 44px; }
-  .foot-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:30px; max-width:900px; }
-  .foot-col h4 { font-size:13px; font-weight:700; margin-bottom:14px; }
-  .foot-col a { display:block; color:var(--w50); font-size:13px; text-decoration:none; margin-bottom:9px; }
-  .foot-col a:hover { color:#fff; }
-  .foot-bottom { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:24px; border-top:1px solid var(--w08); }
-  .foot-c { color:var(--w50); font-size:12px; }
-
-  @media (max-width:980px) {
-    nav { padding:0 20px; } .nav-links a:not(.nav-cta) { display:none; }
-    .hero { padding:110px 20px 60px; } .hero-inner { grid-template-columns:1fr; gap:44px; } .hero h1 { font-size:42px; }
-    .wrap { padding:64px 20px; } .h-xl { font-size:40px; } .h-lg { font-size:32px; }
-    .row,.gpanels,.unlock,.cases { grid-template-columns:1fr; gap:32px; }
-    .cards3,.fgrid { grid-template-columns:1fr; }
-    .drow { grid-template-columns:1fr 24px auto; } .dres { white-space:normal; }
-    .closer h2 { font-size:34px; } .foot-grid { grid-template-columns:1fr 1fr; }
-    .comp th,.comp td { padding:12px 14px; }
-  }
+  :root{--bg:#0A0A0B;--panel:#141416;--panel2:#1A1A1D;--gold:#F5C518;--gold2:#FFD43B;--ink:#fff;--w70:rgba(255,255,255,.7);--w50:rgba(255,255,255,.5);--w12:rgba(255,255,255,.12);--w08:rgba(255,255,255,.08);}
+  *{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .display{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;line-height:1.0;letter-spacing:.005em;color:var(--gold);}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;padding:0 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,11,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--w08);}
+  .logo{font-family:'Anton',sans-serif;font-size:24px;text-transform:uppercase;color:var(--gold);text-decoration:none;letter-spacing:.02em;}
+  .nav-links{display:flex;align-items:center;gap:26px;}
+  .nav-links a{color:var(--w70);font-size:14px;font-weight:500;text-decoration:none;} .nav-links a:hover{color:#fff;}
+  .nav-cta{background:var(--gold)!important;color:#000!important;font-weight:700!important;padding:9px 20px!important;border-radius:8px!important;}
+  .wrap{padding:96px 40px;} .inner{max-width:1140px;margin:0 auto;} .centered{text-align:center;}
+  .pill{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(245,197,24,.4);border-radius:100px;padding:7px 18px;}
+  .h-lg{font-size:50px;} .sub{font-size:18px;color:var(--w70);} .mx{margin-left:auto;margin-right:auto;}
+  .btn{display:inline-block;font-size:15px;font-weight:700;text-decoration:none;padding:14px 30px;border-radius:8px;}
+  .btn-gold{background:var(--gold);color:#000;} .btn-gold:hover{background:var(--gold2);}
+  .hero{padding:140px 40px 90px;} .hero-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
+  .hero h1{font-size:70px;margin:22px 0 24px;color:#fff;} .hero-sub{font-size:19px;color:var(--w70);line-height:1.55;margin-bottom:32px;max-width:560px;}
+  .mock{background:var(--panel);border:1px solid var(--w12);border-radius:16px;padding:22px;}
+  .mock-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+  .mock-title{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--w50);}
+  .mock-badge{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(245,197,24,.4);border-radius:100px;padding:4px 11px;}
+  .mock-media{height:130px;border-radius:10px;background:linear-gradient(135deg,#2a2a2e,rgba(245,197,24,.12));display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .mock-play{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;}
+  .mock-line{height:8px;border-radius:3px;background:var(--w12);margin-bottom:8px;} .mock-line.s{width:55%;}
+  .mock-poll{display:flex;justify-content:space-between;font-size:12px;border-radius:7px;padding:9px 13px;margin-top:10px;}
+  .mock-poll.lead{background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.3);color:var(--gold);}
+  .mock-poll.trail{background:var(--w08);border:1px solid var(--w12);color:var(--w50);margin-top:6px;}
+  .mock-reacts{display:flex;gap:8px;margin-top:12px;} .mock-react{font-size:11px;color:var(--w50);border:1px solid var(--w12);border-radius:100px;padding:5px 11px;}
+  .mock-react.hot{color:var(--gold);border-color:rgba(245,197,24,.3);}
+  .mock-pub{background:var(--panel2);border:1px solid var(--w12);border-radius:12px;padding:14px 16px;margin-top:16px;}
+  .mock-pub-l{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--w50);margin-bottom:10px;}
+  .mock-ch{display:flex;gap:8px;} .mock-c{flex:1;text-align:center;font-size:12px;font-weight:700;border-radius:8px;padding:9px 0;}
+  .mock-c.on{background:var(--gold);color:#000;} .mock-c.off{background:var(--w08);color:var(--w50);border:1px solid var(--w12);}
+  .mock-pub-btn{margin-top:12px;text-align:center;background:#fff;color:#000;font-size:13px;font-weight:700;border-radius:8px;padding:10px 0;}
+  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px;text-align:left;}
+  .card{background:var(--panel);border:1px solid var(--w12);border-radius:14px;padding:30px 26px;}
+  .card-ico{width:46px;height:46px;border-radius:50%;background:rgba(245,197,24,.12);border:1px solid rgba(245,197,24,.35);color:var(--gold);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+  .card-h{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;font-size:19px;color:var(--gold);margin-bottom:12px;} .card-p{font-size:15px;color:var(--w70);}
+  .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:900px;margin:42px auto 0;}
+  .chip{font-size:14px;font-weight:500;color:#fff;background:var(--panel);border:1px solid rgba(245,197,24,.35);border-radius:100px;padding:12px 22px;}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;} .row-h{font-size:46px;margin-bottom:20px;} .row-p{font-size:17px;color:var(--w70);}
+  .rv{background:var(--panel);border:1px solid var(--w12);border-radius:16px;padding:30px;}
+  .rv-top{text-align:center;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#000;background:var(--gold);border-radius:100px;padding:10px 0;margin-bottom:16px;}
+  .rv-fork{max-width:260px;margin:4px auto 14px;} .rv-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .rv-col{background:var(--panel2);border:1px solid var(--w12);border-radius:12px;padding:18px;}
+  .rv-pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;border:1.5px solid #fff;border-radius:100px;padding:5px 14px;margin-bottom:10px;}
+  .rv-pill.gold{color:var(--gold);border-color:var(--gold);} .rv-p{font-size:13px;color:var(--w70);}
+  .rv-foot{margin-top:14px;text-align:center;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#000;background:var(--gold);border-radius:100px;padding:9px 16px;}
+  .gate{background:#060607;} .gate-sub{font-size:18px;color:var(--w70);max-width:760px;}
+  .gpanels{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:0;}
+  .gpanel{background:var(--panel);border:1px solid var(--w12);border-radius:16px;padding:26px;}
+  .gpanel-l{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+  .gopt{display:flex;align-items:center;gap:12px;border:1px solid var(--w12);border-radius:10px;padding:11px 14px;margin-bottom:8px;font-size:13px;color:var(--w50);}
+  .gopt.on{border-color:rgba(245,197,24,.5);background:rgba(245,197,24,.08);color:#fff;}
+  .gdot{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--w50);flex-shrink:0;} .gopt.on .gdot{border-color:var(--gold);background:var(--gold);}
+  .gchips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;} .gchip{font-size:11px;color:#fff;background:rgba(245,197,24,.16);border:1px solid rgba(245,197,24,.4);border-radius:100px;padding:5px 12px;}
+  .fg{text-align:center;padding:30px 24px;} .fg-lock{width:52px;height:52px;border-radius:50%;background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.35);color:var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
+  .fg-h{font-size:17px;font-weight:700;margin-bottom:8px;} .fg-p{font-size:13px;color:var(--w50);margin-bottom:18px;} .fg-btn{display:inline-block;background:var(--gold);color:#000;font-size:13px;font-weight:700;border-radius:8px;padding:10px 28px;}
+  .gh3{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;font-size:24px;color:var(--gold);margin:56px 0 24px;}
+  .unlock{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .unlock-h{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;font-size:30px;color:var(--gold);margin-bottom:20px;}
+  .unlock-p{font-size:16px;color:var(--w70);} .unlock-cap{margin-top:18px;font-size:16px;font-weight:700;color:var(--gold);}
+  .demo{background:var(--panel);border:1px solid var(--w12);border-radius:16px;padding:24px;}
+  .drow{display:grid;grid-template-columns:170px 28px 1fr;align-items:center;gap:10px;padding:13px 0;border-bottom:1px solid var(--w08);font-size:14px;} .drow:last-child{border-bottom:none;}
+  .drow.pay{border-top:1.5px solid rgba(245,197,24,.4);margin-top:4px;padding-top:16px;}
+  .dact{color:#fff;font-weight:600;} .drow.pay .dact{color:var(--w50);font-weight:500;} .darr{color:var(--gold);text-align:center;} .dres{color:var(--gold);font-weight:600;text-align:right;white-space:nowrap;}
+  .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;text-align:left;}
+  .feat{background:var(--panel);border:1px solid var(--w12);border-radius:14px;padding:24px;} .feat:hover{border-color:rgba(245,197,24,.5);}
+  .feat-ico{width:38px;height:38px;border-radius:50%;background:rgba(245,197,24,.12);border:1px solid rgba(245,197,24,.3);color:var(--gold);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .feat-h{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--gold);} .feat-p{font-size:13px;color:var(--w70);}
+  .midcta{text-align:center;padding:20px 40px 80px;}
+  .comp{border:1px solid var(--w12);border-radius:16px;overflow:hidden;margin-top:48px;text-align:left;} .comp table{width:100%;border-collapse:collapse;}
+  .comp th{text-align:left;padding:18px 24px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--w12);}
+  .comp th:first-child{width:130px;color:var(--w50);} .comp th.posts-col{background:var(--gold);color:#000;}
+  .comp td{padding:18px 24px;font-size:14px;border-bottom:1px solid var(--w08);vertical-align:top;} .comp tr:last-child td{border-bottom:none;}
+  .comp td:first-child{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);} .comp td:nth-child(2){color:var(--w50);}
+  .comp td.posts-col{background:rgba(245,197,24,.08);color:#fff;font-weight:500;}
+  .cases{display:grid;grid-template-columns:1fr;max-width:720px;margin:48px auto 0;text-align:left;}
+  .case{background:var(--panel);border:1px solid var(--w12);border-radius:16px;overflow:hidden;}
+  .case-img{height:170px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--w12);background:#0e0e10;}
+  .case-name{font-family:'Anton',sans-serif;font-weight:400;font-size:38px;text-transform:uppercase;color:rgba(245,197,24,.12);}
+  .case-body{padding:28px;} .case-artist{font-family:'Anton',sans-serif;font-weight:400;font-size:20px;text-transform:uppercase;margin-bottom:5px;color:#fff;}
+  .case-type{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:13px;} .case-p{font-size:14px;color:var(--w70);}
+  .faqw{max-width:760px;margin:0 auto;} .faq{background:var(--panel);border:1px solid var(--w12);border-radius:16px;overflow:hidden;margin-top:44px;}
+  .faq-item{border-bottom:1px solid var(--w12);} .faq-item:last-child{border-bottom:none;}
+  .faq-q{padding:20px 26px;cursor:pointer;display:flex;align-items:center;gap:16px;} .faq-q:hover{background:var(--panel2);}
+  .faq-icon{color:var(--gold);font-size:20px;width:18px;text-align:center;flex-shrink:0;transition:transform .2s;} .faq-q-text{font-size:15px;font-weight:600;}
+  .faq-a{padding:0 26px 22px 60px;font-size:14px;color:var(--w70);display:none;} .faq-item.open .faq-a{display:block;} .faq-item.open .faq-icon{transform:rotate(45deg);}
+  .closer{text-align:center;padding:110px 40px;} .closer h2{font-size:56px;max-width:900px;margin:0 auto 22px;} .closer-sub{font-size:18px;color:var(--w70);margin-bottom:36px;}
+  .stamp{text-align:center;padding:40px 0 30px;} .stamp-l{font-size:13px;font-weight:600;color:var(--gold);letter-spacing:.04em;margin-bottom:16px;}
+  footer{background:var(--panel);margin:0 24px 24px;border-radius:18px;padding:48px 44px;}
+  .foot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:900px;}
+  .foot-col h4{font-size:13px;font-weight:700;margin-bottom:14px;} .foot-col a{display:block;color:var(--w50);font-size:13px;text-decoration:none;margin-bottom:9px;} .foot-col a:hover{color:#fff;}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:24px;border-top:1px solid var(--w08);} .foot-c{color:var(--w50);font-size:12px;}
+  @media(max-width:980px){nav{padding:0 20px;}.nav-links a:not(.nav-cta){display:none;}.hero{padding:110px 20px 60px;}.hero-inner{grid-template-columns:1fr;gap:44px;}.hero h1{font-size:44px;}.wrap{padding:64px 20px;}.h-lg{font-size:34px;}.row,.gpanels,.unlock,.cases{grid-template-columns:1fr;gap:32px;}.cards3,.fgrid{grid-template-columns:1fr;}.drow{grid-template-columns:1fr 24px auto;}.dres{white-space:normal;}.closer h2{font-size:34px;}.foot-grid{grid-template-columns:1fr 1fr;}.comp th,.comp td{padding:12px 14px;}}
 </style>
 </head>
 <body>
-
 <nav>
-  <a href="#" style="font-family:'Anton',sans-serif;font-size:24px;text-transform:uppercase;color:var(--gold);text-decoration:none;letter-spacing:0.02em;">Openstage</a>
-  <div class="nav-links">
-    <a href="#moments">Moments</a>
-    <a href="#reach">Reach</a>
-    <a href="#gating">Gating</a>
-    <a href="#">Log in</a>
-    <a href="#" class="nav-cta">Get early access</a>
-  </div>
+  <a href="#" class="logo">Openstage</a>
+  <div class="nav-links"><a href="#interactive">Interactive</a><a href="#reach">Reach</a><a href="#segmentation">Segmentation</a><a href="#">Log in</a><a href="#" class="nav-cta">Get Started</a></div>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-inner">
-    <div>
-      <span class="pill">Posts</span>
-      <h1 class="display">The most powerful direct-to-fan channel in music</h1>
-      <p class="hero-sub">Everything email does, plus everything it can't. Fans on your list can get your message by email, and new fans find it on the web where they can go deeper and pull others in. Every message turns what you know about your fans into what they actually get.</p>
-      <div class="hero-ctas">
-        <a href="#" class="btn btn-gold">Get early access</a>
-      </div>
-    </div>
-    <div class="mock">
-      <div class="mock-head"><div class="mock-title">New Post</div><div class="mock-badge">First Listen</div></div>
-      <div class="mock-media"><div class="mock-play"><svg width="12" height="14" viewBox="0 0 11 13" fill="#F5C518"><path d="M0 0L11 6.5L0 13V0Z"/></svg></div></div>
-      <div class="mock-line"></div><div class="mock-line s"></div>
-      <div class="mock-poll lead"><span>Hear it first</span><span>62%</span></div>
-      <div class="mock-poll trail"><span>Pre-save to unlock</span><span>28%</span></div>
-      <div class="mock-reacts"><div class="mock-react hot">847 comments</div><div class="mock-react">Share</div><div class="mock-react">Subscribe</div></div>
-      <div class="mock-pub">
-        <div class="mock-pub-l">Publish to</div>
-        <div class="mock-ch"><div class="mock-c on">Email</div><div class="mock-c on">Web</div><div class="mock-c off">Feed</div></div>
-        <div class="mock-pub-btn">Publish</div>
-      </div>
-    </div>
+<div class="hero"><div class="hero-inner">
+  <div>
+    <span class="pill">Posts</span>
+    <h1 class="display">A better way to<br>communicate with your fans.</h1>
+    <p class="hero-sub">Publish to email and the web at the same time, turning one-way broadcasts into interactive experiences that bring more fans into your world.</p>
+    <a href="#" class="btn btn-gold">Get Started</a>
   </div>
-</div>
+  <div class="mock">
+    <div class="mock-head"><div class="mock-title">New Post</div><div class="mock-badge">First Listen</div></div>
+    <div class="mock-media"><div class="mock-play"><svg width="12" height="14" viewBox="0 0 11 13" fill="#F5C518"><path d="M0 0L11 6.5L0 13V0Z"/></svg></div></div>
+    <div class="mock-line"></div><div class="mock-line s"></div>
+    <div class="mock-poll lead"><span>Hear it first</span><span>62%</span></div>
+    <div class="mock-poll trail"><span>Pre-save to unlock</span><span>28%</span></div>
+    <div class="mock-reacts"><div class="mock-react hot">847 comments</div><div class="mock-react">Share</div><div class="mock-react">Subscribe</div></div>
+    <div class="mock-pub"><div class="mock-pub-l">Publish to</div><div class="mock-ch"><div class="mock-c on">Email</div><div class="mock-c on">Web</div><div class="mock-c off">Feed</div></div><div class="mock-pub-btn">Publish</div></div>
+  </div>
+</div></div>
 
-<!-- WHAT YOU GET -->
+<!-- BLOCK 02 -->
 <div class="wrap"><div class="inner centered">
   <h2 class="display h-lg" style="margin-bottom:18px;">Your email marketing, upgraded.</h2>
-  <p class="sub mx" style="max-width:720px;">Deliver your message via email, a standalone web page, or both, all in the same motion. Fans comment, vote, share, and sign up, and everything they do becomes fan data you own.</p>
+  <p class="sub mx" style="max-width:740px;">Everything email does, plus everything it can't. Create one message, send it to email and the web at the same time, then choose who it reaches and what each fan can open.</p>
   <div class="cards3">
       <div class="card">
         <div class="card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
         <div class="card-h">More interactive</div>
-        <p class="card-p">Fans can now engage directly in your world, not another platform's feed. Every email becomes a two-way moment instead of a one-way blast.</p>
+        <p class="card-p">Fans react, vote, comment, and share, right inside your world. Every email becomes a two-way moment instead of a one-way blast.</p>
       </div>
       <div class="card">
         <div class="card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
         <div class="card-h">More discoverable</div>
-        <p class="card-p">Posts live on the web, found through shares, links, and search. Your list is the floor, not the ceiling.</p>
+        <p class="card-p">Your message lives on the web, where new fans find it through shares and social and step into your world.</p>
       </div>
       <div class="card">
-        <div class="card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <div class="card-h">More fan-aware</div>
-        <p class="card-p">Target and gate every message by who fans are, what they've bought, and how they've engaged. Reward your best fans first.</p>
+        <div class="card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><line x1="7" y1="6" x2="20" y2="6"/><line x1="7" y1="18" x2="20" y2="18"/><circle cx="15" cy="12" r="2"/><line x1="3" y1="12" x2="13" y2="12"/><line x1="17" y1="12" x2="21" y2="12"/></svg></div>
+        <div class="card-h">More targeted</div>
+        <p class="card-p">Target who receives every message, and gate what each fan can open, by exactly who they are and what they have done.</p>
       </div>
   </div>
 </div></div>
 
-<!-- MOMENTS -->
-<div class="wrap" id="moments"><div class="inner centered">
+<!-- MOMENTS / INTERACTIVE -->
+<div class="wrap" id="interactive"><div class="inner centered">
   <h2 class="display h-lg" style="margin-bottom:18px;">Every announcement becomes<br>a shared moment.</h2>
-  <p class="sub mx" style="max-width:680px;">Posts invites fans into the moment in a way email alone can't: a place to react, vote, share, and become part of it. Together, not one inbox at a time.</p>
+  <p class="sub mx" style="max-width:680px;">Every release creates a reaction, every tour announce a conversation, every surprise drop a share. Posts lets fans live it all together, not one inbox at a time.</p>
   <div class="chips">
       <div class="chip">Run a first listen</div>
       <div class="chip">Announce a tour and capture presale demand</div>
       <div class="chip">Gate a merch drop</div>
-      <div class="chip">Get fans to vote</div>
-      <div class="chip">Create a pre-save unlock that rewards fans for saving</div>
-      <div class="chip">Give fans early access before the public announcement</div>
+      <div class="chip">Get fans to vote in a poll</div>
+      <div class="chip">Reward fans for pre-saving</div>
+      <div class="chip">Give early access before the public announcement</div>
       <div class="chip">Turn a social share into a fan signup</div>
       <div class="chip">Drop exclusive content for your most engaged fans</div>
-      <div class="chip">Build a community thread around a release moment</div>
+      <div class="chip">Start a community thread around a release</div>
       <div class="chip">Reward your most loyal fans first</div>
   </div>
 </div></div>
@@ -277,33 +170,52 @@
 <!-- REACH -->
 <div class="wrap" id="reach"><div class="inner"><div class="row">
   <div>
-    <h2 class="display row-h">Your list is just the beginning of your reach.</h2>
-    <p class="row-p">Your fans receive it in their inbox. New fans find it through shares, links, and the web, arriving in your world and converting into known, contactable fans.</p>
+    <h2 class="display row-h">Reach every fan,<br>not just your list.</h2>
+    <p class="row-p">Most direct channels force a tradeoff. Email reaches the fans you already know. Social reaches the ones you don't. Posts does both at once: your fans receive it in the inbox, new fans find it through shares and social. The reach you rent on social finally drives fans to a channel you own.</p>
   </div>
   <div class="rv">
     <div class="rv-top">Posts</div>
     <div class="rv-fork"><svg viewBox="0 0 220 46" width="100%" height="46" fill="none" stroke="#F5C518" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M110 4 V16"/><path d="M58 16 H162"/><path d="M58 16 V36"/><path d="M162 16 V36"/><path d="M52 31 L58 39 L64 31"/><path d="M156 31 L162 39 L168 31"/></svg></div>
     <div class="rv-cols">
       <div class="rv-col"><div class="rv-pill">Email</div><p class="rv-p">Your fans, reached directly.</p></div>
-      <div class="rv-col"><div class="rv-pill gold">Web</div><p class="rv-p">New fans, through shares and search.</p></div>
+      <div class="rv-col"><div class="rv-pill gold">Web</div><p class="rv-p">New fans, through shares and social.</p></div>
     </div>
     <div class="rv-foot">New fans become known, contactable fans</div>
   </div>
 </div></div></div>
 
-<!-- GATING -->
-<div class="wrap gate" id="gating"><div class="inner">
-  <h2 class="display h-lg" style="margin-bottom:18px;">Every message is now fan-aware.</h2>
-  <p class="gate-sub">That means it knows who it's reaching: what they've bought, where they've been, how they've engaged. Other tools see email addresses. Openstage sees fans, and Posts puts that knowledge to work inside every message.</p>
-  <h3 class="display unlock-h" style="margin-top:56px;margin-bottom:24px;">Gate anything to exactly the right audience.</h3>
-  <div class="gpanels" style="margin-top:0;">
+<!-- SEGMENTATION / GATING -->
+<div class="wrap gate" id="segmentation"><div class="inner">
+  <h2 class="display h-lg" style="margin-bottom:18px;">Target who gets it.<br>Control what they open.</h2>
+  <p class="gate-sub">Anyone can publish to email and the web. Only Openstage publishes on top of your fan data, so you can send any message to a segment, and gate any post or block by who fans are and what they've done.</p>
+
+  <h3 class="gh3">Send to exactly the right fans.</h3>
+  <div class="gpanels">
+    <div class="gpanel">
+      <div class="gpanel-l">Who receives it</div>
+      <div class="gopt on"><span class="gdot"></span><span>Bought a ticket in the last year</span></div>
+      <div class="gopt on"><span class="gdot"></span><span>Within 50 miles of Los Angeles</span></div>
+      <div class="gopt"><span class="gdot"></span><span>Top 10% most engaged fans</span></div>
+      <div class="gopt"><span class="gdot"></span><span>Never opened the last 3 campaigns</span></div>
+      <div class="gchips"><span class="gchip">2,418 fans match</span><span class="gchip">+ Add filter</span></div>
+    </div>
+    <div class="gpanel fg">
+      <div class="gpanel-l" style="text-align:left;">The result</div>
+      <div class="fg-lock"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></div>
+      <div class="fg-h">The right fans, every time</div>
+      <p class="fg-p">Your message reaches the exact segment you choose, down to who they are and what they've done.</p>
+    </div>
+  </div>
+
+  <h3 class="gh3">Gate anything to exactly the right audience.</h3>
+  <div class="gpanels">
     <div class="gpanel">
       <div class="gpanel-l">What you control</div>
       <div class="gopt"><span class="gdot"></span><span>Everyone. Visible to all visitors.</span></div>
       <div class="gopt"><span class="gdot"></span><span>Signed in. All signed-in fans.</span></div>
       <div class="gopt"><span class="gdot"></span><span>Subscribers. Subscribers only.</span></div>
       <div class="gopt on"><span class="gdot"></span><span>Custom. Selected audiences.</span></div>
-      <div class="gchips"><span class="gchip">Completed the quiz &#10005;</span><span class="gchip">Core fans &#10005;</span><span class="gchip">+ Add audience</span></div>
+      <div class="gchips"><span class="gchip">Bought the vinyl &#10005;</span><span class="gchip">Core fans &#10005;</span><span class="gchip">+ Add audience</span></div>
     </div>
     <div class="gpanel fg">
       <div class="gpanel-l" style="text-align:left;">What the fan sees</div>
@@ -313,11 +225,12 @@
       <span class="fg-btn">Sign in</span>
     </div>
   </div>
+
   <div class="unlock">
     <div>
-      <h3 class="display unlock-h">Unlock access when fans take action.</h3>
+      <h3 class="unlock-h">Unlock access when fans take action.</h3>
       <p class="unlock-p">Set the condition. The fan meets it. The content appears. Day-ones hear it first. LA gets the LA presale. A share opens the bonus track.</p>
-      <p class="unlock-claim">No other direct-to-fan channel can do this. The others would need your fan history. They don't have it. Openstage does.</p>
+      <p class="unlock-cap">Targeting and gating, built into every send.</p>
     </div>
     <div class="demo">
       <div class="drow"><span class="dact">Complete the pre-save</span><span class="darr">&#8594;</span><span class="dres">Exclusive track appears</span></div>
@@ -331,93 +244,92 @@
 <!-- BUILT FOR MUSIC -->
 <div class="wrap"><div class="inner centered">
   <h2 class="display h-lg">Everything you need,<br>already in the editor.</h2>
-  <p class="sub mx" style="max-width:560px;margin-top:18px;">The full toolkit for artists. Built for music. Built for how you engage with your fans.</p>
+  <p class="sub mx" style="max-width:600px;margin-top:18px;">A clean, modern editor built specifically for music. Drop in a first listen, a pre-save, tour dates, a poll, or exclusive content. The complete toolkit ready the moment you open the menu.</p>
   <div class="fgrid">
       <div class="feat">
-        <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
-        <div class="feat-h">Block-based editor</div>
-        <p class="feat-p">Clean, visual, intuitive. Brand kit applied automatically.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
-        <div class="feat-h">Audience and block gating</div>
-        <p class="feat-p">Gate an entire post or individual blocks behind a signup, a specific audience, or paid subscribers.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-        <div class="feat-h">Fan intelligence and segmentation</div>
-        <p class="feat-p">Every interaction feeds your fan graph. Every post makes the next campaign smarter.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1"/></svg></div>
-        <div class="feat-h">Secret draft links</div>
-        <p class="feat-p">Share previews before publishing. Easier team collaboration.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg></div>
-        <div class="feat-h">Brand kit consistency</div>
-        <p class="feat-p">Set your fonts, colors, and styles once. Applied automatically across every post.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg></div>
-        <div class="feat-h">Bandsintown integration</div>
-        <p class="feat-p">Pull tour dates directly. No manual entry.</p>
+        <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div class="feat-h">Engagement bar</div>
+        <p class="feat-p">Comment, like, and share on every email. Built in, always visible.</p>
       </div>
       <div class="feat">
         <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-        <div class="feat-h">DSP embeds and presave</div>
-        <p class="feat-p">Spotify, Apple Music, and Deezer as playable blocks.</p>
+        <div class="feat-h">DSP embeds</div>
+        <p class="feat-p">Embed Spotify, Apple Music, and more as playable blocks.</p>
       </div>
       <div class="feat">
-        <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
-        <div class="feat-h">Embedded audio and video</div>
-        <p class="feat-p">Rich media across email and web.</p>
+        <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></div>
+        <div class="feat-h">Pre-save blocks</div>
+        <p class="feat-p">Capture pre-saves for the next release, right in the post.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div class="feat-h">Bandsintown integration</div>
+        <p class="feat-p">Pull upcoming tour dates directly into your post. No manual entry.</p>
       </div>
       <div class="feat">
         <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
         <div class="feat-h">Interactive polls</div>
-        <p class="feat-p">Single-question polls and quizzes. Every vote feeds the fan graph.</p>
+        <p class="feat-p">Polls and quizzes fans answer in the post. Every vote is data you own.</p>
       </div>
       <div class="feat">
-        <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        <div class="feat-h">Customizable signup prompts</div>
-        <p class="feat-p">Write the copy fans see when they hit a gated post.</p>
+        <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+        <div class="feat-h">Embedded audio and video</div>
+        <p class="feat-p">Rich media blocks that display properly across email and web.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <div class="feat-h">Brand kits</div>
+        <p class="feat-p">Apply your brand kit, and edit it anytime.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1"/></svg></div>
+        <div class="feat-h">Secret draft links</div>
+        <p class="feat-p">Share preview links with your team before publishing.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></div>
+        <div class="feat-h">Signup prompts</div>
+        <p class="feat-p">Write the copy fans see when they reach a gated post.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg></div>
+        <div class="feat-h">Schedule and publish</div>
+        <p class="feat-p">Publish now or schedule. Edits go live on the web instantly.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><circle cx="12" cy="10" r="2"/></svg></div>
+        <div class="feat-h">Comments with artist badge</div>
+        <p class="feat-p">Fans react directly. Your replies stand out with an artist badge.</p>
       </div>
       <div class="feat">
         <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M19 9l-5 5-4-4-3 3"/></svg></div>
-        <div class="feat-h">Full analytics</div>
-        <p class="feat-p">Views, opens, clicks, new fans, earnings.</p>
+        <div class="feat-h">Post analytics</div>
+        <p class="feat-p">Views, email opens, web views, new fans, earnings.</p>
       </div>
-      <div class="feat">
-        <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <div class="feat-h">Comments, reactions, and sharing</div>
-        <p class="feat-p">Every post invites participation directly on your platform. The signal that this is not just email.</p>
-      </div>
+    </div>
   </div>
-</div></div>
+</div>
+
+<!-- MID CTA -->
+<div class="midcta"><a href="#" class="btn btn-gold">Get Started</a></div>
 
 <!-- COMPARISON -->
 <div class="wrap"><div class="inner centered">
   <h2 class="display h-lg">Same workflow.<br>More to show for it.</h2>
   <p class="sub mx" style="max-width:560px;margin-top:18px;">Email was built for broadcasting. Posts was built for participation.</p>
-  <div class="comp"><table>
-    <thead><tr><th></th><th>Email alone</th><th class="posts-col">With Posts</th></tr></thead>
-    <tbody>
+  <div class="comp"><table><thead><tr><th></th><th>Email alone</th><th class="posts-col">With Posts</th></tr></thead><tbody>
           <tr><td>Reach</td><td>Your existing list.</td><td class="posts-col">Inbox and web at once. New fans discover and convert.</td></tr>
           <tr><td>Engagement</td><td>Delivered, then static.</td><td class="posts-col">Fans react, vote, comment, and share.</td></tr>
-          <tr><td>Targeting</td><td>Basic list filters.</td><td class="posts-col">Gate by post or block. Everyone, signed-in, subscribers, or custom audiences.</td></tr>
-          <tr><td>Fan data</td><td>Opens and clicks.</td><td class="posts-col">Every view, vote, comment, and signup enriches a fan profile you own.</td></tr>
+          <tr><td>Targeting</td><td>Basic list filters.</td><td class="posts-col">Send to any segment. Gate any post or block by audience.</td></tr>
+          <tr><td>Fan data</td><td>Opens and clicks.</td><td class="posts-col">Every view, vote, comment, and signup builds a fan profile you own.</td></tr>
           <tr><td>Shelf life</td><td>Lives in the inbox.</td><td class="posts-col">Lives on the web. Always-on, shareable, returnable.</td></tr>
-    </tbody>
-  </table></div>
+  </tbody></table></div>
 </div></div>
 
 <!-- CASES -->
 <div class="wrap"><div class="inner centered">
   <h2 class="display h-lg">What Posts makes possible.</h2>
-  <div class="cases" style="grid-template-columns:1fr;max-width:720px;margin-left:auto;margin-right:auto;">
-    <div class="case"><div class="case-img"><div class="case-name">Paul McCartney</div></div><div class="case-body"><div class="case-artist">Paul McCartney</div><div class="case-type">Fan Polls + First Listen</div><p class="case-p">(GRANT CASE STUDY COPY COMING RE: POLLS)</p></div></div>
-  </div>
+  <div class="cases"><div class="case"><div class="case-img"><div class="case-name">Paul McCartney</div></div><div class="case-body"><div class="case-artist">Paul McCartney</div><div class="case-type">Fan Polls + First Listen</div><p class="case-p">(GRANT CASE STUDY COPY COMING RE: POLLS)</p></div></div></div>
 </div></div>
 
 <!-- FAQ -->
@@ -426,11 +338,11 @@
   <div class="faq">
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">+</span><span class="faq-q-text">What is Posts?</span></div>
-        <div class="faq-a">Posts is the new way to communicate directly with your fans. It starts with the email marketing you already rely on and adds everything email was never built to give you: interactivity, fan intelligence, web reach, and the tools artists actually need. Publish each message to email, the web, or both. Every interaction feeds your fan graph. Other tools know subscribers. Openstage knows fans.</div>
+        <div class="faq-a">Posts is the new way to communicate directly with your fans. It starts with the email marketing you already rely on and adds web reach, interactivity, and the targeting and gating that come from Openstage fan data. Publish each message to email, the web, or both.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">+</span><span class="faq-q-text">Do Posts get sent to email automatically?</span></div>
-        <div class="faq-a">Every message goes where you decide: email, the web, the feed, or any combination. Messages you publish to the web can be discovered and shared by new fans. Each one is its own decision.</div>
+        <div class="faq-a">Every message goes where you decide: email, the web, or both. Each one is its own decision.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">+</span><span class="faq-q-text">What can you build?</span></div>
@@ -438,35 +350,31 @@
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">+</span><span class="faq-q-text">How is this different from other email or newsletter tools?</span></div>
-        <div class="faq-a">Posts is connected to your fan graph. Other tools know subscribers. Openstage knows fans. You can target delivery and gate access independently, at the post and block level, by who fans are and what they've done. Plus Bandsintown, DSP embeds, presave blocks, and gating logic built for how you release.</div>
+        <div class="faq-a">Other tools publish. Openstage publishes on top of your fan data, so you can send to any segment and gate any post or block by who fans are and what they have done. Plus Bandsintown, DSP embeds, pre-save blocks, and tools built for how you release.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">+</span><span class="faq-q-text">How is this different from Broadcasts?</span></div>
-        <div class="faq-a">Posts is how you send email campaigns going forward, now with web reach, interactivity, and gating built in. Broadcasts remain the tool for SMS and lifecycle flows for now.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">+</span><span class="faq-q-text">Are Posts replacing Broadcasts?</span></div>
-        <div class="faq-a">Posts becomes the home for your email and web campaigns. Broadcasts remain for SMS and lifecycle flows for now.</div>
+        <div class="faq-a">Posts is how you send email campaigns going forward, now with web reach, interactivity, targeting, and gating built in. Broadcasts remain the tool for SMS and lifecycle flows for now.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">+</span><span class="faq-q-text">Do fans need an account?</span></div>
         <div class="faq-a">Depends on your settings. Public, gated behind signup, gated to a specific audience, or paid subscribers. Per post and per block.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">+</span><span class="faq-q-text">What presave platforms are supported?</span></div>
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">+</span><span class="faq-q-text">What pre-save platforms are supported?</span></div>
         <div class="faq-a">Spotify and Apple Music. YouTube and Amazon Music require linking out.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">+</span><span class="faq-q-text">How does data collection work?</span></div>
-        <div class="faq-a">Every view, click, poll response, comment, and signup flows into your fan graph automatically. No exports. No integrations.</div>
+        <div class="faq-a">Every view, click, poll response, comment, and signup flows into your fan data automatically. No exports. No integrations.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">+</span><span class="faq-q-text">Can I gate individual blocks?</span></div>
-        <div class="faq-a">Yes. Lock a specific block behind a signup, a subscription, a custom audience, or a completed action like a pre-save or quiz, while keeping the rest public. Signup happens in context.</div>
+        <div class="faq-a">Yes. Lock a specific block behind a signup, a subscription, a custom audience, or a completed action like a pre-save or quiz, while keeping the rest public.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">+</span><span class="faq-q-text">When can I start?</span></div>
-        <div class="faq-a">Posts is in early access. Request access and we'll get you set up. New Openstage artists default to Posts from day one.</div>
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">+</span><span class="faq-q-text">How do I get started?</span></div>
+        <div class="faq-a">Sign up and we will get you set up. New Openstage artists start with Posts from day one.</div>
       </div>
   </div>
 </div></div>
@@ -474,15 +382,11 @@
 <!-- CLOSER -->
 <div class="closer">
   <h2 class="display">Every message deserves a life beyond the inbox.</h2>
-  <p class="closer-sub">Deliver better experiences for every fan with Posts.</p>
-  <a href="#" class="btn btn-gold">Get early access</a>
+  <p class="closer-sub">Deliver better experiences for every fan with Posts, the most powerful direct-to-fan channel in music.</p>
+  <a href="#" class="btn btn-gold">Get Started</a>
 </div>
 
-<!-- STAMP + FOOTER -->
-<div class="stamp">
-  <div class="stamp-l">Know your fans, value your fans.</div>
-  <span style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;color:var(--gold);letter-spacing:0.02em;">Openstage</span>
-</div>
+<div class="stamp"><div class="stamp-l">Know your fans, value your fans.</div><span class="logo" style="font-size:24px;">Openstage</span></div>
 <footer>
   <div class="foot-grid">
     <div class="foot-col"><h4>Navigation</h4><a href="#">Home</a></div>
@@ -490,11 +394,7 @@
     <div class="foot-col"><h4>Company</h4><a href="#">About Us</a><a href="#">Careers</a></div>
     <div class="foot-col"><h4>Legal</h4><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a><a href="#">Data processing addendum</a></div>
   </div>
-  <div class="foot-bottom"><div><span style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;color:var(--gold);letter-spacing:0.02em;">Openstage</span></div><div class="foot-c">&copy; 2026 Openstage. All Rights Reserved.</div></div>
+  <div class="foot-bottom"><span class="logo">Openstage</span><div class="foot-c">&copy; 2026 Openstage. All Rights Reserved.</div></div>
 </footer>
-
-<script>
-function toggleFaq(el){const i=el.closest('.faq-item');const o=i.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(x=>x.classList.remove('open'));if(!o)i.classList.add('open');}
-</script>
-</body>
-</html>
+<script>function toggleFaq(el){const i=el.closest('.faq-item');const o=i.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(x=>x.classList.remove('open'));if(!o)i.classList.add('open');}</script>
+</body></html>
