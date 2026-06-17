@@ -40,12 +40,18 @@
   .mock-c.on{background:var(--gold);color:#000;} .mock-c.off{background:var(--w08);color:var(--w50);border:1px solid var(--w12);}
   .mock-pub-btn{margin-top:12px;text-align:center;background:#fff;color:#000;font-size:13px;font-weight:700;border-radius:8px;padding:10px 0;}
   .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px;text-align:left;}
+  .cards3.beats{align-items:stretch;}
   .cards3.themeonly .card{display:flex;flex-direction:column;align-items:center;text-align:center;padding:32px 24px;}
   .cards3.themeonly .card-ico{margin-bottom:14px;}
   .cards3.themeonly .card-h{margin-bottom:0;}
+  .card-h .plus{color:var(--gold);font-family:'Anton',sans-serif;margin-right:6px;}
   .card{background:var(--panel);border:1px solid var(--w12);border-radius:14px;padding:30px 26px;}
   .card-ico{width:46px;height:46px;border-radius:50%;background:rgba(245,197,24,.12);border:1px solid rgba(245,197,24,.35);color:var(--gold);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
   .card-h{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;font-size:19px;color:var(--gold);margin-bottom:12px;} .card-p{font-size:15px;color:var(--w70);}
+  .cards3.beats .card{display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:flex-start;padding:32px 26px;}
+  .cards3.beats .card-ico{margin-bottom:16px;background:rgba(245,197,24,.12);border:1px solid rgba(245,197,24,.3);color:initial;height:46px;width:auto;min-width:46px;padding:0 14px;border-radius:23px;font-size:20px;line-height:1;display:inline-flex;align-items:center;justify-content:center;gap:4px;}
+  .ico-plus{color:var(--gold);font-family:'Anton',sans-serif;font-size:16px;line-height:1;}
+  .cards3.beats .card-h{font-family:'Inter',sans-serif;text-transform:none;font-size:16px;font-weight:600;color:#fff;margin-bottom:0;line-height:1.45;max-width:200px;}
   .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:900px;margin:42px auto 0;}
   .chip{font-size:14px;font-weight:500;color:#fff;background:var(--panel);border:1px solid rgba(245,197,24,.35);border-radius:100px;padding:12px 22px;}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;} .row.rev>div:first-child{order:2;} .row-h{font-size:46px;margin-bottom:20px;} .row-p{font-size:17px;color:var(--w70);} .row-p.lead{font-size:21px;font-weight:700;color:var(--gold);font-family:'Inter',sans-serif;}
@@ -189,19 +195,19 @@
 <!-- BLOCK 02 -->
 <div class="wrap"><div class="inner centered">
   <h2 class="display h-lg" style="margin-bottom:18px;">Everything email does,<br>plus everything it can't.</h2>
-  <p class="sub mx" style="max-width:740px;">Built for music and powered by fan data, Posts lets you create one message, publish it to email and the web at the same time, then control who gets it and what they see.</p>
-  <div class="cards3 themeonly">
+  <p class="sub mx" style="max-width:740px;">Built for music and powered by fan data, Posts lets you:</p>
+  <div class="cards3 beats">
       <div class="card">
-        <div class="card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <div class="card-h">More interactive</div>
+        <div class="card-ico">📝</div>
+        <div class="card-h">Create one message</div>
       </div>
       <div class="card">
-        <div class="card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
-        <div class="card-h">More discoverable</div>
+        <div class="card-ico">📧<span class="ico-plus">+</span>🌐</div>
+        <div class="card-h">Publish to email and the web at the same time</div>
       </div>
       <div class="card">
-        <div class="card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><line x1="7" y1="6" x2="20" y2="6"/><line x1="7" y1="18" x2="20" y2="18"/><circle cx="15" cy="12" r="2"/><line x1="3" y1="12" x2="13" y2="12"/><line x1="17" y1="12" x2="21" y2="12"/></svg></div>
-        <div class="card-h">More fan-aware</div>
+        <div class="card-ico">🔒</div>
+        <div class="card-h">Control who gets it and what they see</div>
       </div>
   </div>
 </div></div>
