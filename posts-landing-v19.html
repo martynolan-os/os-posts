@@ -40,6 +40,9 @@
   .mock-c.on{background:var(--gold);color:#000;} .mock-c.off{background:var(--w08);color:var(--w50);border:1px solid var(--w12);}
   .mock-pub-btn{margin-top:12px;text-align:center;background:#fff;color:#000;font-size:13px;font-weight:700;border-radius:8px;padding:10px 0;}
   .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px;text-align:left;}
+  .cards3.themeonly .card{display:flex;flex-direction:column;align-items:center;text-align:center;padding:32px 24px;}
+  .cards3.themeonly .card-ico{margin-bottom:14px;}
+  .cards3.themeonly .card-h{margin-bottom:0;}
   .card{background:var(--panel);border:1px solid var(--w12);border-radius:14px;padding:30px 26px;}
   .card-ico{width:46px;height:46px;border-radius:50%;background:rgba(245,197,24,.12);border:1px solid rgba(245,197,24,.35);color:var(--gold);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
   .card-h{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;font-size:19px;color:var(--gold);margin-bottom:12px;} .card-p{font-size:15px;color:var(--w70);}
@@ -180,23 +183,20 @@
 
 <!-- BLOCK 02 -->
 <div class="wrap"><div class="inner centered">
-  <h2 class="display h-lg" style="margin-bottom:18px;">Your email marketing, upgraded.</h2>
-  <p class="sub mx" style="max-width:740px;">Everything email does, plus everything it can't. Built for music and powered by fan data, Posts lets you create one message, publish it to email and the web at the same time, then control who gets it and what they see.</p>
-  <div class="cards3">
+  <h2 class="display h-lg" style="margin-bottom:18px;">Everything email does,<br>plus everything it can't.</h2>
+  <p class="sub mx" style="max-width:740px;">Built for music and powered by fan data, Posts lets you create one message, publish it to email and the web at the same time, then control who gets it and what they see.</p>
+  <div class="cards3 themeonly">
       <div class="card">
         <div class="card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
         <div class="card-h">More interactive</div>
-        <p class="card-p">Fans react, vote, comment, and share, right inside your world. Every email becomes a two-way moment instead of a one-way blast.</p>
       </div>
       <div class="card">
         <div class="card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
         <div class="card-h">More discoverable</div>
-        <p class="card-p">Your message lives on the web, where new fans find it through shares and social and step into your world.</p>
       </div>
       <div class="card">
         <div class="card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><line x1="7" y1="6" x2="20" y2="6"/><line x1="7" y1="18" x2="20" y2="18"/><circle cx="15" cy="12" r="2"/><line x1="3" y1="12" x2="13" y2="12"/><line x1="17" y1="12" x2="21" y2="12"/></svg></div>
         <div class="card-h">More fan-aware</div>
-        <p class="card-p">Every Post knows who each fan is and what they have done, so you can send the right message and gate the right content to the right people.</p>
       </div>
   </div>
 </div></div>
@@ -206,7 +206,7 @@
   <div>
     <div class="eyebrow">More interactive</div>
     <h2 class="display row-h">Every announcement becomes a shared moment.</h2>
-    <p class="row-p">Posts makes fandom visible. When fans can see other fans reacting and voting, it creates gravitational pull that brings new fans in.</p>
+    <p class="row-p">Fans react, vote in polls, comment, and share, right inside the post. Posts makes fandom visible, so when fans see other fans taking part, it creates gravitational pull that brings new fans in.</p>
   </div>
   <div class="imock">
     <div class="imock-media"><div class="imock-play"><svg width="13" height="15" viewBox="0 0 11 13" fill="#fff"><path d="M0 0L11 6.5L0 13V0Z"/></svg></div></div>
@@ -228,7 +228,7 @@
   <div>
     <div class="eyebrow">More discoverable</div>
     <h2 class="display row-h">Reach every fan,<br>not just your list.</h2>
-    <p class="row-p">One send reaches your fans in the inbox and new fans on the web at the same time. Every share, link, and post pulls in people who aren't on your list yet, and turns them into fans you know and can reach again.</p>
+    <p class="row-p">Every post has a web version fans can share with a link, so one send reaches your list in the inbox and new fans on the web at once. Signup prompts turn those new visitors into fans you know and can reach again.</p>
   </div>
   <div class="rv">
     <div class="rv-top">Posts</div>
@@ -243,7 +243,13 @@
 
 <!-- TARGETING & GATING (proves More fan-aware) -->
 <div class="wrap gate" id="segmentation"><div class="inner">
-  <div class="row rev" style="margin-top:8px;">
+  <div class="centered" style="margin-bottom:8px;">
+    <div class="eyebrow" style="display:block;text-align:center;">More fan-aware</div>
+    <h2 class="display h-lg" style="margin-bottom:18px;">Built on your fan data.</h2>
+    <p class="sub mx" style="text-align:center;">Smart segmentation puts every fan's history to work. Target who gets each message, gate what they can open, and turn new readers into known fans, all from data you already own.</p>
+  </div>
+
+  <div class="row rev" style="margin-top:48px;">
     <div class="gatecompact">
       <div class="gchalf l">
         <div class="gchalf-l">What you control</div>
@@ -264,7 +270,6 @@
       </div>
     </div>
     <div>
-      <div class="eyebrow">More fan-aware</div>
       <h2 class="display row-h">Gate anything to exactly the right audience.</h2>
       <p class="row-p">Choose who can open every post, down to a single block. Set it to everyone, your subscribers, or a custom audience built from who fans are and what they've done.</p>
     </div>
@@ -288,7 +293,7 @@
 <div class="wrap"><div class="inner centered">
   <div class="eyebrow" style="display:block;text-align:center;">Built for music</div>
   <h2 class="display h-lg">Everything you need,<br>already in the editor.</h2>
-  <p class="sub mx" style="max-width:600px;margin-top:18px;">Built specifically for music. Add a first listen, pre-save, tour dates, polls, exclusive content, and more. Everything is ready the moment you open the editor.</p>
+  <p class="sub mx" style="max-width:600px;margin-top:18px;">A block-based editor built specifically for music. Drop in a first listen, pre-save, tour dates, polls, and exclusive content like building blocks. Everything is ready the moment you open it.</p>
   <div class="fgrid">
       <div class="feat">
         <div class="feat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
