@@ -5,7 +5,7 @@
 <title>Posts - Openstage</title>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#0A0A0B;--panel:#141416;--panel2:#1A1A1D;--gold:#F5C518;--gold2:#FFD43B;--ink:#fff;--w70:rgba(255,255,255,.7);--w50:rgba(255,255,255,.5);--w12:rgba(255,255,255,.12);--w08:rgba(255,255,255,.08);}
+  :root{--bg:#0A0A0B;--panel:#141416;--panel2:#1A1A1D;--gold:#F5C518;--gold2:#FFD43B;--ink:#fff;--w70:rgba(255,255,255,.7);--w50:rgba(255,255,255,.5);--w30:rgba(255,255,255,.3);--w12:rgba(255,255,255,.12);--w08:rgba(255,255,255,.08);}
   *{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;}
   body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
   .display{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;line-height:1.0;letter-spacing:.005em;color:var(--gold);}
@@ -15,336 +15,366 @@
   .nav-links a{color:var(--w70);font-size:14px;font-weight:500;text-decoration:none;} .nav-links a:hover{color:#fff;}
   .nav-cta{background:var(--gold)!important;color:#000!important;font-weight:700!important;padding:9px 20px!important;border-radius:8px!important;}
   .wrap{padding:64px 40px;} .inner{max-width:1140px;margin:0 auto;} .centered{text-align:center;}
-  .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
-  .pill{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(245,197,24,.4);border-radius:100px;padding:7px 18px;}
   .h-lg{font-size:50px;} .sub{font-size:18px;color:var(--w70);} .mx{margin-left:auto;margin-right:auto;}
   .btn{display:inline-block;font-size:15px;font-weight:700;text-decoration:none;padding:14px 30px;border-radius:8px;}
   .btn-gold{background:var(--gold);color:#000;} .btn-gold:hover{background:var(--gold2);}
-  .hero{padding:140px 40px 90px;} .hero-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
-  .hero h1{font-size:70px;margin:22px 0 24px;color:#fff;} .hero-sub{font-size:19px;color:var(--w70);line-height:1.55;margin-bottom:32px;max-width:560px;}
-  .mock{background:var(--panel);border:1px solid var(--w12);border-radius:16px;padding:22px;}
-  .mock-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
-  .mock-title{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--w50);}
-  .mock-badge{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(245,197,24,.4);border-radius:100px;padding:4px 11px;}
-  .mock-media{height:130px;border-radius:10px;background:linear-gradient(135deg,#2a2a2e,rgba(245,197,24,.12));display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
-  .mock-play{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;}
-  .mock-line{height:8px;border-radius:3px;background:var(--w12);margin-bottom:8px;} .mock-line.s{width:55%;}
-  .mock-poll{display:flex;justify-content:space-between;font-size:12px;border-radius:7px;padding:9px 13px;margin-top:10px;}
-  .mock-poll.lead{background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.3);color:var(--gold);}
-  .mock-poll.trail{background:var(--w08);border:1px solid var(--w12);color:var(--w50);margin-top:6px;}
-  .mock-reacts{display:flex;gap:8px;margin-top:12px;} .mock-react{font-size:11px;color:var(--w50);border:1px solid var(--w12);border-radius:100px;padding:5px 11px;}
-  .mock-react.hot{color:var(--gold);border-color:rgba(245,197,24,.3);}
-  .mock-pub{background:var(--panel2);border:1px solid var(--w12);border-radius:12px;padding:14px 16px;margin-top:16px;}
-  .mock-pub-l{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--w50);margin-bottom:10px;}
-  .mock-ch{display:flex;gap:8px;} .mock-c{flex:1;text-align:center;font-size:12px;font-weight:700;border-radius:8px;padding:9px 0;}
-  .mock-c.on{background:var(--gold);color:#000;} .mock-c.off{background:var(--w08);color:var(--w50);border:1px solid var(--w12);}
-  .mock-pub-btn{margin-top:12px;text-align:center;background:#fff;color:#000;font-size:13px;font-weight:700;border-radius:8px;padding:10px 0;}
-  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px;text-align:left;}
-  .cards3.beats{align-items:stretch;}
-  .cards3.themeonly .card{display:flex;flex-direction:column;align-items:center;text-align:center;padding:32px 24px;}
-  .cards3.themeonly .card-ico{margin-bottom:14px;}
-  .cards3.themeonly .card-h{margin-bottom:0;}
-  .card-h .plus{color:var(--gold);font-family:'Anton',sans-serif;margin-right:6px;}
-  .card{background:var(--panel);border:1px solid var(--w12);border-radius:14px;padding:30px 26px;}
-  .card-ico{width:46px;height:46px;border-radius:50%;background:rgba(245,197,24,.12);border:1px solid rgba(245,197,24,.35);color:var(--gold);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
-  .card-h{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;font-size:19px;color:var(--gold);margin-bottom:12px;} .card-p{font-size:15px;color:var(--w70);}
-  .cards3.beats .card{display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:flex-start;padding:32px 26px;}
-  .cards3.beats .card-ico{margin-bottom:16px;background:rgba(245,197,24,.12);border:1px solid rgba(245,197,24,.3);color:initial;height:46px;width:auto;min-width:46px;padding:0 14px;border-radius:23px;font-size:20px;line-height:1;display:inline-flex;align-items:center;justify-content:center;gap:4px;}
-  .ico-plus{color:var(--gold);font-family:'Anton',sans-serif;font-size:16px;line-height:1;}
-  .cards3.beats .card-h{font-family:'Inter',sans-serif;text-transform:none;font-size:18px;font-weight:700;color:var(--gold);margin-bottom:8px;line-height:1.3;}
-  .cards3.beats .card-p{font-size:14px;color:var(--w70);max-width:210px;line-height:1.5;}
-  .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:900px;margin:42px auto 0;}
+  .btn-ghost{color:#fff;border:1px solid var(--w12);} .btn-ghost:hover{border-color:rgba(245,197,24,.5);color:var(--gold);}
+  .cta-pair{display:flex;gap:14px;flex-wrap:wrap;}
+  .pill{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(245,197,24,.4);border-radius:100px;padding:7px 18px;}
+
+  /* HERO */
+  .hero{padding:140px 40px 90px;} .hero-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr .95fr;gap:52px;align-items:center;}
+  .hero h1{font-size:62px;margin:22px 0 24px;color:#fff;} .hero-sub{font-size:19px;color:var(--w70);line-height:1.55;margin-bottom:32px;max-width:560px;}
+
+  /* SPLIT PHONES */
+  .phones{display:flex;gap:20px;justify-content:center;align-items:stretch;}
+  .phone{width:250px;background:#0e0e10;border:1px solid var(--w12);border-radius:26px;padding:12px;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,.5);}
+  .phone.web{}
+  .phone-tag{text-align:center;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  .screen{flex:1;background:var(--panel);border:1px solid var(--w08);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;}
+  .email-chrome{background:var(--panel2);padding:10px 12px;border-bottom:1px solid var(--w08);}
+  .inbox-row{display:flex;align-items:center;gap:8px;padding:7px 12px;border-bottom:1px solid var(--w08);opacity:.45;}
+  .inbox-row:last-of-type{border-bottom:none;}
+  .inbox-av{width:20px;height:20px;border-radius:50%;background:var(--w12);color:var(--w50);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .inbox-lines{flex:1;min-width:0;}
+  .inbox-from{font-size:9px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .inbox-sub{font-size:8px;color:var(--w50);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .inbox-time{font-size:8px;color:var(--w30);flex-shrink:0;}
+  .email-open{margin:0 8px;border:1px solid rgba(245,197,24,.4);border-radius:12px;overflow:hidden;background:var(--panel);}
+  .email-subject{font-size:12px;font-weight:700;color:#fff;margin-bottom:6px;}
+  .email-fromrow{display:flex;align-items:center;gap:8px;}
+  .email-av{width:22px;height:22px;border-radius:50%;background:var(--gold);color:#000;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .email-meta{font-size:10px;color:var(--w50);} .email-meta b{color:#fff;font-weight:600;}
+  .web-chrome{background:var(--panel2);padding:9px 12px;border-bottom:1px solid var(--w08);display:flex;align-items:center;gap:8px;}
+  .web-dots{display:flex;gap:4px;} .web-dot{width:7px;height:7px;border-radius:50%;background:var(--w12);}
+  .web-url{flex:1;font-size:9px;color:var(--w50);background:var(--w08);border-radius:100px;padding:4px 10px;white-space:nowrap;overflow:hidden;}
+  .post-body{padding:12px;display:flex;flex-direction:column;gap:9px;flex:1;}
+  .post-media{height:86px;border-radius:9px;background:linear-gradient(135deg,#2a2a2e,rgba(245,197,24,.18));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .post-play{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;}
+  .post-title{font-size:12px;font-weight:700;color:#fff;}
+  .post-line{height:6px;border-radius:3px;background:var(--w12);} .post-line.s{width:60%;}
+  .post-cta{text-align:center;background:var(--gold);color:#000;font-size:11px;font-weight:700;border-radius:7px;padding:8px 0;}
+  .web-extras{border-top:1px solid var(--w08);margin-top:2px;padding-top:9px;display:flex;flex-direction:column;gap:7px;}
+  .web-reacts{display:flex;gap:6px;}
+  .web-react{font-size:9px;color:var(--gold);border:1px solid rgba(245,197,24,.35);border-radius:100px;padding:3px 8px;}
+  .web-react.ghost{color:var(--w50);border-color:var(--w12);}
+  .web-comment{display:flex;gap:6px;align-items:flex-start;}
+  .web-cav{width:16px;height:16px;border-radius:50%;background:var(--w12);flex-shrink:0;}
+  .web-cbody{flex:1;} .web-cname{font-size:8px;font-weight:700;color:#fff;} .web-ctext{font-size:8px;color:var(--w50);line-height:1.4;}
+  .phone-note{text-align:center;font-size:11px;color:var(--w30);margin-top:14px;}
+
+  /* SOLUTION */
+  .sol-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px;text-align:left;}
+  .stile{background:var(--panel);border:1px solid var(--w12);border-radius:14px;padding:30px 26px;display:flex;flex-direction:column;align-items:center;text-align:center;}
+  .stile-ico{width:46px;height:46px;border-radius:50%;background:rgba(245,197,24,.12);border:1px solid rgba(245,197,24,.35);color:var(--gold);display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .stile-h{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;font-size:18px;color:var(--gold);margin-bottom:10px;}
+  .stile-p{font-size:14px;color:var(--w70);line-height:1.55;}
+  .sol-foot{margin-top:34px;font-size:16px;font-weight:600;color:var(--gold);text-align:center;}
+  .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:920px;margin:42px auto 0;}
   .chip{font-size:14px;font-weight:500;color:#fff;background:var(--panel);border:1px solid rgba(245,197,24,.35);border-radius:100px;padding:12px 22px;}
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;} .row.rev>div:first-child{order:2;} .row-h{font-size:46px;margin-bottom:20px;} .row-p{font-size:17px;color:var(--w70);} .row-p.lead{font-size:21px;font-weight:700;color:var(--gold);font-family:'Inter',sans-serif;}
-  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
-  .tcol{display:flex;flex-direction:column;}
-  .tcol-h{font-size:30px;margin-bottom:14px;line-height:1.05;}
-  .tcol-sub{font-size:16px;color:var(--w70);margin-bottom:28px;}
-  .tcol-vis{margin-top:auto;}
-  .imock{background:var(--panel);border:1px solid var(--w12);border-radius:18px;padding:24px;}
-  .imock-media{height:150px;border-radius:12px;background:linear-gradient(120deg,#2a2a2e,#3a3a3f,rgba(245,197,24,.3));position:relative;display:flex;align-items:flex-end;padding:16px;}
-  .imock-play{position:absolute;left:16px;bottom:16px;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;}
-  .imock-title{font-size:16px;font-weight:700;color:#fff;margin:16px 0 14px;letter-spacing:.01em;}
-  .imock-bar{display:flex;gap:8px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--w08);}
-  .imock-chip{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#fff;background:var(--panel2);border:1px solid var(--w12);border-radius:100px;padding:8px 14px;}
-  .imock-chip.ghost{color:var(--w50);}
-  .imock-pollq{font-size:13px;color:var(--w50);margin:16px 0 12px;}
-  .imock-pollrow{display:grid;grid-template-columns:60px 1fr 44px;align-items:center;gap:12px;margin-bottom:10px;font-size:13px;color:#fff;}
-  .imock-track{height:10px;border-radius:6px;background:var(--w08);overflow:hidden;}
-  .imock-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--gold),var(--gold2));}
-  .imock-pct{color:var(--w50);text-align:right;font-size:12px;}
-  .rv{background:var(--panel);border:1px solid var(--w12);border-radius:16px;padding:30px;}
-  .rv-top{text-align:center;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#000;background:var(--gold);border-radius:100px;padding:10px 0;margin-bottom:16px;}
-  .rv-fork{max-width:260px;margin:4px auto 14px;} .rv-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-  .rv-col{background:var(--panel2);border:1px solid var(--w12);border-radius:12px;padding:18px;}
-  .rv-pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;border:1.5px solid #fff;border-radius:100px;padding:5px 14px;margin-bottom:10px;}
-  .rv-pill.gold{color:var(--gold);border-color:var(--gold);} .rv-p{font-size:13px;color:var(--w70);}
-  .rv-foot{margin-top:14px;text-align:center;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#000;background:var(--gold);border-radius:100px;padding:9px 16px;}
-  .gate{background:#060607;} .gate-sub{font-size:18px;color:var(--w70);max-width:760px;}
-  .gatecompact{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--w12);border-radius:16px;overflow:hidden;background:var(--panel);}
-  .gchalf{padding:36px 28px;}
-  .gchalf.l{border-right:1px solid var(--w12);}
-  .gchalf.r{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
-  .gchalf-l{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
-  .gco{display:flex;align-items:center;gap:10px;border:1px solid var(--w12);border-radius:9px;padding:14px 14px;margin-bottom:9px;font-size:12px;color:var(--w50);}
-  .gco.on{border-color:rgba(245,197,24,.55);background:rgba(245,197,24,.08);color:#fff;}
-  .gco-d{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--w50);flex-shrink:0;}
-  .gco.on .gco-d{border-color:var(--gold);background:var(--gold);}
-  .gco-chips{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px;}
-  .gco-chip{font-size:9px;color:#fff;background:rgba(245,197,24,.14);border:1px solid rgba(245,197,24,.35);border-radius:100px;padding:4px 8px;}
-  .splitbox{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--w12);border-radius:18px;overflow:hidden;margin-top:40px;background:var(--panel);}
-  .splithalf{padding:32px;}
-  .splithalf.left{border-right:1px solid var(--w12);}
-  .splithalf.right{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
-  .split-l{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
-  .gopt2{display:flex;align-items:center;gap:12px;border:1px solid var(--w12);border-radius:10px;padding:13px 16px;margin-bottom:10px;font-size:14px;color:var(--w50);}
-  .gopt2.on{border-color:rgba(245,197,24,.55);background:rgba(245,197,24,.08);color:#fff;}
-  .gdot2{width:15px;height:15px;border-radius:50%;border:1.5px solid var(--w50);flex-shrink:0;}
-  .gopt2.on .gdot2{border-color:var(--gold);background:var(--gold);}
-  .gpanels{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:0;align-items:stretch;}
-  .gpanels>div{display:flex;flex-direction:column;}
-  .gpanels>div>.gcard,.gpanels>div>.gpanel{flex:1;display:flex;flex-direction:column;justify-content:center;}
-  .gpanel{background:var(--panel);border:1px solid var(--w12);border-radius:16px;padding:26px;}
-  .gpanel-l{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
-  .gcol-l{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--w50);margin-bottom:16px;}
-  .gcard{background:var(--panel);border:1px solid var(--w12);border-radius:16px;padding:26px;}
-  .gcard-h{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px;}
-  .gcard-sub{font-size:12px;color:var(--w50);margin-bottom:18px;}
-  .gchoices{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-  .gchoice{background:var(--panel2);border:1px solid var(--w12);border-radius:12px;padding:20px 16px;text-align:center;}
-  .gchoice.on{border-color:rgba(245,197,24,.6);background:rgba(245,197,24,.08);}
-  .gchoice-ico{color:var(--gold);margin-bottom:8px;display:flex;justify-content:center;}
-  .gchoice-h{font-size:14px;font-weight:700;color:#fff;margin-bottom:3px;}
-  .gchoice-p{font-size:11px;color:var(--w50);}
-  .gdiv{border-top:1px solid var(--w08);margin:18px 0 14px;}
-  .gopt{display:flex;align-items:center;gap:12px;border:1px solid var(--w12);border-radius:10px;padding:11px 14px;margin-bottom:8px;font-size:13px;color:var(--w50);}
-  .gopt.on{border-color:rgba(245,197,24,.5);background:rgba(245,197,24,.08);color:#fff;}
-  .gdot{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--w50);flex-shrink:0;} .gopt.on .gdot{border-color:var(--gold);background:var(--gold);}
-  .gchips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;} .gchip{font-size:11px;color:#fff;background:rgba(245,197,24,.16);border:1px solid rgba(245,197,24,.4);border-radius:100px;padding:5px 12px;}
-  .fg{text-align:center;padding:30px 24px;} .fg-lock{width:52px;height:52px;border-radius:50%;background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.35);color:var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
-  .fg-h{font-size:17px;font-weight:700;margin-bottom:8px;} .fg-p{font-size:13px;color:var(--w50);margin-bottom:18px;} .fg-btn{display:inline-block;background:var(--gold);color:#000;font-size:13px;font-weight:700;border-radius:8px;padding:10px 28px;}
-  .gh3{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;font-size:24px;color:var(--gold);margin:56px 0 24px;}
-  .unlock{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
-  .unlock-h{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;font-size:30px;color:var(--gold);margin-bottom:20px;}
-  .unlock-p{font-size:16px;color:var(--w70);} .unlock-cap{margin-top:18px;font-size:16px;font-weight:700;color:var(--gold);}
-  .demo{background:var(--panel);border:1px solid var(--w12);border-radius:16px;padding:32px 28px;}
-  .drow{display:grid;grid-template-columns:170px 28px 1fr;align-items:center;gap:10px;padding:22px 0;border-bottom:1px solid var(--w08);font-size:14px;} .drow:last-child{border-bottom:none;}
-  .drow.pay{border-top:1.5px solid rgba(245,197,24,.4);margin-top:4px;padding-top:16px;}
-  .dact{color:#fff;font-weight:600;} .drow.pay .dact{color:var(--w50);font-weight:500;} .darr{color:var(--gold);text-align:center;} .dres{color:var(--gold);font-weight:600;text-align:left;white-space:nowrap;}
-  .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;text-align:left;}
-  .pcards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;text-align:left;}
-  .pcard{background:var(--panel);border:1px solid var(--w12);border-radius:16px;padding:28px 24px;}
-  .pcard-cond{font-size:13px;font-weight:700;color:#fff;border:1px solid var(--w12);border-radius:10px;padding:12px 14px;text-align:center;}
-  .pcard-arrow{color:var(--gold);text-align:center;font-size:20px;margin:12px 0;}
-  .pcard-res{font-size:13px;font-weight:700;letter-spacing:.02em;color:#000;background:var(--gold);border-radius:10px;padding:12px 14px;text-align:center;}
-  .pcard-p{font-size:13px;color:var(--w70);margin-top:16px;text-align:center;}
-  .feat{background:var(--panel);border:1px solid var(--w12);border-radius:14px;padding:24px;} .feat:hover{border-color:rgba(245,197,24,.5);}
-  .feat-ico{width:38px;height:38px;border-radius:50%;background:rgba(245,197,24,.12);border:1px solid rgba(245,197,24,.3);display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:18px;line-height:1;}
-  .feat-h{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--gold);} .feat-p{font-size:13px;color:var(--w70);}
-  .midcta{text-align:center;padding:0 40px 64px;margin-top:-56px;}
+
+  /* FEATURE CARDS */
+  .fcards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px;text-align:left;}
+  .fcard{background:var(--panel);border:1px solid var(--w12);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;}
+  .fcard:hover{border-color:rgba(245,197,24,.5);}
+  .fcard-vis{background:#0e0e10;border-bottom:1px solid var(--w08);padding:16px;height:196px;display:flex;flex-direction:column;justify-content:center;gap:8px;overflow:hidden;}
+  .fcard.wide{grid-column:1/-1;}
+  .fcard.wide .fcard-body{text-align:center;}
+  .fcard.wide .fcard-h{justify-content:center;}
+  .fcard.wide .fcard-p{max-width:640px;margin:0 auto;}
+  .gate3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;background:#0e0e10;border-bottom:1px solid var(--w08);padding:16px;}
+  .gpane{padding:16px;display:flex;flex-direction:column;justify-content:flex-start;gap:8px;background:var(--panel);border:1px solid var(--w12);border-radius:12px;min-height:210px;}
+  .gpane-tag{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+  .m-lockwrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;}
+  .m-lockico{width:38px;height:38px;border-radius:50%;background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.35);color:var(--gold);display:flex;align-items:center;justify-content:center;}
+  .m-lockh{font-size:12px;font-weight:700;color:#fff;}
+  .m-lockp{font-size:10px;color:var(--w50);}
+  .m-lockbtn{font-size:10px;font-weight:700;color:#000;background:var(--gold);border-radius:100px;padding:6px 16px;}
+  .fcard-body{padding:22px 22px 26px;}
+  .fcard-h{font-size:16px;font-weight:700;color:var(--gold);margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .fcard-p{font-size:13.5px;color:var(--w70);line-height:1.55;}
+  .soon{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(245,197,24,.4);border-radius:100px;padding:3px 9px;}
+
+  /* mini-mock atoms */
+  .m-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--w50);}
+  .m-opt{display:flex;align-items:center;gap:8px;border:1px solid var(--w12);border-radius:8px;padding:7px 10px;font-size:11px;color:var(--w50);}
+  .m-opt.on{border-color:rgba(245,197,24,.55);background:rgba(245,197,24,.08);color:#fff;}
+  .m-dot{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--w50);flex-shrink:0;}
+  .m-opt.on .m-dot{border-color:var(--gold);background:var(--gold);}
+  .m-chips{display:flex;gap:5px;flex-wrap:wrap;}
+  .m-chip{font-size:9px;color:#fff;background:rgba(245,197,24,.14);border:1px solid rgba(245,197,24,.35);border-radius:100px;padding:3px 8px;}
+  .m-pollrow{display:grid;grid-template-columns:56px 1fr 34px;align-items:center;gap:8px;font-size:11px;color:#fff;}
+  .m-track{height:9px;border-radius:5px;background:var(--w08);overflow:hidden;}
+  .m-fill{height:100%;border-radius:5px;background:linear-gradient(90deg,var(--gold),var(--gold2));}
+  .m-pct{color:var(--w50);text-align:right;font-size:10px;}
+  .m-q{font-size:11px;font-weight:600;color:#fff;}
+  .m-comment{display:flex;gap:7px;align-items:flex-start;}
+  .m-cav{width:18px;height:18px;border-radius:50%;background:var(--w12);flex-shrink:0;}
+  .m-cname{font-size:9px;font-weight:700;color:#fff;} .m-ctext{font-size:9px;color:var(--w50);line-height:1.4;}
+  .m-reacts{display:flex;gap:6px;}
+  .m-react{font-size:9px;color:var(--gold);border:1px solid rgba(245,197,24,.35);border-radius:100px;padding:3px 9px;}
+  .m-react.ghost{color:var(--w50);border-color:var(--w12);}
+  .m-embed{display:flex;align-items:center;gap:9px;border:1px solid var(--w12);border-radius:9px;padding:8px 10px;background:var(--panel);}
+  .m-eplay{width:26px;height:26px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .m-etitle{font-size:10px;font-weight:700;color:#fff;} .m-esub{font-size:9px;color:var(--w50);}
+  .m-video{height:52px;border-radius:9px;background:linear-gradient(120deg,#2a2a2e,rgba(245,197,24,.15));display:flex;align-items:center;justify-content:center;}
+  .m-tier{display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(245,197,24,.4);background:rgba(245,197,24,.07);border-radius:9px;padding:8px 10px;}
+  .m-tname{font-size:10px;font-weight:700;color:#fff;} .m-tprice{font-size:10px;font-weight:700;color:var(--gold);}
+  .m-merch{display:flex;align-items:center;gap:9px;border:1px solid var(--w12);border-radius:9px;padding:8px 10px;}
+  .m-mimg{width:26px;height:26px;border-radius:6px;background:var(--w12);flex-shrink:0;}
+  .m-daterow{display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:8px;font-size:10px;border-bottom:1px solid var(--w08);padding:7px 0;}
+  .m-daterow:last-child{border-bottom:none;}
+  .m-date{font-weight:700;color:var(--gold);} .m-city{color:#fff;font-weight:600;} .m-venue{color:var(--w50);font-size:9px;}
+  .m-tix{font-size:9px;font-weight:700;color:#000;background:var(--gold);border-radius:100px;padding:3px 10px;}
+  .m-psbtn{display:flex;align-items:center;justify-content:center;gap:7px;border-radius:8px;padding:9px 0;font-size:11px;font-weight:700;}
+  .m-psbtn.sp{background:rgba(245,197,24,.14);border:1px solid rgba(245,197,24,.45);color:var(--gold);} .m-psbtn.ap{border:1px solid var(--w12);color:var(--w70);background:var(--panel);}
+
+  /* ICON ROW */
+  .irow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;text-align:left;}
+  .icard{display:flex;align-items:flex-start;gap:13px;background:var(--panel);border:1px solid var(--w12);border-radius:12px;padding:18px 20px;}
+  .icard-ico{width:36px;height:36px;border-radius:50%;background:rgba(245,197,24,.12);border:1px solid rgba(245,197,24,.3);color:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;}
+  .icard-h{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px;}
+  .icard-p{font-size:12.5px;color:var(--w50);line-height:1.5;}
+
+  /* COMPARISON */
   .comp{border:1px solid var(--w12);border-radius:16px;overflow:hidden;margin-top:48px;text-align:left;} .comp table{width:100%;border-collapse:collapse;}
   .comp th{text-align:left;padding:18px 24px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--w12);}
   .comp th:first-child{width:130px;color:var(--w50);} .comp th.posts-col{background:var(--gold);color:#000;}
   .comp td{padding:18px 24px;font-size:14px;border-bottom:1px solid var(--w08);vertical-align:top;} .comp tr:last-child td{border-bottom:none;}
   .comp td:first-child{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);} .comp td:nth-child(2){color:var(--w50);}
   .comp td.posts-col{background:rgba(245,197,24,.08);color:#fff;font-weight:500;}
+
+  /* CASE */
   .cases{display:grid;grid-template-columns:1fr;max-width:720px;margin:16px auto 0;text-align:left;}
   .case{background:var(--panel);border:1px solid var(--w12);border-radius:16px;overflow:hidden;}
   .case-img{height:170px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--w12);background:#0e0e10;}
   .case-name{font-family:'Anton',sans-serif;font-weight:400;font-size:38px;text-transform:uppercase;color:rgba(245,197,24,.12);}
   .case-body{padding:28px;} .case-artist{font-family:'Anton',sans-serif;font-weight:400;font-size:20px;text-transform:uppercase;margin-bottom:5px;color:#fff;}
   .case-type{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:13px;} .case-p{font-size:14px;color:var(--w70);}
+
+  /* FAQ */
   .faqw{max-width:760px;margin:0 auto;} .faq{background:var(--panel);border:1px solid var(--w12);border-radius:16px;overflow:hidden;margin-top:44px;}
   .faq-item{border-bottom:1px solid var(--w12);} .faq-item:last-child{border-bottom:none;}
   .faq-q{padding:20px 26px;cursor:pointer;display:flex;align-items:center;gap:16px;} .faq-q:hover{background:var(--panel2);}
   .faq-icon{color:var(--gold);font-size:20px;width:18px;text-align:center;flex-shrink:0;transition:transform .2s;} .faq-q-text{font-size:15px;font-weight:600;}
   .faq-a{padding:0 26px 22px 60px;font-size:14px;color:var(--w70);display:none;} .faq-item.open .faq-a{display:block;} .faq-item.open .faq-icon{transform:rotate(45deg);}
-  .closer{text-align:center;padding:110px 40px;} .closer h2{font-size:56px;max-width:900px;margin:0 auto 22px;} .closer-sub{font-size:18px;color:var(--w70);margin-bottom:36px;}
+
+  .closer{text-align:center;padding:110px 40px;} .closer h2{font-size:54px;max-width:940px;margin:0 auto 20px;} .closer-sub{font-size:18px;color:var(--w70);margin-bottom:36px;}
+  .closer .cta-pair{justify-content:center;}
   .stamp{text-align:center;padding:40px 0 30px;} .stamp-l{font-size:13px;font-weight:600;color:var(--gold);letter-spacing:.04em;margin-bottom:16px;}
   footer{background:var(--panel);margin:0 24px 24px;border-radius:18px;padding:48px 44px;}
   .foot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:900px;}
   .foot-col h4{font-size:13px;font-weight:700;margin-bottom:14px;} .foot-col a{display:block;color:var(--w50);font-size:13px;text-decoration:none;margin-bottom:9px;} .foot-col a:hover{color:#fff;}
   .foot-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:24px;border-top:1px solid var(--w08);} .foot-c{color:var(--w50);font-size:12px;}
-  @media(max-width:980px){nav{padding:0 20px;}.nav-links a:not(.nav-cta){display:none;}.hero{padding:110px 20px 60px;}.hero-inner{grid-template-columns:1fr;gap:44px;}.hero h1{font-size:44px;}.wrap{padding:64px 20px;}.h-lg{font-size:34px;}.row,.gpanels,.unlock,.cases,.pcards{grid-template-columns:1fr;gap:32px;}.cards3,.fgrid{grid-template-columns:1fr;}.drow{grid-template-columns:1fr 24px auto;}.dres{white-space:normal;}.closer h2{font-size:34px;}.foot-grid{grid-template-columns:1fr 1fr;}.comp th,.comp td{padding:12px 14px;}}
+  @media(max-width:980px){nav{padding:0 20px;}.nav-links a:not(.nav-cta){display:none;}.hero{padding:110px 20px 60px;}.hero-inner{grid-template-columns:1fr;gap:44px;}.hero h1{font-size:42px;}.wrap{padding:64px 20px;}.h-lg{font-size:34px;}.sol-tiles,.fcards,.irow{grid-template-columns:1fr;}.gate3{grid-template-columns:1fr;}.gpane{border-right:none;border-bottom:1px solid var(--w08);}.gpane:last-child{border-bottom:none;}.phones{flex-direction:column;align-items:center;}.closer h2{font-size:32px;}.foot-grid{grid-template-columns:1fr 1fr;}.comp th,.comp td{padding:12px 14px;}}
 </style>
 </head>
 <body>
 <nav>
   <a href="#" class="logo">Openstage</a>
-  <div class="nav-links"><a href="#interactive">Interactive</a><a href="#reach">Reach</a><a href="#segmentation">Segmentation</a><a href="#">Log in</a><a href="#" class="nav-cta">Get Started</a></div>
+  <div class="nav-links"><a href="#solution">Why Posts</a><a href="#features">Features</a><a href="#faq">FAQ</a><a href="#">Log in</a><a href="#" class="nav-cta">Start Posting</a></div>
 </nav>
 
 <!-- HERO -->
 <div class="hero"><div class="hero-inner">
   <div>
     <span class="pill">Posts</span>
-    <h1 class="display">The most powerful<br>direct-to-fan channel in music.</h1>
-    <p class="hero-sub">Turn one-way email blasts into interactive experiences that grow your audience, reward your biggest fans, and bring people deeper into your world.</p>
-    <a href="#" class="btn btn-gold">Get Started</a>
+    <h1 class="display">The better way for artists to communicate directly with fans</h1>
+    <p class="hero-sub">Posts is the purpose-built email replacement for artists that turns one-way broadcasts into interactive fan experiences designed to pull fans deeper into your world.</p>
+    <div class="cta-pair"><a href="#" class="btn btn-gold">Start Posting</a><a href="#" class="btn btn-ghost">Get Demo</a></div>
   </div>
-  <div class="mock">
-    <div class="mock-head"><div class="mock-title">New Post</div><div class="mock-badge">First Listen</div></div>
-    <div class="mock-media"><div class="mock-play"><svg width="12" height="14" viewBox="0 0 11 13" fill="#F5C518"><path d="M0 0L11 6.5L0 13V0Z"/></svg></div></div>
-    <div class="mock-line"></div><div class="mock-line s"></div>
-    <div class="mock-poll lead"><span>Hear it first</span><span>62%</span></div>
-    <div class="mock-poll trail"><span>Pre-save to unlock</span><span>28%</span></div>
-    <div class="mock-reacts"><div class="mock-react hot">847 comments</div><div class="mock-react">Share</div><div class="mock-react">Subscribe</div></div>
-    <div class="mock-pub"><div class="mock-pub-l">Publish to</div><div class="mock-ch"><div class="mock-c on">Email</div><div class="mock-c on">Web</div><div class="mock-c off">Feed</div></div><div class="mock-pub-btn">Publish</div></div>
-  </div>
-</div></div>
-
-<!-- BLOCK 02 -->
-<div class="wrap"><div class="inner centered">
-  <h2 class="display h-lg" style="margin-bottom:18px;">Everything email does,<br>plus everything it can't.</h2>
-  <p class="sub mx" style="max-width:740px;">Posts lets you create one message, publish it to email and the web at the same time, then control who gets it and what they see. Built for music and powered by your fan data.</p>
-</div></div>
-
-<!-- REACH -->
-<div class="wrap" id="reach"><div class="inner"><div class="row">
   <div>
-    <div class="eyebrow">Fan-led growth</div>
-    <h2 class="display row-h">Reach every fan,<br>not just your list.</h2>
-    <p class="row-p">Every post has a web version fans can share with a link, so one send reaches your list in the inbox and new fans on the web at once. Signup prompts turn those new visitors into fans you know and can reach again.</p>
-  </div>
-  <div class="rv">
-    <div class="rv-top">Posts</div>
-    <div class="rv-fork"><svg viewBox="0 0 220 46" width="100%" height="46" fill="none" stroke="#F5C518" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M110 4 V16"/><path d="M58 16 H162"/><path d="M58 16 V36"/><path d="M162 16 V36"/><path d="M52 31 L58 39 L64 31"/><path d="M156 31 L162 39 L168 31"/></svg></div>
-    <div class="rv-cols">
-      <div class="rv-col"><div class="rv-pill">Email</div><p class="rv-p">Your fans, reached directly.</p></div>
-      <div class="rv-col"><div class="rv-pill gold">Web</div><p class="rv-p">New fans, through shares and social.</p></div>
-    </div>
-    <div class="rv-foot">New fans become known, contactable fans</div>
-  </div>
-</div></div></div>
-
-<!-- MOMENTS / INTERACTIVE -- VISUAL TBD PER ROB: chips replaced w/ live Post mock, confirm direction -->
-<div class="wrap" id="interactive"><div class="inner"><div class="row rev">
-  <div>
-    <div class="eyebrow">Fan participation</div>
-    <h2 class="display row-h">Turn every announcement into a shared moment.</h2>
-    <p class="row-p">Release music, announce tours, drop merch, and share content in experiences fans can react to, comment on, vote in, and share together.</p>
-  </div>
-  <div class="imock">
-    <div class="imock-media"><div class="imock-play"><svg width="13" height="15" viewBox="0 0 11 13" fill="#fff"><path d="M0 0L11 6.5L0 13V0Z"/></svg></div></div>
-    <div class="imock-title">New 7" split single</div>
-    <div class="imock-bar">
-      <div class="imock-chip">&#128293; 62%</div>
-      <div class="imock-chip">&#128079; 28%</div>
-      <div class="imock-chip">&#128172; 847</div>
-      <div class="imock-chip ghost">&#8599; Share</div>
-    </div>
-    <div class="imock-pollq">Which one's your favorite?</div>
-    <div class="imock-pollrow"><span>A-side</span><div class="imock-track"><div class="imock-fill" style="width:64%;"></div></div><span class="imock-pct">64%</span></div>
-    <div class="imock-pollrow"><span>B-side</span><div class="imock-track"><div class="imock-fill" style="width:36%;"></div></div><span class="imock-pct">36%</span></div>
-  </div>
-</div></div></div>
-
-<!-- TARGETING & GATING (proves More fan-aware) -->
-<div class="wrap gate" id="segmentation"><div class="inner"><div class="row rev">
-    <div class="gatecompact">
-      <div class="gchalf l">
-        <div class="gchalf-l">What you control</div>
-        <div class="gco"><span class="gco-d"></span><span>Everyone</span></div>
-        <div class="gco"><span class="gco-d"></span><span>Signed in</span></div>
-        <div class="gco"><span class="gco-d"></span><span>Subscribers</span></div>
-        <div class="gco on"><span class="gco-d"></span><span>Custom. Selected audiences.</span></div>
-        <div class="gco-chips"><span class="gco-chip">Completed the quiz &#10005;</span><span class="gco-chip">Core fans &#10005;</span></div>
+    <div class="phones">
+      <div class="phone">
+        <div class="phone-tag">In their inbox</div>
+        <div class="screen">
+          <div class="inbox-row"><div class="inbox-av">S</div><div class="inbox-lines"><div class="inbox-from">Spotify</div><div class="inbox-sub">Your weekly mix is ready</div></div><div class="inbox-time">9:14</div></div>
+          <div class="email-open">
+            <div class="email-chrome">
+              <div class="email-subject">New album out now</div>
+              <div class="email-fromrow"><div class="email-av">W</div><div class="email-meta"><b>Wings</b> &nbsp;to me</div></div>
+            </div>
+            <div class="post-body">
+              <div class="post-media"><div class="post-play"><svg width="11" height="13" viewBox="0 0 11 13" fill="#F5C518"><path d="M0 0L11 6.5L0 13V0Z"/></svg></div></div>
+              <div class="post-title">New album out now</div>
+              <div class="post-line"></div><div class="post-line s"></div>
+              <div class="post-cta">Listen now</div>
+            </div>
+          </div>
+          <div class="inbox-row"><div class="inbox-av">T</div><div class="inbox-lines"><div class="inbox-from">Ticketmaster</div><div class="inbox-sub">Your order confirmation</div></div><div class="inbox-time">8:02</div></div>
+        </div>
       </div>
-      <div class="gchalf r">
-        <div class="gchalf-l" style="align-self:flex-start;">What the fan sees</div>
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;">
-          <div class="fg-lock" style="width:42px;height:42px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
-          <div class="fg-h" style="font-size:15px;">Sign in to view</div>
-          <p class="fg-p" style="font-size:11px;">Sign in to unlock this exclusive.</p>
-          <span class="fg-btn" style="font-size:11px;padding:8px 20px;">Sign in</span>
+      <div class="phone web">
+        <div class="phone-tag">On the web</div>
+        <div class="screen">
+          <div class="web-chrome"><div class="web-dots"><span class="web-dot"></span><span class="web-dot"></span><span class="web-dot"></span></div><div class="web-url">wings.os.fan/post/new-album</div></div>
+          <div class="post-body">
+            <div class="post-media"><div class="post-play"><svg width="11" height="13" viewBox="0 0 11 13" fill="#F5C518"><path d="M0 0L11 6.5L0 13V0Z"/></svg></div></div>
+            <div class="post-title">New album out now</div>
+            <div class="web-extras">
+              <div class="web-reacts"><span class="web-react">&#128293; 2.4k</span><span class="web-react">&#128172; 312</span><span class="web-react ghost">&#8599; Share</span></div>
+              <div class="web-comment"><div class="web-cav"></div><div class="web-cbody"><div class="web-cname">marisol</div><div class="web-ctext">been waiting for this one</div></div></div>
+              <div class="web-comment"><div class="web-cav"></div><div class="web-cbody"><div class="web-cname">devon k</div><div class="web-ctext">already on repeat</div></div></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div>
-      <div class="eyebrow">Targeting &amp; gating</div>
-      <h2 class="display row-h">Deliver the right experience to every fan.</h2>
-      <p class="row-p">It's fan-aware publishing powered by advanced fan segmentation. Decide who sees what, what blocks they can access, and what they have to do to unlock more.</p>
-    </div>
-  </div></div></div>
+  </div>
+</div></div>
 
-<!-- BUILT FOR MUSIC -->
-<div class="wrap"><div class="inner centered">
-  <div class="eyebrow" style="display:block;text-align:center;">Built for music</div>
-  <h2 class="display h-lg">Everything your release needs,<br>already in the editor.</h2>
-  <p class="sub mx" style="max-width:600px;margin-top:18px;">An intuitive editor built for music, connected to your whole library and tools. Drop in ready-made blocks for first listens, pre-saves, tour dates, or polls. All optimized to stand out in the inbox and on web.</p>
-  <div class="fgrid">
-      <div class="feat">
-        <div class="feat-ico">💬</div>
-        <div class="feat-h">Reactions and comments</div>
-        <p class="feat-p">Fans respond directly on your platform. Build community around releases without handing the conversation to social media.</p>
+<!-- SOLUTION -->
+<div class="wrap" id="solution"><div class="inner centered">
+  <h2 class="display h-lg" style="margin-bottom:18px;">Your email marketing, upgraded</h2>
+  <p class="sub mx" style="max-width:720px;">Whether you're announcing an album, launching a tour, dropping merch, or sharing a story, Posts invites fans into the moment in a way email alone can't.<br>They're not just reading.</p>
+  <div class="sol-tiles">
+    <div class="stile">
+      <div class="stile-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+      <div class="stile-h">More interactive</div>
+      <p class="stile-p">Posts gives fans a place to listen, watch, comment, vote, and share right inside your world, and invites new fans to become part of it.</p>
+    </div>
+    <div class="stile">
+      <div class="stile-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></div>
+      <div class="stile-h">More shareable</div>
+      <p class="stile-p">Every Post goes beyond the inbox with a link fans can share anywhere. New fans find it, step into your world, and become fans you can reach.</p>
+    </div>
+    <div class="stile">
+      <div class="stile-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg></div>
+      <div class="stile-h">More personalized</div>
+      <p class="stile-p">Posts knows every fan's status, purchases, and engagement. Gate content by who they are or what they do, and turn one send into a different experience for every fan.</p>
+    </div>
+  </div>
+  <div class="sol-foot">Powered by your fan data, Posts delivers better fan experiences that grow your list and drive stronger relationships.</div>
+</div></div>
+
+<!-- EVERYTHING YOU NEED -->
+<div class="wrap" id="features"><div class="inner centered">
+  <h2 class="display h-lg">Everything you need,<br>already in the editor.</h2>
+  <p class="sub mx" style="max-width:620px;margin-top:18px;">Ready-made blocks for how artists work. Connected to your library and built to stand out in the inbox and on the web.</p>
+
+  <div class="fcards">
+    <!-- 1 GATING (full width) -->
+    <div class="fcard wide">
+      <div class="gate3">
+        <div class="gpane">
+          <div class="gpane-tag">What you control</div>
+          <div class="m-label">Who unlocks this block</div>
+          <div class="m-opt"><span class="m-dot"></span><span>Everyone</span></div>
+          <div class="m-opt"><span class="m-dot"></span><span>Paid tiers</span></div>
+          <div class="m-opt on"><span class="m-dot"></span><span>By action</span></div>
+          <div class="m-chips"><span class="m-chip">Presaved &#10003;</span><span class="m-chip">Signed up</span><span class="m-chip">Shared</span></div>
+        </div>
+        <div class="gpane">
+          <div class="gpane-tag">Fan who presaved</div>
+          <div class="m-embed"><div class="m-eplay"><svg width="9" height="11" viewBox="0 0 11 13" fill="#000"><path d="M0 0L11 6.5L0 13V0Z"/></svg></div><div><div class="m-etitle">First listen unlocked</div><div class="m-esub">Playing now</div></div></div>
+          <div class="post-line"></div><div class="post-line s"></div>
+          <div class="m-reacts"><span class="m-react">&#128293; 2.4k</span><span class="m-react ghost">&#8599; Share</span></div>
+        </div>
+        <div class="gpane">
+          <div class="gpane-tag">Fan who hasn't yet</div>
+          <div class="m-lockwrap">
+            <div class="m-lockico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+            <div class="m-lockh">Presave to unlock</div>
+            <div class="m-lockp">Presave the single to hear it first.</div>
+            <div class="m-lockbtn">Presave now</div>
+          </div>
+        </div>
       </div>
-      <div class="feat">
-        <div class="feat-ico">⭐</div>
-        <div class="feat-h">Presave block</div>
-        <p class="feat-p">Add DSP presaves connected to your library.</p>
+      <div class="fcard-body">
+        <div class="fcard-h">Block-level gating</div>
+        <p class="fcard-p">Reward the fans who've earned it. Gate any block by who fans are or what they've done: first listen for presavers, early access for paid tiers, exclusives for your inner circle.</p>
       </div>
-      <div class="feat">
-        <div class="feat-ico">🎟️</div>
-        <div class="feat-h">Tour dates</div>
-        <p class="feat-p">Pull and edit upcoming tour dates directly into your post. No manual entry.</p>
+    </div>
+    <!-- 3 REACTIONS -->
+    <div class="fcard">
+      <div class="fcard-vis">
+        <div class="m-reacts"><span class="m-react">&#128293; 2.4k</span><span class="m-react">&#128079; 847</span><span class="m-react ghost">&#8599; Share</span></div>
+        <div class="m-comment"><div class="m-cav"></div><div><div class="m-cname">marisol</div><div class="m-ctext">this is the one. calling it now</div></div></div>
+        <div class="m-comment"><div class="m-cav"></div><div><div class="m-cname">devon k</div><div class="m-ctext">the bridge?? unreal</div></div></div>
       </div>
-      <div class="feat">
-        <div class="feat-ico">📊</div>
-        <div class="feat-h">Interactive polls</div>
-        <p class="feat-p">Every vote feeds the fan graph. Ask fans what they think, collect signals, let their responses shape your next move.</p>
+      <div class="fcard-body">
+        <div class="fcard-h">Reactions and comments</div>
+        <p class="fcard-p">Fans respond right on the Post, and the conversation stays in your world, not social media's.</p>
       </div>
-      <div class="feat">
-        <div class="feat-ico">💳</div>
-        <div class="feat-h">Paid subscriber content</div>
-        <p class="feat-p">Add paid access tiers or merch embeds to any post. Revenue built into the message itself.</p>
+    </div>
+    <!-- 4 DSP EMBEDS -->
+    <div class="fcard">
+      <div class="fcard-vis">
+        <div class="m-embed"><div class="m-eplay"><svg width="9" height="11" viewBox="0 0 11 13" fill="#000"><path d="M0 0L11 6.5L0 13V0Z"/></svg></div><div><div class="m-etitle">Northern Light</div><div class="m-esub">Play on Spotify</div></div></div>
+        <div class="m-video"><div class="post-play" style="width:28px;height:28px;"><svg width="9" height="11" viewBox="0 0 11 13" fill="#F5C518"><path d="M0 0L11 6.5L0 13V0Z"/></svg></div></div>
+        <div class="m-label">Playable in the inbox and on the web</div>
       </div>
-      <div class="feat">
-        <div class="feat-ico">🎵</div>
-        <div class="feat-h">Clickable DSP embeds</div>
-        <p class="feat-p">Embed Spotify, Apple Music, and other DSPs as playable blocks that feel clickable in the inbox and drive streams.</p>
+      <div class="fcard-body">
+        <div class="fcard-h">DSP embeds, audio and video</div>
+        <p class="fcard-p">Embed Spotify, Apple Music, video, and audio as playable blocks that work in the inbox and on the web.</p>
       </div>
-      <div class="feat">
-        <div class="feat-ico">🎬</div>
-        <div class="feat-h">Embedded audio and video</div>
-        <p class="feat-p">Rich media blocks that display properly across email and web at the same time.</p>
+    </div>
+    <!-- 2 POLLS -->
+    <div class="fcard">
+      <div class="fcard-vis">
+        <div class="m-q">Which one's your favorite?</div>
+        <div class="m-pollrow"><span>A-side</span><div class="m-track"><div class="m-fill" style="width:64%;"></div></div><span class="m-pct">64%</span></div>
+        <div class="m-pollrow"><span>B-side</span><div class="m-track"><div class="m-fill" style="width:36%;"></div></div><span class="m-pct">36%</span></div>
+        <div class="m-label" style="margin-top:4px;">8,412 votes and counting</div>
       </div>
-      <div class="feat">
-        <div class="feat-ico">🔗</div>
-        <div class="feat-h">Secret draft links</div>
-        <p class="feat-p">Share preview links with your team before publishing. No test sends necessary.</p>
+      <div class="fcard-body">
+        <div class="fcard-h">Interactive polls</div>
+        <p class="fcard-p">Ask fans what they think and let every vote shape your next move. Every answer feeds the fan graph.</p>
       </div>
-      <div class="feat">
-        <div class="feat-ico">👁️</div>
-        <div class="feat-h">Visibility settings</div>
-        <p class="feat-p">Toggle what is seen on web, email, or both.</p>
+    </div>
+    <!-- 5 PAID -->
+    <div class="fcard">
+      <div class="fcard-vis">
+        <div class="m-tier"><span class="m-tname">Inner Circle</span><span class="m-tprice">$6 / month</span></div>
+        <div class="m-merch"><div class="m-mimg"></div><div><div class="m-etitle">Limited hoodie</div><div class="m-esub">$70 &middot; Buy in the Post</div></div></div>
+        <div class="m-label">Tiers and merch, inside the message</div>
       </div>
-      <div class="feat">
-        <div class="feat-ico">🎨</div>
-        <div class="feat-h">Brand-native design</div>
-        <p class="feat-p">Full custom branding: fonts, colors, layout. Your posts look like you, not like a template.</p>
+      <div class="fcard-body">
+        <div class="fcard-h">Paid subscriber content</div>
+        <p class="fcard-p">Add paid tiers or merch to any Post. Revenue built into the message itself.</p>
       </div>
-      <div class="feat">
-        <div class="feat-ico">🌐</div>
-        <div class="feat-h">Fan acquisition</div>
-        <p class="feat-p">Every shared post doubles as a signup prompt, turning new visitors into known, contactable fans.</p>
+    </div>
+    <!-- 6 TOUR DATES -->
+    <div class="fcard">
+      <div class="fcard-vis">
+        <div class="m-daterow"><span class="m-date">MAR 8</span><div><div class="m-city">Los Angeles</div><div class="m-venue">Moroccan Lounge</div></div><span class="m-tix">Tickets</span></div>
+        <div class="m-daterow"><span class="m-date">MAR 12</span><div><div class="m-city">San Francisco</div><div class="m-venue">The Independent</div></div><span class="m-tix">Tickets</span></div>
+        <div class="m-daterow"><span class="m-date">MAR 15</span><div><div class="m-city">Portland</div><div class="m-venue">Doug Fir</div></div><span class="m-tix">Tickets</span></div>
       </div>
-      <div class="feat">
-        <div class="feat-ico">🔒</div>
-        <div class="feat-h">Block-level gating</div>
-        <p class="feat-p">Lock blocks or entire posts to subscriber tiers, paid fans, or custom audience groups. Control who sees what.</p>
+      <div class="fcard-body">
+        <div class="fcard-h">Tour dates</div>
+        <p class="fcard-p">Pull upcoming dates straight from Bandsintown into your Post. No manual entry.</p>
+      </div>
+    </div>
+    <!-- 7 PRESAVE -->
+    <div class="fcard">
+      <div class="fcard-vis">
+        <div class="m-q">Presave the new single</div>
+        <div class="m-psbtn sp"><svg width="12" height="12" viewBox="0 0 24 24" fill="#F5C518"><circle cx="12" cy="12" r="10"/></svg>Presave on Spotify</div>
+        <div class="m-psbtn ap">Presave on Apple Music</div>
+      </div>
+      <div class="fcard-body">
+        <div class="fcard-h">Presave block <span class="soon">Coming soon</span></div>
+        <p class="fcard-p">Add DSP presaves connected to your library, so every announcement converts before release day.</p>
       </div>
     </div>
   </div>
-</div>
 
-<!-- MID CTA -->
-<div class="midcta"><a href="#" class="btn btn-gold">Get Started</a></div>
-
-<!-- CASES -->
-<div class="wrap"><div class="inner centered">
-  <h2 class="display h-lg">Posts in action.</h2>
-  <p class="sub mx" style="max-width:640px;margin-top:18px;">See why artists are choosing Posts as the better way to reach, engage, and grow their fans.</p>
-  <div class="cases"><div class="case"><div class="case-img"><div class="case-name">Paul McCartney</div></div><div class="case-body"><div class="case-artist">Paul McCartney</div><div class="case-type">Fan Polls</div><p class="case-p">(GRANT CASE STUDY COPY COMING RE: POLLS)</p></div></div></div>
+  <!-- ICON ROW -->
+  <div class="irow">
+    <div class="icard">
+      <div class="icard-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
+      <div><div class="icard-h">Secret draft links</div><p class="icard-p">Preview links for teams, no test sends.</p></div>
+    </div>
+    <div class="icard">
+      <div class="icard-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+      <div><div class="icard-h">Visibility settings</div><p class="icard-p">Publish to email, web, or both.</p></div>
+    </div>
+    <div class="icard">
+      <div class="icard-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="13" r="2"/><circle cx="6" cy="12" r="3"/><path d="M12 22a10 10 0 1110-10c0 2-1.5 3-3 3h-2a2 2 0 00-2 2c0 1 .5 1.5.5 2.5A2.5 2.5 0 0112 22z"/></svg></div>
+      <div><div class="icard-h">Brand-native design</div><p class="icard-p">Your fonts, your colors, your layout.</p></div>
+    </div>
+  </div>
 </div></div>
 
 <!-- COMPARISON -->
@@ -360,8 +390,33 @@
   </tbody></table></div>
 </div></div>
 
+<!-- CASE STUDY -->
+<div class="wrap"><div class="inner centered">
+  <h2 class="display h-lg">Posts in action.</h2>
+  <p class="sub mx" style="max-width:640px;margin-top:18px;">See why artists are choosing Posts as the better way to reach, engage, and grow their fans.</p>
+  <div class="cases"><div class="case"><div class="case-img"><div class="case-name">Paul McCartney</div></div><div class="case-body"><div class="case-artist">Paul McCartney</div><div class="case-type">Personalized fan journeys</div><p class="case-p">Ahead of his new album, The Boys of Dungeon Lane, Paul McCartney sent one Post that adapted to every fan inside it. Fans answered how they planned to listen first, and each answer unlocked the next block: vinyl buyers were asked which pressing felt right and saw an exclusive pink vinyl, streamers saw their path, and everyone unlocked a preview for sharing their preferences. No survey, no follow-up send. The Post did the segmenting in real time, and every answer became fan-level preference data for the next campaign.</p></div></div></div>
+</div></div>
+
+<!-- CHANNEL VERDICT -->
+<div class="wrap"><div class="inner centered">
+  <h2 class="display h-lg">The most powerful<br>direct-to-fan channel in music.</h2>
+  <p class="sub mx" style="max-width:600px;margin-top:18px;">Everything email can do, plus everything it can't.</p>
+  <div class="chips">
+    <span class="chip">Run a first listen</span>
+    <span class="chip">Announce a tour and capture presale demand</span>
+    <span class="chip">Gate a merch drop</span>
+    <span class="chip">Get fans to vote</span>
+    <span class="chip">Create a pre-save unlock that rewards fans for saving</span>
+    <span class="chip">Give fans early access before the public announcement</span>
+    <span class="chip">Turn a social share into a fan signup</span>
+    <span class="chip">Drop exclusive content for your most engaged fans</span>
+    <span class="chip">Build a community thread around a release moment</span>
+    <span class="chip">Reward your most loyal fans first</span>
+  </div>
+</div></div>
+
 <!-- FAQ -->
-<div class="wrap"><div class="faqw">
+<div class="wrap" id="faq"><div class="faqw">
   <h2 class="display h-lg centered">Frequently asked questions</h2>
   <div class="faq">
       <div class="faq-item">
@@ -370,7 +425,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">+</span><span class="faq-q-text">Does Posts replace email?</span></div>
-        <div class="faq-a">No. Posts builds on your email list. Every Post goes to your subscribers via email and also publishes on the web. You keep the direct reach of email and gain web discoverability at the same time.</div>
+        <div class="faq-a">It replaces how you send email, not email itself. Every Post reaches your existing list in the inbox as always, and also publishes to the web where new fans can find it. One tool, one workflow, nothing extra to maintain. Powered by your fan data, Posts helps you deliver better fan experiences that build stronger relationships.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">+</span><span class="faq-q-text">What can you build?</span></div>
@@ -390,8 +445,8 @@
 <!-- CLOSER -->
 <div class="closer">
   <h2 class="display">Every announcement deserves<br>a life beyond the inbox.</h2>
-  <p class="closer-sub">Turn it into an interactive moment that brings fans into your world.</p>
-  <a href="#" class="btn btn-gold">Get Started</a>
+  <p class="closer-sub">Why just email when you get so much more with Posts?</p>
+  <div class="cta-pair"><a href="#" class="btn btn-gold">Start Posting</a><a href="#" class="btn btn-ghost">Get Demo</a></div>
 </div>
 
 <div class="stamp"><div class="stamp-l">Know your fans, value your fans.</div><span class="logo" style="font-size:24px;">Openstage</span></div>
