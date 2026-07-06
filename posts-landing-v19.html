@@ -27,11 +27,14 @@
   .hero h1{font-size:62px;margin:22px 0 24px;color:#fff;} .hero-sub{font-size:19px;color:var(--w70);line-height:1.55;margin-bottom:32px;max-width:560px;}
 
   /* SPLIT PHONES */
-  .phones{display:flex;gap:20px;justify-content:center;align-items:flex-start;}
+  .phones{display:flex;gap:20px;justify-content:center;align-items:stretch;}
   .hero-pill{position:absolute;font-size:13px;font-weight:500;color:var(--gold);background:var(--bg);border:1px solid rgba(245,197,24,.6);border-radius:100px;padding:9px 18px;white-space:nowrap;}
   .hero-pill b{font-weight:700;}
   .pill-inbox{bottom:14%;left:-24px;}
   .pill-web{top:-16px;right:-14px;}
+  .phone-flag{position:absolute;bottom:-38px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;}
+  .phone-flag.oneway{color:var(--w30);}
+  .phone-flag.twoway{color:var(--gold);}
   .mail-top{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;color:#fff;}
   .mail-back,.mail-more{font-size:16px;color:var(--w50);}
   .mail-title{font-size:13px;font-weight:600;color:#fff;}
@@ -222,6 +225,7 @@
           <div class="post-line" style="margin:14px 16px 0;width:60%;opacity:.4;"></div>
         </div>
         <div class="hero-pill pill-inbox">Reach fans in their inbox</div>
+        <div class="phone-flag oneway">One-way</div>
       </div>
       <div class="phone web">
         <div class="screen">
@@ -241,6 +245,7 @@
           </div>
         </div>
         <div class="hero-pill pill-web"><b>And</b> on the web</div>
+        <div class="phone-flag twoway">Two-way</div>
       </div>
     </div>
   </div>
@@ -276,18 +281,18 @@
   <p class="sub mx" style="max-width:720px;margin-top:18px;">An easy to use editor built for artists, with drag-and-drop blocks for music, video, tour dates, polls, and more. Design every Post in your own brand to look like your world, not a template.</p>
 
   <div class="fcards">
-    <!-- 1 CONTROL WHAT FANS SEE -->
+    <!-- 1 TARGET ANY AUDIENCE -->
     <div class="fcard">
       <div class="fcard-vis">
-        <div class="m-label">Who sees this</div>
+        <div class="m-label">Make this block visible to</div>
         <div class="m-opt on"><span class="m-dot"></span><span>Inner circle</span></div>
-        <div class="m-opt"><span class="m-dot"></span><span>Paid tiers</span></div>
+        <div class="m-opt on"><span class="m-dot"></span><span>Paid tiers</span></div>
         <div class="m-opt"><span class="m-dot"></span><span>Everyone</span></div>
-        <div class="m-label" style="margin-top:4px;">Different fans, different content</div>
+        <div class="m-label" style="margin-top:4px;">The right message, the right fans</div>
       </div>
       <div class="fcard-body">
-        <div class="fcard-h">Control what fans see</div>
-        <p class="fcard-p">Choose who sees what. Give your best fans early access and exclusives, and reward the rest as they go deeper.</p>
+        <div class="fcard-h">Target any audience</div>
+        <p class="fcard-p">Send to any segment, and make any block visible only to the fans you choose. The right message reaches the right fans.</p>
       </div>
     </div>
     <!-- 2 UNLOCK WITH AN ACTION -->
@@ -299,7 +304,7 @@
       </div>
       <div class="fcard-body">
         <div class="fcard-h">Unlock with an action</div>
-        <p class="fcard-p">Fans presave, sign up, or share to see more, so every unlock brings you a new fan or a stronger one.</p>
+        <p class="fcard-p">Lock a block behind a signup, presave, or share. Fans unlock it by taking action, so every gate grows your fanbase.</p>
       </div>
     </div>
     <!-- 3 FAN REFERRALS -->
@@ -441,6 +446,7 @@
     <span class="chip">Drop exclusive content for your most engaged fans</span>
     <span class="chip">Build a community thread around a release moment</span>
     <span class="chip">Reward your most loyal fans first</span>
+    <span class="chip">Localize one Post for every country, no extra sends</span>
   </div>
 </div></div>
 
