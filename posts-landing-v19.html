@@ -27,8 +27,24 @@
   .hero h1{font-size:62px;margin:22px 0 24px;color:#fff;} .hero-sub{font-size:19px;color:var(--w70);line-height:1.55;margin-bottom:32px;max-width:560px;}
 
   /* SPLIT PHONES */
-  .phones{display:flex;gap:20px;justify-content:center;align-items:stretch;}
-  .phone{width:250px;background:#0e0e10;border:1px solid var(--w12);border-radius:26px;padding:12px;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,.5);}
+  .phones{display:flex;gap:20px;justify-content:center;align-items:flex-start;}
+  .hero-pill{position:absolute;font-size:13px;font-weight:500;color:var(--gold);background:var(--bg);border:1px solid rgba(245,197,24,.6);border-radius:100px;padding:9px 18px;white-space:nowrap;}
+  .hero-pill b{font-weight:700;}
+  .pill-inbox{bottom:14%;left:-24px;}
+  .pill-web{top:-16px;right:-14px;}
+  .mail-top{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;color:#fff;}
+  .mail-back,.mail-more{font-size:16px;color:var(--w50);}
+  .mail-title{font-size:13px;font-weight:600;color:#fff;}
+  .mail-from{display:flex;align-items:center;gap:10px;padding:6px 16px 14px;border-bottom:1px solid var(--w08);}
+  .mail-av{width:34px;height:34px;border-radius:50%;background:var(--w12);color:var(--w70);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .mail-name{font-size:14px;color:#fff;} .mail-name b{font-weight:700;} .mail-name span{color:var(--w50);}
+  .email-toolbar{display:flex;align-items:center;gap:12px;padding:9px 12px;border-bottom:1px solid var(--w08);}
+  .et-ico{font-size:13px;color:var(--w50);}
+  .et-open{margin-left:auto;font-size:10px;color:var(--w70);border:1px solid var(--w12);border-radius:7px;padding:4px 9px;}
+  .script-name{font-family:'Brush Script MT','Segoe Script',cursive;font-size:24px;color:#fff;margin-bottom:6px;letter-spacing:.5px;}
+  .post-title2{font-family:Georgia,serif;font-size:15px;font-weight:700;color:#fff;margin-bottom:12px;}
+  .web-commentbox{margin-top:4px;font-size:11px;color:var(--w50);border:1px solid var(--w12);border-radius:100px;padding:9px 14px;}
+  .phone{position:relative;width:250px;background:#0e0e10;border:1px solid var(--w12);border-radius:26px;padding:12px;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,.5);}
   .phone.web{}
   .phone-tag{text-align:center;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
   .screen{flex:1;background:var(--panel);border:1px solid var(--w08);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;}
@@ -128,6 +144,11 @@
   .m-tix{font-size:9px;font-weight:700;color:#000;background:var(--gold);border-radius:100px;padding:3px 10px;}
   .m-psbtn{display:flex;align-items:center;justify-content:center;gap:7px;border-radius:8px;padding:9px 0;font-size:11px;font-weight:700;}
   .m-psbtn.sp{background:rgba(245,197,24,.14);border:1px solid rgba(245,197,24,.45);color:var(--gold);} .m-psbtn.ap{border:1px solid var(--w12);color:var(--w70);background:var(--panel);}
+  .m-lockrow{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--w50);border:1px solid var(--w12);border-radius:8px;padding:8px 10px;}
+  .m-lockmini{color:var(--gold);display:flex;}
+  .m-referrow{display:flex;align-items:center;gap:6px;margin-top:2px;}
+  .m-refav{width:18px;height:18px;border-radius:50%;flex-shrink:0;border:1.5px solid var(--panel);}
+  .m-refav+.m-refav{margin-left:-10px;}
 
   /* ICON ROW */
   .irow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;text-align:left;}
@@ -186,38 +207,40 @@
   <div>
     <div class="phones">
       <div class="phone">
-        <div class="phone-tag">In their inbox</div>
         <div class="screen">
-          <div class="inbox-row"><div class="inbox-av">S</div><div class="inbox-lines"><div class="inbox-from">Spotify</div><div class="inbox-sub">Your weekly mix is ready</div></div><div class="inbox-time">9:14</div></div>
+          <div class="mail-top"><span class="mail-back">&#8249;</span><span class="mail-title">&#9993; Inbox</span><span class="mail-more">&#8942;</span></div>
+          <div class="mail-from"><div class="mail-av">PM</div><div class="mail-name"><b>Paul McCartney</b> <span>to me</span></div></div>
           <div class="email-open">
-            <div class="email-chrome">
-              <div class="email-subject">New album out now</div>
-              <div class="email-fromrow"><div class="email-av">W</div><div class="email-meta"><b>Wings</b> &nbsp;to me</div></div>
-            </div>
+            <div class="email-toolbar"><span class="et-ico">&#9825;</span><span class="et-ico">&#9995;</span><span class="et-open">&#8599; Open post</span></div>
             <div class="post-body">
-              <div class="post-media"><div class="post-play"><svg width="11" height="13" viewBox="0 0 11 13" fill="#F5C518"><path d="M0 0L11 6.5L0 13V0Z"/></svg></div></div>
-              <div class="post-title">New album out now</div>
+              <div class="script-name">Paul McCartney</div>
+              <div class="post-title2">Listen to this exclusive track</div>
+              <div class="post-media"><div class="post-play"><svg width="13" height="15" viewBox="0 0 11 13" fill="#F5C518"><path d="M0 0L11 6.5L0 13V0Z"/></svg></div></div>
               <div class="post-line"></div><div class="post-line s"></div>
-              <div class="post-cta">Listen now</div>
             </div>
           </div>
-          <div class="inbox-row"><div class="inbox-av">T</div><div class="inbox-lines"><div class="inbox-from">Ticketmaster</div><div class="inbox-sub">Your order confirmation</div></div><div class="inbox-time">8:02</div></div>
+          <div class="post-line" style="margin:14px 16px 0;width:60%;opacity:.4;"></div>
         </div>
+        <div class="hero-pill pill-inbox">Reach fans in their inbox</div>
       </div>
       <div class="phone web">
-        <div class="phone-tag"><u>And</u> on the web</div>
         <div class="screen">
-          <div class="web-chrome"><div class="web-dots"><span class="web-dot"></span><span class="web-dot"></span><span class="web-dot"></span></div><div class="web-url">wings.os.fan/post/new-album</div></div>
+          <div class="web-chrome"><div class="web-dots"><span class="web-dot"></span><span class="web-dot"></span><span class="web-dot"></span></div><div class="web-url">paulmccartney.os.fan</div></div>
           <div class="post-body">
-            <div class="post-media"><div class="post-play"><svg width="11" height="13" viewBox="0 0 11 13" fill="#F5C518"><path d="M0 0L11 6.5L0 13V0Z"/></svg></div></div>
-            <div class="post-title">New album out now</div>
+            <div class="script-name">Paul McCartney</div>
+            <div class="post-title2">Listen to this exclusive track</div>
+            <div class="post-media"><div class="post-play"><svg width="15" height="17" viewBox="0 0 11 13" fill="#F5C518"><path d="M0 0L11 6.5L0 13V0Z"/></svg></div></div>
+            <div class="post-line"></div><div class="post-line s"></div>
             <div class="web-extras">
-              <div class="web-reacts"><span class="web-react">&#128293; 2.4k</span><span class="web-react">&#128172; 312</span><span class="web-react ghost">&#8599; Share</span></div>
-              <div class="web-comment"><div class="web-cav"></div><div class="web-cbody"><div class="web-cname">marisol</div><div class="web-ctext">been waiting for this one</div></div></div>
-              <div class="web-comment"><div class="web-cav"></div><div class="web-cbody"><div class="web-cname">devon k</div><div class="web-ctext">already on repeat</div></div></div>
+              <div class="web-reacts"><span class="web-react">&#9825; 2.1k</span><span class="web-react ghost">&#8599; Share post</span></div>
+              <div class="web-comment"><div class="web-cav" style="background:#3B82F6;">A</div><div class="web-cbody"><div class="web-cname">arivera</div><div class="web-ctext">Sounds amazing.</div></div></div>
+              <div class="web-comment"><div class="web-cav" style="background:#22C55E;">S</div><div class="web-cbody"><div class="web-cname">schen</div><div class="web-ctext">Still got the old magic.</div></div></div>
+              <div class="web-comment"><div class="web-cav" style="background:#A855F7;">M</div><div class="web-cbody"><div class="web-cname">mpatel</div><div class="web-ctext">Just what we needed.</div></div></div>
+              <div class="web-commentbox">Leave a comment...</div>
             </div>
           </div>
         </div>
+        <div class="hero-pill pill-web"><b>And</b> on the web</div>
       </div>
     </div>
   </div>
@@ -226,12 +249,12 @@
 <!-- SOLUTION -->
 <div class="wrap" id="solution"><div class="inner centered">
   <h2 class="display h-lg" style="margin-bottom:18px;">Email, but better</h2>
-  <p class="sub mx" style="max-width:1060px;">Whether you're announcing an album, launching a tour, dropping merch, or sharing a story, Posts invites fans into the moment in a way email alone can't. One send, delivered to the inbox and published to the web.<br>They're not just reading.</p>
+  <p class="sub mx" style="max-width:880px;">Posts invites fans into the moment in a way email alone can't.<br>Emails get opened. Posts get joined.</p>
   <div class="sol-tiles">
     <div class="stile">
       <div class="stile-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></div>
       <div class="stile-h">More reach</div>
-      <p class="stile-p">Every Post goes beyond the inbox with a link fans can share anywhere. New fans find it, step into your world, and become fans you can reach.</p>
+      <p class="stile-p">Every Post goes beyond the inbox with a shareable link, reaching your fans and the ones waiting to discover you.</p>
     </div>
     <div class="stile">
       <div class="stile-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
@@ -241,7 +264,7 @@
     <div class="stile">
       <div class="stile-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg></div>
       <div class="stile-h">More rewarding</div>
-      <p class="stile-p">Gate any block by who fans are, what they've done, or what you want them to do next, and turn one send into a different experience for every fan.</p>
+      <p class="stile-p">Personalize any block by who fans are or what they've done, and give every fan a reason to go deeper.</p>
     </div>
   </div>
   <div class="sol-foot">Powered by your fan data, Posts delivers better fan experiences that grow your list and drive stronger relationships.</div>
@@ -250,39 +273,45 @@
 <!-- EVERYTHING YOU NEED -->
 <div class="wrap" id="features"><div class="inner centered">
   <h2 class="display h-lg">Everything you need,<br>already in the editor.</h2>
-  <p class="sub mx" style="max-width:620px;margin-top:18px;">Ready-made blocks for how artists work. Connected to your library and built for fan experiences no other email platform can deliver.</p>
+  <p class="sub mx" style="max-width:720px;margin-top:18px;">An easy to use editor built for artists, with drag-and-drop blocks for music, video, tour dates, polls, and more. Design every Post in your own brand to look like your world, not a template.</p>
 
   <div class="fcards">
-    <!-- 1 GATING (full width) -->
-    <div class="fcard wide">
-      <div class="gate3">
-        <div class="gpane">
-          <div class="gpane-tag">What you control</div>
-          <div class="m-label">Who unlocks this block</div>
-          <div class="m-opt"><span class="m-dot"></span><span>Everyone</span></div>
-          <div class="m-opt"><span class="m-dot"></span><span>Paid tiers</span></div>
-          <div class="m-opt on"><span class="m-dot"></span><span>By action</span></div>
-          <div class="m-chips"><span class="m-chip">Presaved &#10003;</span><span class="m-chip">Signed up</span><span class="m-chip">Shared</span></div>
-        </div>
-        <div class="gpane">
-          <div class="gpane-tag">Fan who presaved</div>
-          <div class="m-embed"><div class="m-eplay"><svg width="9" height="11" viewBox="0 0 11 13" fill="#000"><path d="M0 0L11 6.5L0 13V0Z"/></svg></div><div><div class="m-etitle">First listen unlocked</div><div class="m-esub">Playing now</div></div></div>
-          <div class="post-line"></div><div class="post-line s"></div>
-          <div class="m-reacts"><span class="m-react">&#128293; 2.4k</span><span class="m-react ghost">&#8599; Share</span></div>
-        </div>
-        <div class="gpane">
-          <div class="gpane-tag">Fan who hasn't yet</div>
-          <div class="m-lockwrap">
-            <div class="m-lockico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
-            <div class="m-lockh">Presave to unlock</div>
-            <div class="m-lockp">Presave the single to hear it first.</div>
-            <div class="m-lockbtn">Presave now</div>
-          </div>
-        </div>
+    <!-- 1 CONTROL WHAT FANS SEE -->
+    <div class="fcard">
+      <div class="fcard-vis">
+        <div class="m-label">Who sees this</div>
+        <div class="m-opt on"><span class="m-dot"></span><span>Inner circle</span></div>
+        <div class="m-opt"><span class="m-dot"></span><span>Paid tiers</span></div>
+        <div class="m-opt"><span class="m-dot"></span><span>Everyone</span></div>
+        <div class="m-label" style="margin-top:4px;">Different fans, different content</div>
       </div>
       <div class="fcard-body">
-        <div class="fcard-h">Block-level gating</div>
-        <p class="fcard-p">Reward the fans who've earned it. Gate any block by who fans are or what they've done: first listen for presavers, early access for paid tiers, exclusives for your inner circle.</p>
+        <div class="fcard-h">Control what fans see</div>
+        <p class="fcard-p">Choose who sees what. Give your best fans early access and exclusives, and reward the rest as they go deeper.</p>
+      </div>
+    </div>
+    <!-- 2 UNLOCK WITH AN ACTION -->
+    <div class="fcard">
+      <div class="fcard-vis">
+        <div class="m-lockrow"><span class="m-lockmini"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span><span>First listen locked</span></div>
+        <div class="m-chips"><span class="m-chip">Presave &#10003;</span><span class="m-chip">Sign up</span><span class="m-chip">Share</span></div>
+        <div class="m-lockbtn" style="align-self:flex-start;">Presave to unlock</div>
+      </div>
+      <div class="fcard-body">
+        <div class="fcard-h">Unlock with an action</div>
+        <p class="fcard-p">Fans presave, sign up, or share to see more, so every unlock brings you a new fan or a stronger one.</p>
+      </div>
+    </div>
+    <!-- 3 FAN REFERRALS -->
+    <div class="fcard">
+      <div class="fcard-vis">
+        <div class="m-label">Your referral link</div>
+        <div class="m-embed"><div class="m-eplay" style="background:rgba(245,197,24,.14);border:1px solid rgba(245,197,24,.4);"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div><div><div class="m-etitle">Share &amp; unlock</div><div class="m-esub">os.fan/r/you</div></div></div>
+        <div class="m-referrow"><div class="m-refav" style="background:#3B82F6;"></div><div class="m-refav" style="background:#22C55E;"></div><div class="m-refav" style="background:#A855F7;"></div><span class="m-label" style="margin:0;">12 fans invited</span></div>
+      </div>
+      <div class="fcard-body">
+        <div class="fcard-h">Fan referrals</div>
+        <p class="fcard-p">Turn fans into your growth engine. Every fan gets a link to share, and the new fans they bring become yours to reach.</p>
       </div>
     </div>
     <!-- 3 REACTIONS -->
@@ -394,7 +423,7 @@
 <div class="wrap"><div class="inner centered">
   <h2 class="display h-lg">Posts in action.</h2>
   <p class="sub mx" style="max-width:640px;margin-top:18px;">See why artists are choosing Posts as the better way to reach, engage, and grow their fans.</p>
-  <div class="cases"><div class="case"><div class="case-img"><div class="case-name">Paul McCartney</div></div><div class="case-body"><div class="case-artist">Paul McCartney</div><div class="case-type">Personalized fan journeys</div><p class="case-p"><strong>Ahead of his new album, The Boys of Dungeon Lane, Paul McCartney sent one Post that adapted to every fan inside it.</strong> Fans answered how they planned to listen first, and each answer unlocked the next block: vinyl buyers were asked which pressing felt right and saw an exclusive pink vinyl, streamers saw their path, and everyone unlocked a preview for sharing their preferences. No survey, no follow-up send. The Post did the segmenting in real time, and every answer became fan-level preference data for the next campaign.</p></div></div></div>
+  <div class="cases"><div class="case"><div class="case-img"><div class="case-name">Paul McCartney</div></div><div class="case-body"><div class="case-artist">Paul McCartney</div><div class="case-type">Personalized fan journeys</div><p class="case-p"><strong style="color:#fff;">Ahead of his new album, The Boys of Dungeon Lane, Paul McCartney sent one Post that adapted to every fan inside it.</strong> Fans answered how they planned to listen first, and each answer unlocked the next block: vinyl buyers were asked which pressing felt right and saw an exclusive pink vinyl, streamers saw their path, and everyone unlocked a preview for sharing their preferences. No survey, no follow-up send. The Post did the segmenting in real time, and every answer became fan-level preference data for the next campaign.</p></div></div></div>
 </div></div>
 
 <!-- CHANNEL VERDICT -->
@@ -428,6 +457,10 @@
         <div class="faq-a">It replaces how you send email, not email itself. Every Post reaches your existing list in the inbox as always, and also publishes to the web where new fans can find it. One tool, one workflow, nothing extra to maintain. Powered by your fan data, Posts helps you deliver better fan experiences that build stronger relationships.</div>
       </div>
       <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">+</span><span class="faq-q-text">How easy is it to switch from my current email platform?</span></div>
+        <div class="faq-a">Very. Upload your list and you can send your first Post within minutes. Nothing about your workflow changes, you write, you send, fans get it in their inbox. And if you need a hand, we're here to help.</div>
+      </div>
+      <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">+</span><span class="faq-q-text">What can you build?</span></div>
         <div class="faq-a">Tour announcements, first-listen drops, album campaigns, merch exclusives, gated content, polls, pre-save unlocks, early access, community threads, fan acquisition campaigns.</div>
       </div>
@@ -444,7 +477,7 @@
 
 <!-- CLOSER -->
 <div class="closer">
-  <h2 class="display">Grow your audience and strengthen<br>your fan relationships.</h2>
+  <h2 class="display">Every announcement deserves<br>a life beyond the inbox.</h2>
   <p class="closer-sub">Why just email when every announcement can do more with Posts?</p>
   <div class="cta-pair"><a href="#" class="btn btn-gold">Start Posting</a><a href="#" class="btn btn-ghost">Get Demo</a></div>
 </div>
